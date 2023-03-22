@@ -62,5 +62,21 @@ def open_sqlite():
 def query_sqlite():
     pass
 
+# Creer un paquet de cartes
+def create_table():
+    pass
+
+# Ajouter des donnes/cartes dans un paquet
+def add_data():
+    pass
+
+# Afficher les valeurs des cartes d'un paquet
+def show_data():
+    pass
+
+# Supprimer des cartes d'un paquet
+def delete_data():
+    pass
+
 
 
