@@ -70,8 +70,12 @@ def create_table():
 def add_data():
     pass
 
-# Afficher les valeurs des cartes d'un paquet
+# Afficher les cartes d'un paquet
 def show_data():
+    pass
+
+# Modifier des cartes d'un paquet
+def update_data():
     pass
 
 # Supprimer des cartes d'un paquet
