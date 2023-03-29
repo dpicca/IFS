@@ -16,11 +16,11 @@ def create_sqlite():
     print('The database is open')
 
     # Creer table question...
-    #question_table = 'CREATE TABLE question_table (' \
+    #question_create = 'CREATE TABLE question_table (' \
     #                 'idquestion FLOAT PRIMARY KEY NOT NULL,' \
     #                 'question VARCHAR(40),' \
     #                 'paquet VARCHAR(20));'
-    #cursor.execute(question_table)
+    #cursor.execute(question_create)
 
     # Ajouter des valeurs a la table...
     #question_add = ("INSERT INTO question_table VALUES (1.1, 'cuisinier', 'metiers')")
@@ -52,11 +52,17 @@ def create_sqlite():
     #cursor.execute('DROP TABLE question_table;')
 
     # Creer table reponse...
-    # answer_table = 'CREATE TABLE question_table (' \
-    #                 'idquestion FLOAT PRIMARY KEY NOT NULL,' \
+    # answer_create = 'CREATE TABLE answer_table (' \
+    #                 'idanswer FLOAT PRIMARY KEY NOT NULL,' \
     #                 'answer VARCHAR(40),' \
     #                 'paquet VARCHAR(20));'
-    # cursor.execute(answer_table)
+    # cursor.execute(answer_create)
+
+    # Creer table utilisateur...
+    # user_create = 'CREATE TABLE user_table (' \
+    #                 'iduser FLOAT PRIMARY KEY NOT NULL,' \
+    #                 'result BOOLEAN);'
+    # cursor.execute(user_create)
 
     # Sauvegarder le changement.
     test.commit()
