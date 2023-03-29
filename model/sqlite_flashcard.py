@@ -16,11 +16,13 @@ def create_sqlite():
     print('The database is open')
 
     # Creer table question...
-    #question_create = 'CREATE TABLE question_table (' \
-    #                 'idquestion FLOAT PRIMARY KEY NOT NULL,' \
-    #                 'question VARCHAR(40),' \
-    #                 'paquet VARCHAR(20));'
-    #cursor.execute(question_create)
+    question_create = 'CREATE TABLE question_table (' \
+                      'idquestion INT PRIMARY KEY NOT NULL,' \
+                      'question VARCHAR(40),' \
+                      'paquet VARCHAR(20),' \
+                      'idanswer_fk INT,  ' \
+                      'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
+    cursor.execute(question_create)
 
     # Ajouter des valeurs a la table...
     #question_add = ("INSERT INTO question_table VALUES (1.1, 'cuisinier', 'metiers')")
@@ -52,17 +54,28 @@ def create_sqlite():
     #cursor.execute('DROP TABLE question_table;')
 
     # Creer table reponse...
-    # answer_create = 'CREATE TABLE answer_table (' \
-    #                 'idanswer FLOAT PRIMARY KEY NOT NULL,' \
-    #                 'answer VARCHAR(40),' \
-    #                 'paquet VARCHAR(20));'
-    # cursor.execute(answer_create)
+    answer_create = 'CREATE TABLE answer_table (' \
+                    'idanswer INT PRIMARY KEY NOT NULL,' \
+                    'answer VARCHAR(40),' \
+                    'paquet VARCHAR(20),' \
+                    'idquestion_fk = INT,' \
+                    'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion));'
+    cursor.execute(answer_create)
 
     # Creer table utilisateur...
-    # user_create = 'CREATE TABLE user_table (' \
-    #                 'iduser FLOAT PRIMARY KEY NOT NULL,' \
-    #                 'result BOOLEAN);'
-    # cursor.execute(user_create)
+    user_create = 'CREATE TABLE user_table (' \
+                  'iduser INT PRIMARY KEY NOT NULL,' \
+                  'result BOOLEAN );'
+    cursor.execute(user_create)
+
+    # Creer table reponse-utilisateur...
+    answer_user_create = 'CREATE TABLE answer_user_table (' \
+                    'idanswer_user INT PRIMARY KEY NOT NULL, ' \
+                    'idanswer_fk INT,' \
+                    'iduser_fk INT,' \
+                    'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
+                    'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
+    cursor.execute(answer_user_create)
 
     # Sauvegarder le changement.
     test.commit()
