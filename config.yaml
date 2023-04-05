@@ -1,17 +1,21 @@
+cookie:
+  expiry_days: 30
+  key: some_signature_key
+  name: some_cookie_name
 credentials:
   usernames:
     jsmith:
       email: jsmith@gmail.com
       name: John Smith
-      password: abc # To be replaced with hashed password
+      password: abc
+    leoniensb:
+      email: leoniensb@email
+      name: Leonie
+      password: $2b$12$drdaBy5vj.8vIGFBYIkOkewcn0csRywq387rlDjlG5Mm0wXDlr.me
     rbriggs:
       email: rbriggs@gmail.com
       name: Rebecca Briggs
-      password: def # To be replaced with hashed password
-cookie:
-  expiry_days: 30
-  key: some_signature_key # Must be string
-  name: some_cookie_name
+      password: def
 preauthorized:
   emails:
   - melsby@gmail.com
