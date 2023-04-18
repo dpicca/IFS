@@ -15,9 +15,6 @@ class QuestionTable:
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
 
-        # Fermer la base de donnees
-        #test.close()
-
     # Permettre les requetes...
     def open_sqlite(self):
         #cursor = flashcards_db.cursor()
@@ -83,6 +80,10 @@ class QuestionTable:
         # Sauvegarder le changement.
         self.test.commit()
 
+    # Fermer la base de donnees
+    def close_sqlite(self):
+        self.test.close()
+
 
 # Creation de la table des reponses.
 class AnswerTable:
@@ -96,9 +97,6 @@ class AnswerTable:
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
-
-        # Fermer la base de donnees
-        #test.close()
 
     # Permettre les requetes...
     def open_sqlite(self):
@@ -165,6 +163,10 @@ class AnswerTable:
         # Sauvegarder le changement.
         self.test.commit()
 
+    # Fermer la base de donnees
+    def close_sqlite(self):
+        self.test.close()
+
 
 # Creation de la table des utilisateurs.
 class UserTable:
@@ -178,9 +180,6 @@ class UserTable:
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
-
-        # Fermer la base de donnees
-        #test.close()
 
     # Permettre les requetes...
     def open_sqlite(self):
@@ -244,6 +243,10 @@ class UserTable:
         # Sauvegarder le changement.
         self.test.commit()
 
+    # Fermer la base de donnees
+    def close_sqlite(self):
+        self.test.close()
+
 
 # Creation de la table des reponses-utilisateurs.
 class AnswerUserTable:
@@ -257,9 +260,6 @@ class AnswerUserTable:
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
-
-        # Fermer la base de donnees
-        #test.close()
 
     # Permettre les requetes...
     def open_sqlite(self):
@@ -325,3 +325,7 @@ class AnswerUserTable:
 
         # Sauvegarder le changement.
         self.test.commit()
+
+    # Fermer la base de donnees
+    def close_sqlite(self):
+        self.test.close()
