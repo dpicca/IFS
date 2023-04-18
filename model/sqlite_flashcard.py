@@ -5,7 +5,7 @@ import sqlite3
 # Creation de la table des questions.
 class QuestionTable:
 
-    # Execution du code...
+    # Initialisation de la classe...
     def __init__(self):
         self.test = sqlite3.connect('sql.db')
         pass
@@ -88,7 +88,7 @@ class QuestionTable:
 # Creation de la table des reponses.
 class AnswerTable:
 
-    # Execution du code...
+    # Initialisation de la classe...
     def __init__(self):
         self.test = sqlite3.connect('sql.db')
         pass
@@ -171,7 +171,7 @@ class AnswerTable:
 # Creation de la table des utilisateurs.
 class UserTable:
 
-    # Execution du code...
+    # Initialisation de la classe...
     def __init__(self):
         self.test = sqlite3.connect('sql.db')
         pass
@@ -251,7 +251,7 @@ class UserTable:
 # Creation de la table des reponses-utilisateurs.
 class AnswerUserTable:
 
-    # Execution du code...
+    # Initialisation de la classe...
     def __init__(self):
         self.test = sqlite3.connect('sql.db')
         pass
