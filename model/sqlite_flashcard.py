@@ -15,9 +15,6 @@ class QuestionTable:
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
 
-        # Sauvegarder le changement.
-        self.test.commit()
-
         # Fermer la base de donnees
         #test.close()
 
@@ -83,6 +80,9 @@ class QuestionTable:
         for row in rows:
             print(row)
 
+        # Sauvegarder le changement.
+        self.test.commit()
+
 
 # Creation de la table des reponses.
 class AnswerTable:
@@ -96,9 +96,6 @@ class AnswerTable:
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
-
-        # Sauvegarder le changement.
-        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -165,6 +162,9 @@ class AnswerTable:
         for row in rows:
             print(row)
 
+        # Sauvegarder le changement.
+        self.test.commit()
+
 
 # Creation de la table des utilisateurs.
 class UserTable:
@@ -178,9 +178,6 @@ class UserTable:
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
-
-        # Sauvegarder le changement.
-        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -244,6 +241,9 @@ class UserTable:
         for row in rows:
             print(row)
 
+        # Sauvegarder le changement.
+        self.test.commit()
+
 
 # Creation de la table des reponses-utilisateurs.
 class AnswerUserTable:
@@ -257,9 +257,6 @@ class AnswerUserTable:
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
         self.test = sqlite3.connect('sql.db')
-
-        # Sauvegarder le changement.
-        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -325,3 +322,6 @@ class AnswerUserTable:
 
         for row in rows:
             print(row)
+
+        # Sauvegarder le changement.
+        self.test.commit()
