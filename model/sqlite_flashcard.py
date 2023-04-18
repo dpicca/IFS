@@ -7,20 +7,16 @@ class QuestionTable:
 
     # Execution du code...
     def __init__(self):
+        self.test = sqlite3.connect('sql.db')
         pass
 
     # Creation et connection a la base de donnees...
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
-        test = sqlite3.connect('sql.db')
-
-
-        # Permettre les requetes...
-        cursor = test.cursor()
-        print('The database is open')
+        self.test = sqlite3.connect('sql.db')
 
         # Sauvegarder le changement.
-        test.commit()
+        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -28,7 +24,8 @@ class QuestionTable:
     # Permettre les requetes...
     def open_sqlite(self):
         #cursor = flashcards_db.cursor()
-        pass
+        cursor = self.test.cursor()
+        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -42,39 +39,39 @@ class QuestionTable:
                           'paquet VARCHAR(20),' \
                           'idanswer_fk INT,  ' \
                           'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
-        execute(query)
+        self.execute(query)
 
     # Ajouter des donnes/cartes dans un paquet
     def add_data(self):
         query = 'INSERT INTO question_table VALUES (1, "cuisinier", "metiers");'
-        execute(query)
+        self.execute(query)
 
     # Afficher la table...
     def show_table(self):
         query = 'SELECT * FROM question_table;'
-        execute(query)
+        self.execute(query)
 
     # Afficher les cartes d'un paquet
     def show_data(self):
         query = 'SELECT * FROM question_table WHERE paquet = "metiers";'
-        execute(query)
+        self.execute(query)
 
     # Modifier des cartes d'un paquet
     def update_data(self):
         query = 'UPDATE question_table SET question = "classe" WHERE paquet = "ecole";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self):
         query = 'DELETE FROM question_table WHERE question = "cuisinier";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer la table...
     def delete_table(self):
         query = 'DROP TABLE question_table;'
-        execute(query)
+        self.execute(query)
 
-    def execute(query):
+    def execute(self, query):
 
         conn = sqlite3.connect('sql.db')
 
@@ -92,20 +89,16 @@ class AnswerTable:
 
     # Execution du code...
     def __init__(self):
+        self.test = sqlite3.connect('sql.db')
         pass
 
     # Creation et connection a la base de donnees...
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
-        test = sqlite3.connect('sql.db')
-
-
-        # Permettre les requetes...
-        cursor = test.cursor()
-        print('The database is open')
+        self.test = sqlite3.connect('sql.db')
 
         # Sauvegarder le changement.
-        test.commit()
+        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -113,7 +106,8 @@ class AnswerTable:
     # Permettre les requetes...
     def open_sqlite(self):
         #cursor = flashcards_db.cursor()
-        pass
+        cursor = self.test.cursor()
+        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -127,39 +121,39 @@ class AnswerTable:
                         'paquet VARCHAR(20),' \
                         'idquestion_fk = INT,' \
                         'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion));'
-        execute(query)
+        self.execute(query)
 
     # Ajouter des donnes/cartes dans un paquet
     def add_data(self):
         query = 'INSERT INTO question_table VALUES (1, "cuisinier", "metiers");'
-        execute(query)
+        self.execute(query)
 
     # Afficher la table...
     def show_table(self):
         query = 'SELECT * FROM question_table;'
-        execute(query)
+        self.execute(query)
 
     # Afficher les cartes d'un paquet
     def show_data(self):
         query = 'SELECT * FROM question_table WHERE paquet = "metiers";'
-        execute(query)
+        self.execute(query)
 
     # Modifier des cartes d'un paquet
     def update_data(self):
         query = 'UPDATE question_table SET question = "classe" WHERE paquet = "ecole";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self):
         query = 'DELETE FROM question_table WHERE question = "cuisinier";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer la table...
     def delete_table(self):
         query = 'DROP TABLE question_table;'
-        execute(query)
+        self.execute(query)
 
-    def execute(query):
+    def execute(self, query):
 
         conn = sqlite3.connect('sql.db')
 
@@ -177,20 +171,16 @@ class UserTable:
 
     # Execution du code...
     def __init__(self):
+        self.test = sqlite3.connect('sql.db')
         pass
 
     # Creation et connection a la base de donnees...
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
-        test = sqlite3.connect('sql.db')
-
-
-        # Permettre les requetes...
-        cursor = test.cursor()
-        print('The database is open')
+        self.test = sqlite3.connect('sql.db')
 
         # Sauvegarder le changement.
-        test.commit()
+        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -198,7 +188,8 @@ class UserTable:
     # Permettre les requetes...
     def open_sqlite(self):
         #cursor = flashcards_db.cursor()
-        pass
+        cursor = self.test.cursor()
+        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -209,39 +200,39 @@ class UserTable:
         query = 'CREATE TABLE user_table (' \
                       'iduser INT PRIMARY KEY NOT NULL,' \
                       'result INT );'
-        execute(query)
+        self.execute(query)
 
     # Ajouter des donnes/cartes dans un paquet
     def add_data(self):
         query = 'INSERT INTO question_table VALUES (1, "cuisinier", "metiers");'
-        execute(query)
+        self.execute(query)
 
     # Afficher la table...
     def show_table(self):
         query = 'SELECT * FROM question_table;'
-        execute(query)
+        self.execute(query)
 
     # Afficher les cartes d'un paquet
     def show_data(self):
         query = 'SELECT * FROM question_table WHERE paquet = "metiers";'
-        execute(query)
+        self.execute(query)
 
     # Modifier des cartes d'un paquet
     def update_data(self):
         query = 'UPDATE question_table SET question = "classe" WHERE paquet = "ecole";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self):
         query = 'DELETE FROM question_table WHERE question = "cuisinier";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer la table...
     def delete_table(self):
         query = 'DROP TABLE question_table;'
-        execute(query)
+        self.execute(query)
 
-    def execute(query):
+    def execute(self, query):
 
         conn = sqlite3.connect('sql.db')
 
@@ -259,20 +250,16 @@ class AnswerUserTable:
 
     # Execution du code...
     def __init__(self):
+        self.test = sqlite3.connect('sql.db')
         pass
 
     # Creation et connection a la base de donnees...
     def create_sqlite(self):
         #flashcards_db = sqlite3.connect('ifc.db')
-        test = sqlite3.connect('sql.db')
-
-
-        # Permettre les requetes...
-        cursor = test.cursor()
-        print('The database is open')
+        self.test = sqlite3.connect('sql.db')
 
         # Sauvegarder le changement.
-        test.commit()
+        self.test.commit()
 
         # Fermer la base de donnees
         #test.close()
@@ -280,7 +267,8 @@ class AnswerUserTable:
     # Permettre les requetes...
     def open_sqlite(self):
         #cursor = flashcards_db.cursor()
-        pass
+        cursor = self.test.cursor()
+        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -294,39 +282,39 @@ class AnswerUserTable:
                         'iduser_fk INT,' \
                         'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
-        execute(query)
+        self.execute(query)
 
     # Ajouter des donnes/cartes dans un paquet
     def add_data(self):
         query = 'INSERT INTO question_table VALUES (1, "cuisinier", "metiers");'
-        execute(query)
+        self.execute(query)
 
     # Afficher la table...
     def show_table(self):
         query = 'SELECT * FROM question_table;'
-        execute(query)
+        self.execute(query)
 
     # Afficher les cartes d'un paquet
     def show_data(self):
         query = 'SELECT * FROM question_table WHERE paquet = "metiers";'
-        execute(query)
+        self.execute(query)
 
     # Modifier des cartes d'un paquet
     def update_data(self):
         query = 'UPDATE question_table SET question = "classe" WHERE paquet = "ecole";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self):
         query = 'DELETE FROM question_table WHERE question = "cuisinier";'
-        execute(query)
+        self.execute(query)
 
     # Supprimer la table...
     def delete_table(self):
         query = 'DROP TABLE question_table;'
-        execute(query)
+        self.execute(query)
 
-    def execute(query):
+    def execute(self, query):
 
         conn = sqlite3.connect('sql.db')
 
