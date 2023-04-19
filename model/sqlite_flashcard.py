@@ -316,13 +316,3 @@ class AnswerUserTable:
     # Fermer la base de donnees
     def close_sqlite(self):
         self.flashcards_db.close()
-
-
-# Execution du code...
-def main():
-
-    pass
-
-
-if __name__ == "__main__":
-    main()
