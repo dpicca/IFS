@@ -62,11 +62,6 @@ class QuestionTable:
 
         self.cur.execute(query)
 
-        #rows = cur.fetchall()
-
-        #for row in rows:
-        #    print(row)
-
         # Sauvegarder le changement.
         self.flashcards_db.commit()
 
@@ -135,11 +130,6 @@ class AnswerTable:
 
         self.cur.execute(query)
 
-        #rows = cur.fetchall()
-
-        #for row in rows:
-        #    print(row)
-
         # Sauvegarder le changement.
         self.flashcards_db.commit()
 
@@ -203,11 +193,6 @@ class UserTable:
     def execute(self, query):
 
         self.cur.execute(query)
-
-        #rows = cur.fetchall()
-
-        #for row in rows:
-        #    print(row)
 
         # Sauvegarder le changement.
         self.flashcards_db.commit()
@@ -275,11 +260,6 @@ class AnswerUserTable:
     def execute(self, query):
 
         self.cur.execute(query)
-
-        #rows = cur.fetchall()
-
-        #for row in rows:
-        #    print(row)
 
         # Sauvegarder le changement.
         self.flashcards_db.commit()
