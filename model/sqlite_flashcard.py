@@ -14,10 +14,6 @@ class QuestionTable:
         print('The database is open')
         self.query = ''
 
-    # Peciser et executer les requetes...
-    def query_sqlite(self):
-        pass
-
     # Creer un paquet de cartes
     def create_table(self):
         self.query = 'CREATE TABLE question_table (' \
@@ -58,6 +54,7 @@ class QuestionTable:
         self.query = 'DROP TABLE question_table;'
         self.execute(self.query)
 
+    # Executer les requetes...
     def execute(self, query):
 
         self.cur.execute(query)
@@ -126,6 +123,7 @@ class AnswerTable:
         self.query = 'DROP TABLE question_table;'
         self.execute(self.query)
 
+    # Executer les requetes...
     def execute(self, query):
 
         self.cur.execute(query)
@@ -190,6 +188,7 @@ class UserTable:
         self.query = 'DROP TABLE question_table;'
         self.execute(self.query)
 
+    # Executer les requetes...
     def execute(self, query):
 
         self.cur.execute(query)
@@ -257,6 +256,7 @@ class AnswerUserTable:
         query = 'DROP TABLE question_table;'
         self.execute(query)
 
+    # Executer les requetes...
     def execute(self, query):
 
         self.cur.execute(query)
