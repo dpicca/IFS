@@ -7,18 +7,12 @@ class QuestionTable:
 
     # Initialisation de la classe...
     def __init__(self):
+        # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
+        # Permettre les requêtes.
         self.cur = self.flashcards_db.cursor()
-        self.query = ''
-
-    # Creation et connection a la base de donnees...
-    def create_sqlite(self):
-        pass
-
-    # Permettre les requetes...
-    def open_sqlite(self):
-        cursor = self.flashcards_db.cursor()
         print('The database is open')
+        self.query = ''
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -66,8 +60,6 @@ class QuestionTable:
 
     def execute(self, query):
 
-        cur = self.flashcards_db.cursor()
-
         self.cur.execute(query)
 
         #rows = cur.fetchall()
@@ -89,17 +81,11 @@ class AnswerTable:
 
     # Initialisation de la classe...
     def __init__(self):
+        # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
+        # Permettre les requêtes.
+        self.cur = self.flashcards_db.cursor()
         self.query = ''
-
-    # Creation et connection a la base de donnees...
-    def create_sqlite(self):
-        pass
-
-    # Permettre les requetes...
-    def open_sqlite(self):
-        cursor = self.flashcards_db.cursor()
-        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -147,8 +133,7 @@ class AnswerTable:
 
     def execute(self, query):
 
-        cur = self.flashcards_db.cursor()
-        cur.execute(query)
+        self.cur.execute(query)
 
         #rows = cur.fetchall()
 
@@ -168,17 +153,11 @@ class UserTable:
 
     # Initialisation de la classe...
     def __init__(self):
+        # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
+        # Permettre les requêtes.
+        self.cur = self.flashcards_db.cursor()
         self.query = ''
-
-    # Creation et connection a la base de donnees...
-    def create_sqlite(self):
-        pass
-
-    # Permettre les requetes...
-    def open_sqlite(self):
-        cursor = self.flashcards_db.cursor()
-        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -223,8 +202,7 @@ class UserTable:
 
     def execute(self, query):
 
-        cur = self.flashcards_db.cursor()
-        cur.execute(query)
+        self.cur.execute(query)
 
         #rows = cur.fetchall()
 
@@ -244,17 +222,11 @@ class AnswerUserTable:
 
     # Initialisation de la classe...
     def __init__(self):
+        # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
+        # Permettre les requêtes.
+        self.cur = self.flashcards_db.cursor()
         self.query = ''
-
-    # Creation et connection a la base de donnees...
-    def create_sqlite(self):
-        pass
-
-    # Permettre les requetes...
-    def open_sqlite(self):
-        cursor = self.flashcards_db.cursor()
-        print('The database is open')
 
     # Peciser et executer les requetes...
     def query_sqlite(self):
@@ -302,8 +274,7 @@ class AnswerUserTable:
 
     def execute(self, query):
 
-        cur = self.flashcards_db.cursor()
-        cur.execute(query)
+        self.cur.execute(query)
 
         #rows = cur.fetchall()
 
