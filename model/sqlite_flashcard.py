@@ -15,7 +15,7 @@ class QuestionTable:
         self.query = ''
         self.i = 1
 
-    # Creer un paquet de cartes
+    # Creer un paquet de cartes...
     def create_table(self):
         self.query = 'CREATE TABLE question_table (' \
                           'idquestion INT PRIMARY KEY NOT NULL,' \
@@ -25,7 +25,7 @@ class QuestionTable:
                           'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
         self.execute(self.query)
 
-    # Ajouter des donnes/cartes dans un paquet
+    # Ajouter des donnes/cartes dans un paquet...
     def add_data(self, question, paquet):
         self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet});'
         self.i += 1
@@ -36,12 +36,12 @@ class QuestionTable:
         self.query = 'SELECT * FROM question_table;'
         self.execute(self.query)
 
-    # Afficher les cartes d'un paquet
+    # Afficher les cartes d'un paquet...
     def show_data(self, paquet):
         self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
         self.execute(self.query)
 
-    # Modifier des cartes d'un paquet
+    # Modifier des cartes d'un paquet...
     def update_data(self, question, paquet):
         self.query = f'UPDATE question_table SET question = {question} WHERE paquet = {paquet};'
         self.execute(self.query)
@@ -64,7 +64,7 @@ class QuestionTable:
         # Sauvegarder le changement.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees
+    # Fermer la base de donnees...
     def close_sqlite(self):
         self.flashcards_db.close()
 
@@ -85,7 +85,7 @@ class AnswerTable:
     def query_sqlite(self):
         pass
 
-    # Creer un paquet de cartes
+    # Creer un paquet de cartes...
     def create_table(self):
         self.query = 'CREATE TABLE answer_table (' \
                         'idanswer INT PRIMARY KEY NOT NULL,' \
@@ -95,35 +95,35 @@ class AnswerTable:
                         'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion));'
         self.execute(self.query)
 
-    # Ajouter des donnes/cartes dans un paquet
+    # Ajouter des donnes/cartes dans un paquet...
     def add_data(self, answer, paquet):
-        self.query = f'INSERT INTO question_table VALUES ({self.i}, {answer}, {paquet});'
+        self.query = f'INSERT INTO answer_table VALUES ({self.i}, {answer}, {paquet});'
         self.i += 1
         self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
-        self.query = 'SELECT * FROM question_table;'
+        self.query = 'SELECT * FROM answer_table;'
         self.execute(self.query)
 
-    # Afficher les cartes d'un paquet
+    # Afficher les cartes d'un paquet...
     def show_data(self, paquet):
-        self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
+        self.query = f'SELECT * FROM answer_table WHERE paquet = {paquet};'
         self.execute(self.query)
 
-    # Modifier des cartes d'un paquet
+    # Modifier des cartes d'un paquet...
     def update_data(self, answer, paquet):
-        self.query = f'UPDATE question_table SET answer = {answer} WHERE paquet = {paquet};'
+        self.query = f'UPDATE answer_table SET answer = {answer} WHERE paquet = {paquet};'
         self.execute(self.query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self, answer):
-        self.query = f'DELETE FROM question_table WHERE answer = {answer};'
+        self.query = f'DELETE FROM answer_table WHERE answer = {answer};'
         self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
-        self.query = 'DROP TABLE question_table;'
+        self.query = 'DROP TABLE answer_table;'
         self.execute(self.query)
 
     # Executer les requetes...
@@ -134,7 +134,7 @@ class AnswerTable:
         # Sauvegarder le changement.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees
+    # Fermer la base de donnees...
     def close_sqlite(self):
         self.flashcards_db.close()
 
@@ -151,44 +151,42 @@ class UserTable:
         self.query = ''
         self.i = 1
 
-    # Creer un paquet de cartes
+    # Creer un nouvel utilisateur...
     def create_table(self):
         self.query = 'CREATE TABLE user_table (' \
                       'iduser INT PRIMARY KEY NOT NULL,' \
                       'result INT );'
         self.execute(self.query)
 
-    # Ajouter des donnes/cartes dans un paquet...
+    # Ajouter des resultats pour un utilisateur...
     def add_data(self, result):
-        self.query = f'INSERT INTO question_table VALUES ({self.i}, {result});'
+        self.query = f'INSERT INTO user_table VALUES ({self.i}, {result});'
         self.i += 1
         self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
-        self.query = 'SELECT * FROM question_table;'
+        self.query = 'SELECT * FROM user_table;'
         self.execute(self.query)
 
-    # Afficher les cartes d'un paquet
-    def show_data(self, result):
-        self.query = f'SELECT * FROM question_table WHERE result = {result};'
+    # Afficher les resultats d'un utilisateur...
+    def show_data(self, i):
+        self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         self.execute(self.query)
 
-    # A MODIFIER
-    # Modifier des cartes d'un paquet
-    def update_data(self):
-        self.query = 'UPDATE question_table SET question = "classe" WHERE paquet = "ecole";'
+    # Modifier des resultats d'un utilisateur...
+    def update_data(self, result, i):
+        self.query = f'UPDATE user_table SET result = {result} WHERE iduser = {i};'
         self.execute(self.query)
 
-    # A MODIFIER
-    # Supprimer des cartes d'un paquet...
+    # Supprimer des resultats d'un utilisateur...
     def delete_data(self, result):
-        self.query = 'DELETE FROM question_table WHERE question = "cuisinier";'
+        self.query = f'DELETE FROM user_table WHERE result = {result};'
         self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
-        self.query = 'DROP TABLE question_table;'
+        self.query = 'DROP TABLE user_table;'
         self.execute(self.query)
 
     # Executer les requetes...
@@ -199,11 +197,12 @@ class UserTable:
         # Sauvegarder le changement.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees
+    # Fermer la base de donnees...
     def close_sqlite(self):
         self.flashcards_db.close()
 
 
+# A MODIFIER
 # Creation de la table des reponses-utilisateurs.
 class AnswerUserTable:
 
@@ -216,11 +215,7 @@ class AnswerUserTable:
         self.query = ''
         self.i = 1
 
-    # Peciser et executer les requetes...
-    def query_sqlite(self):
-        pass
-
-    # Creer un paquet de cartes
+    # Creer un paquet de cartes...
     def create_table(self):
         query = 'CREATE TABLE answer_user_table (' \
                         'idanswer_user INT PRIMARY KEY NOT NULL, ' \
@@ -230,35 +225,35 @@ class AnswerUserTable:
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         self.execute(query)
 
-    # Ajouter des donnes/cartes dans un paquet
+    # Ajouter des donnes/cartes dans un paquet...
     def add_data(self):
-        query = 'INSERT INTO question_table VALUES (1, "cuisinier", "metiers");'
+        query = 'INSERT INTO answer_user_table VALUES (1, "cuisinier", "metiers");'
         self.i += 1
         self.execute(query)
 
     # Afficher la table...
     def show_table(self):
-        query = 'SELECT * FROM question_table;'
+        query = 'SELECT * FROM answer_user_table;'
         self.execute(query)
 
-    # Afficher les cartes d'un paquet
+    # Afficher les cartes d'un paquet...
     def show_data(self):
-        query = 'SELECT * FROM question_table WHERE paquet = "metiers";'
+        query = 'SELECT * FROM answer_user_table WHERE paquet = "metiers";'
         self.execute(query)
 
-    # Modifier des cartes d'un paquet
+    # Modifier des cartes d'un paquet...
     def update_data(self):
-        query = 'UPDATE question_table SET question = "classe" WHERE paquet = "ecole";'
+        query = 'UPDATE answer_user_table SET question = "classe" WHERE paquet = "ecole";'
         self.execute(query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self):
-        query = 'DELETE FROM question_table WHERE question = "cuisinier";'
+        query = 'DELETE FROM answer_user_table WHERE question = "cuisinier";'
         self.execute(query)
 
     # Supprimer la table...
     def delete_table(self):
-        query = 'DROP TABLE question_table;'
+        query = 'DROP TABLE answer_user_table;'
         self.execute(query)
 
     # Executer les requetes...
@@ -269,6 +264,6 @@ class AnswerUserTable:
         # Sauvegarder le changement.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees
+    # Fermer la base de donnees...
     def close_sqlite(self):
         self.flashcards_db.close()
