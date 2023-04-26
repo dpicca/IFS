@@ -2,6 +2,7 @@ import streamlit as st
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
+from streamlit_extras.switch_page_button import switch_page
 
 
 # open yaml file
@@ -31,7 +32,10 @@ name, authentication_status, username = authenticator.login('Login', 'main')
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.write(f'Welcome *{name}*')
-    st.title('Some content')
+    st.title('Hello')
+    want_to_contribute = st.button("homepage")
+    if want_to_contribute:
+        switch_page("MenuIFC")
 elif authentication_status is None:
     st.warning('Please enter your username and password')
 elif authentication_status is False:
