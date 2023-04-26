@@ -12,10 +12,10 @@ credentials:
       email: laure.margot@bluewin.ch
       name: Laure
       password: $2b$12$.cVDaelXpD3bG3lCyWY/XeUNoFq/FW1ibcsJ8DpJ0vT3brRwcsmHW
-    leoniensb:
-      email: leoniensb@email
+    leonie:
+      email: leoniensb@email.com
       name: Leonie
-      password: $2b$12$drdaBy5vj.8vIGFBYIkOkewcn0csRywq387rlDjlG5Mm0wXDlr.me
+      password: $2b$12$FtNZK0WGGGvSsr7GRP69Luk6RO/VZpYoX1KzfR1g6Nhb1qkVircly
     rbriggs:
       email: rbriggs@gmail.com
       name: Rebecca Briggs
