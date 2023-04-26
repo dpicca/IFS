@@ -81,10 +81,6 @@ class AnswerTable:
         self.query = ''
         self.i = 1
 
-    # Peciser et executer les requetes...
-    def query_sqlite(self):
-        pass
-
     # Creer un paquet de cartes...
     def create_table(self):
         self.query = 'CREATE TABLE answer_table (' \
@@ -154,13 +150,13 @@ class UserTable:
     # Creer un nouvel utilisateur...
     def create_table(self):
         self.query = 'CREATE TABLE user_table (' \
-                      'iduser INT PRIMARY KEY NOT NULL,' \
-                      'result INT );'
+                      'iduser INT PRIMARY KEY NOT NULL AUTOINCREMENT,' \
+                      'name VARCHAR(40));'
         self.execute(self.query)
 
-    # Ajouter des resultats pour un utilisateur...
-    def add_data(self, result):
-        self.query = f'INSERT INTO user_table VALUES ({self.i}, {result});'
+    # Ajouter un nom pour un utilisateur...
+    def add_data(self, name):
+        self.query = f'INSERT INTO user_table VALUES ({self.i}, {name});'
         self.i += 1
         self.execute(self.query)
 
@@ -169,19 +165,19 @@ class UserTable:
         self.query = 'SELECT * FROM user_table;'
         self.execute(self.query)
 
-    # Afficher les resultats d'un utilisateur...
+    # Afficher les noms des utilisateurs...
     def show_data(self, i):
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         self.execute(self.query)
 
-    # Modifier des resultats d'un utilisateur...
-    def update_data(self, result, i):
-        self.query = f'UPDATE user_table SET result = {result} WHERE iduser = {i};'
+    # Modifier le nom d'un utilisateur...
+    def update_data(self, name, i):
+        self.query = f'UPDATE user_table SET name = {name} WHERE iduser = {i};'
         self.execute(self.query)
 
-    # Supprimer des resultats d'un utilisateur...
-    def delete_data(self, result):
-        self.query = f'DELETE FROM user_table WHERE result = {result};'
+    # Supprimer le nom d'un utilisateur...
+    def delete_data(self, name):
+        self.query = f'DELETE FROM user_table WHERE name = {name};'
         self.execute(self.query)
 
     # Supprimer la table...
@@ -202,7 +198,6 @@ class UserTable:
         self.flashcards_db.close()
 
 
-# A MODIFIER
 # Creation de la table des reponses-utilisateurs.
 class AnswerUserTable:
 
@@ -221,6 +216,7 @@ class AnswerUserTable:
                         'idanswer_user INT PRIMARY KEY NOT NULL, ' \
                         'idanswer_fk INT,' \
                         'iduser_fk INT,' \
+                        'result INT,'\
                         'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         self.execute(query)
