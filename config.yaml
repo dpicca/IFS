@@ -8,6 +8,10 @@ credentials:
       email: jsmith@gmail.com
       name: John Smith
       password: abc
+    laure:
+      email: laure.margot@bluewin.ch
+      name: Laure
+      password: $2b$12$.cVDaelXpD3bG3lCyWY/XeUNoFq/FW1ibcsJ8DpJ0vT3brRwcsmHW
     leoniensb:
       email: leoniensb@email
       name: Leonie
