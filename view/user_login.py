@@ -35,7 +35,7 @@ if authentication_status:
     st.title('Hello')
     want_to_contribute = st.button("homepage")
     if want_to_contribute:
-        switch_page("page1")
+        switch_page("MenuIFC")
 elif authentication_status is None:
     st.warning('Please enter your username and password')
 elif authentication_status is False:
