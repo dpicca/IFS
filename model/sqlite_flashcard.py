@@ -76,7 +76,7 @@ class AnswerTable:
     def __init__(self):
         # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
-        # Permettre les requêtes.
+        # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         self.query = ''
         self.i = 1
@@ -146,7 +146,7 @@ class UserTable:
     def __init__(self):
         # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
-        # Permettre les requêtes.
+        # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         self.query = ''
         self.i = 1
@@ -210,7 +210,7 @@ class AnswerUserTable:
     def __init__(self):
         # Creation et connection a la base de donnees.
         self.flashcards_db = sqlite3.connect('sql.db')
-        # Permettre les requêtes.
+        # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         self.query = ''
         self.i = 1
