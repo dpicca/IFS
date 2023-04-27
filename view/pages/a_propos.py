@@ -3,9 +3,9 @@ import time
 import numpy as np
 from streamlit_extras.switch_page_button import switch_page
 
-st.set_page_config(page_title="À propos", page_icon="📈")
+st.set_page_config(page_title="À propos", page_icon="❓")
 
-st.markdown("# À propos ")
+st.title("À propos ")
 
 st.markdown("Intelligent FlashCards est un logiciel permettant d’apprendre de nouvelles langues facilement tout en observant sa progression.\n"
             "L’utilisation de cartes d’apprentissage personnalisables et l’aide de l’intelligence artificielle permettant de générer des cartes automatiquement autour d’un thème donné proposent à l’utilisateur une nouvelle manière ludique de se familiariser avec des langues inconnues.\n"

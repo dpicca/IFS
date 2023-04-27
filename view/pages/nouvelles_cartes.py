@@ -4,9 +4,9 @@ import altair as alt
 from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
 
-st.set_page_config(page_title="Nouvelles cartes", page_icon="📊")
+st.set_page_config(page_title="Nouvelles cartes", page_icon="🃏")
 
-st.markdown("# Nouvelles cartes")
+st.title("Nouvelles cartes")
 
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:
