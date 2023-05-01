@@ -165,7 +165,7 @@ class UserTable:
         self.query = 'SELECT * FROM user_table;'
         self.execute(self.query)
 
-    # Afficher les noms des utilisateurs...
+    # Afficher le nom d'un utilisateur...
     def show_data(self, i):
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         self.execute(self.query)
@@ -221,9 +221,9 @@ class AnswerUserTable:
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         self.execute(self.query)
 
-    # Ajouter des donnes/cartes dans un paquet...
-    def add_data(self, ):
-        self.query = 'INSERT INTO answer_user_table VALUES (1, "cuisinier", "metiers");'
+    # Ajouter des resultats...
+    def add_data(self, result):
+        self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {result});'
         self.i += 1
         self.execute(self.query)
 
@@ -232,19 +232,19 @@ class AnswerUserTable:
         self.query = 'SELECT * FROM answer_user_table;'
         self.execute(self.query)
 
-    # Afficher les cartes d'un paquet...
-    def show_data(self):
-        self.query = 'SELECT * FROM answer_user_table WHERE paquet = "metiers";'
+    # Afficher le resultat d'un utilisateur a une question...
+    def show_data(self, i):
+        self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {i};'
         self.execute(self.query)
 
-    # Modifier des cartes d'un paquet...
-    def update_data(self):
-        self.query = 'UPDATE answer_user_table SET question = "classe" WHERE paquet = "ecole";'
+    # Modifier des resultats d'un paque...
+    def update_data(self, result, i):
+        self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {i};'
         self.execute(self.query)
 
-    # Supprimer des cartes d'un paquet...
-    def delete_data(self):
-        self.query = 'DELETE FROM answer_user_table WHERE question = "cuisinier";'
+    # Supprimer un resultat...
+    def delete_data(self, i):
+        self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {i};'
         self.execute(self.query)
 
     # Supprimer la table...
