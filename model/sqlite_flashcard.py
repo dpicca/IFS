@@ -237,7 +237,7 @@ class AnswerUserTable:
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {i};'
         self.execute(self.query)
 
-    # Modifier des resultats d'un paque...
+    # Modifier le resultat d'un utilisateur a une question...
     def update_data(self, result, i):
         self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {i};'
         self.execute(self.query)
