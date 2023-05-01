@@ -8,7 +8,7 @@ class QuestionTable:
     # Initialisation de la classe...
     def __init__(self):
         # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('sql.db')
+        self.flashcards_db = sqlite3.connect('ifc.db')
         # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         print('The database is open')
@@ -75,7 +75,7 @@ class AnswerTable:
     # Initialisation de la classe...
     def __init__(self):
         # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('sql.db')
+        self.flashcards_db = sqlite3.connect('ifc.db')
         # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         self.query = ''
@@ -141,7 +141,7 @@ class UserTable:
     # Initialisation de la classe...
     def __init__(self):
         # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('sql.db')
+        self.flashcards_db = sqlite3.connect('ifc.db')
         # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         self.query = ''
@@ -204,53 +204,53 @@ class AnswerUserTable:
     # Initialisation de la classe...
     def __init__(self):
         # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('sql.db')
+        self.flashcards_db = sqlite3.connect('ifc.db')
         # Permettre les requetes.
         self.cur = self.flashcards_db.cursor()
         self.query = ''
         self.i = 1
 
-    # Creer un paquet de cartes...
+    # Creer la table answer_user_table...
     def create_table(self):
-        query = 'CREATE TABLE answer_user_table (' \
+        self.query = 'CREATE TABLE answer_user_table (' \
                         'idanswer_user INT PRIMARY KEY NOT NULL, ' \
                         'idanswer_fk INT,' \
                         'iduser_fk INT,' \
                         'result INT,'\
                         'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
-        self.execute(query)
+        self.execute(self.query)
 
     # Ajouter des donnes/cartes dans un paquet...
-    def add_data(self):
-        query = 'INSERT INTO answer_user_table VALUES (1, "cuisinier", "metiers");'
+    def add_data(self, ):
+        self.query = 'INSERT INTO answer_user_table VALUES (1, "cuisinier", "metiers");'
         self.i += 1
-        self.execute(query)
+        self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
-        query = 'SELECT * FROM answer_user_table;'
-        self.execute(query)
+        self.query = 'SELECT * FROM answer_user_table;'
+        self.execute(self.query)
 
     # Afficher les cartes d'un paquet...
     def show_data(self):
-        query = 'SELECT * FROM answer_user_table WHERE paquet = "metiers";'
-        self.execute(query)
+        self.query = 'SELECT * FROM answer_user_table WHERE paquet = "metiers";'
+        self.execute(self.query)
 
     # Modifier des cartes d'un paquet...
     def update_data(self):
-        query = 'UPDATE answer_user_table SET question = "classe" WHERE paquet = "ecole";'
-        self.execute(query)
+        self.query = 'UPDATE answer_user_table SET question = "classe" WHERE paquet = "ecole";'
+        self.execute(self.query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self):
-        query = 'DELETE FROM answer_user_table WHERE question = "cuisinier";'
-        self.execute(query)
+        self.query = 'DELETE FROM answer_user_table WHERE question = "cuisinier";'
+        self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
-        query = 'DROP TABLE answer_user_table;'
-        self.execute(query)
+        self.query = 'DROP TABLE answer_user_table;'
+        self.execute(self.query)
 
     # Executer les requetes...
     def execute(self, query):
