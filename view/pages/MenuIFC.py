@@ -21,13 +21,6 @@ with col2:
     if st.button("Mes résultats", help="Cliquez ici pour voir vos résultats"):
         switch_page("resultats")
 
-    if st.button("Langage", help="Cliquez ici pour changer de langue"):
-        switch_page("langage")
+    if st.button("Se déconnecter"):
+        switch_page("user_login")
 
-buttonAPropos = st.button("À propos")
-if buttonAPropos:
-    switch_page("a_propos")
-
-buttonSeDeco = st.button("Se déconnecter")
-if buttonSeDeco:
-    switch_page("user_login")
