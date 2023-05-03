@@ -8,12 +8,15 @@ class QuestionTable:
     # Initialisation de la classe...
     def __init__(self):
         # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('ifc.db')
-        # Permettre les requetes.
-        self.cur = self.flashcards_db.cursor()
-        print('The database is open')
-        self.query = ''
-        self.i = 1
+        try:
+            self.flashcards_db = sqlite3.connect('ifc.db')
+            # Permettre les requetes.
+            self.cur = self.flashcards_db.cursor()
+            print('The database is open')
+            self.query = ''
+            self.i = 1
+        except Exception as e:
+            print(e)
 
     # Creer un paquet de cartes...
     def create_table(self):
@@ -23,7 +26,7 @@ class QuestionTable:
                           'paquet VARCHAR(20),' \
                           'idanswer_fk INT,  ' \
                           'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Ajouter des donnes/cartes dans un paquet...
     def add_data(self, question, paquet):
@@ -39,22 +42,22 @@ class QuestionTable:
     # Afficher les cartes d'un paquet...
     def show_data(self, paquet):
         self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Modifier des cartes d'un paquet...
     def update_data(self, question, paquet):
         self.query = f'UPDATE question_table SET question = {question} WHERE paquet = {paquet};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self, question):
         self.query = f'DELETE FROM question_table WHERE question = {question};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
         self.query = 'DROP TABLE question_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Executer les requetes...
     def execute(self, query):
@@ -66,7 +69,7 @@ class QuestionTable:
 
     # Fermer la base de donnees...
     def close_sqlite(self):
-        self.flashcards_db.close()
+        return self.flashcards_db.close()
 
 
 # Creation de la table des reponses.
@@ -89,38 +92,38 @@ class AnswerTable:
                         'paquet VARCHAR(20),' \
                         'idquestion_fk = INT,' \
                         'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion));'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Ajouter des donnes/cartes dans un paquet...
     def add_data(self, answer, paquet):
         self.query = f'INSERT INTO answer_table VALUES ({self.i}, {answer}, {paquet});'
         self.i += 1
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
         self.query = 'SELECT * FROM answer_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher les cartes d'un paquet...
     def show_data(self, paquet):
         self.query = f'SELECT * FROM answer_table WHERE paquet = {paquet};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Modifier des cartes d'un paquet...
     def update_data(self, answer, paquet):
         self.query = f'UPDATE answer_table SET answer = {answer} WHERE paquet = {paquet};'
-        self.execute(self.query)
+        retrun self.execute(self.query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self, answer):
         self.query = f'DELETE FROM answer_table WHERE answer = {answer};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
         self.query = 'DROP TABLE answer_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Executer les requetes...
     def execute(self, query):
@@ -132,7 +135,7 @@ class AnswerTable:
 
     # Fermer la base de donnees...
     def close_sqlite(self):
-        self.flashcards_db.close()
+        return self.flashcards_db.close()
 
 
 # Creation de la table des utilisateurs.
@@ -152,38 +155,38 @@ class UserTable:
         self.query = 'CREATE TABLE user_table (' \
                       'iduser INT PRIMARY KEY NOT NULL AUTOINCREMENT,' \
                       'name VARCHAR(40));'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Ajouter un nom pour un utilisateur...
     def add_data(self, name):
         self.query = f'INSERT INTO user_table VALUES ({self.i}, {name});'
         self.i += 1
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
         self.query = 'SELECT * FROM user_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher le nom d'un utilisateur...
     def show_data(self, i):
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Modifier le nom d'un utilisateur...
     def update_data(self, name, i):
         self.query = f'UPDATE user_table SET name = {name} WHERE iduser = {i};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer le nom d'un utilisateur...
     def delete_data(self, name):
         self.query = f'DELETE FROM user_table WHERE name = {name};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
         self.query = 'DROP TABLE user_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Executer les requetes...
     def execute(self, query):
@@ -195,7 +198,7 @@ class UserTable:
 
     # Fermer la base de donnees...
     def close_sqlite(self):
-        self.flashcards_db.close()
+        return self.flashcards_db.close()
 
 
 # Creation de la table des reponses-utilisateurs.
@@ -219,38 +222,38 @@ class AnswerUserTable:
                         'result INT,'\
                         'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Ajouter des resultats...
     def add_data(self, result):
         self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {result});'
         self.i += 1
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
         self.query = 'SELECT * FROM answer_user_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher le resultat d'un utilisateur a une question...
     def show_data(self, i):
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {i};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Modifier le resultat d'un utilisateur a une question...
     def update_data(self, result, i):
         self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {i};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer un resultat...
     def delete_data(self, i):
         self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {i};'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer la table...
     def delete_table(self):
         self.query = 'DROP TABLE answer_user_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Executer les requetes...
     def execute(self, query):
@@ -262,4 +265,5 @@ class AnswerUserTable:
 
     # Fermer la base de donnees...
     def close_sqlite(self):
-        self.flashcards_db.close()
+        return self.flashcards_db.close()
+
