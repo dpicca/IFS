@@ -4,51 +4,61 @@ translation = translator.translate("Der Himmel ist blau und ich mag Bananen", de
 print(translation.text)
 
 from model import sqlite_flashcard
+
 #interaction entre frontend et backend
-#il faut les argument du frontend
+
 def main():
 
-    question=sqlite_flashcard.QuestionTable()
-    question_add = question.add_data(arg1, arg2)
-    res=question_add.fetchall()
-    for tuples in res:
-        for ele in tuples:
-            pass
+    question = sqlite_flashcard.QuestionTable()
+    question_add = question.add_data(question, paquet)
+    res = question_add.fetchall()
     question_create = question.create_table()
+    res = question_create.fetchall()
     question_show_t = question.show_table()
-    question_show = question.show_data(arg1)
-    question_update = question.update_data(arg1, arg2)
-    question_delete = question.delete_data(arg1)
-    question_delete_t = question.delete_table(arg1)
+    res = question_show_t.fetchall()
+    question_show = question.show_data(paquet)
+    res = question_show.fetchall()
+    question_update = question.update_data(question, paquet)
+    res = question_update.fetchall()
+    question_delete = question.delete_data(question)
+    res = question_delete.fetchall()
+    question_delete_t = question.delete_table()
+    res = question_delete_t.fetchall()
     question_close = question.close_sqlite()
+    res = question_delete_t.fetchall()
     answer = sqlite_flashcard.AnswerTable()
-    answer_add = answer.add_data(arg1, arg2)
+    answer_add = answer.add_data(answer, paquet)
+    res = answer_add.fetchall()
     answer_create = answer.create_table()
+    res = answer_create.fetchall()
     answer_show_t = answer.show_table()
-    answer_show = answer.show_data(arg1)
-    answer_update = answer.update_data(arg1, arg2)
-    answer_delete = answer.delete_data(arg1)
-    answer_delete_t = answer.delete_table(arg1)
+    answer_show = answer.show_data(paquet)
+    answer_update = answer.update_data(answer, paquet)
+    answer_delete = answer.delete_data(paquet)
+    answer_delete_t = answer.delete_table()
     answer_close = answer.close_sqlite()
     user = sqlite_flashcard.UserTable()
-    user_add = user.add_data(arg1, arg2)
+    user_add = user.add_data(name)
     user_create = user.create_table()
     user_show_t = user.show_table()
-    user_show = user.show_data(arg1)
-    user_update = user.update_data(arg1, arg2)
-    user_delete = user.delete_data(arg1)
-    user_delete_t = user.delete_table(arg1)
+    user_show = user.show_data(i)
+    user_update = user.update_data(name, i)
+    user_delete = user.delete_data(name)
+    user_delete_t = user.delete_table()
     user_close = user.close_sqlite()
     answeruser = sqlite_flashcard.AnswerUserTable()
-    answeruser_add = answeruser.add_data(arg1, arg2)
+    answeruser_add = answeruser.add_data(result)
     answeruser_create = answeruser.create_table()
     answeruser_show_t = answeruser.show_table()
-    answeruser_show = answeruser.show_data(arg1)
-    answeruser_update = answeruser.update_data(arg1, arg2)
-    answeruser_delete = answeruser.delete_data(arg1)
-    answeruser_delete_t = answeruser.delete_table(arg1)
+    answeruser_show = answeruser.show_data(i)
+    answeruser_update = answeruser.update_data(result, i)
+    answeruser_delete = answeruser.delete_data(i)
+    answeruser_delete_t = answeruser.delete_table()
     answeruser_close = answeruser.close_sqlite()
 
 if __name__ == "__main__":
-    __main__ #?
+    main()
 
+    for tuples in res:
+        for ele in tuples:
+            pass
