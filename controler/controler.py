@@ -3,7 +3,7 @@ translator = Translator()
 translation = translator.translate("Der Himmel ist blau und ich mag Bananen", dest='en')
 print(translation.text)
 
-import sqlite_flashcard #?
+from model import sqlite_flashcard
 #interaction entre frontend et backend
 #il faut les argument du frontend
 def main():
