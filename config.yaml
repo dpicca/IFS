@@ -12,6 +12,10 @@ credentials:
       email: laure.margot@bluewin.ch
       name: Laure
       password: $2b$12$.cVDaelXpD3bG3lCyWY/XeUNoFq/FW1ibcsJ8DpJ0vT3brRwcsmHW
+    leo:
+      email: leonie.nussbaum@unil.ch
+      name: Leonie2
+      password: $2b$12$fMhQDkvusXNpzRTfT7PqX.oRv4Abyt6GHftDDBcbNG9znI5EkE4S6
     leonie:
       email: leoniensb@email.com
       name: Leonie
