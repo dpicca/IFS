@@ -8,8 +8,12 @@ from model import sqlite_flashcard
 #il faut les argument du frontend
 def main():
 
-    question = sqlite_flachcard.QuestionTable()
+    question=sqlite_flashcard.QuestionTable()
     question_add = question.add_data(arg1, arg2)
+    res=question_add.fetchall()
+    for tuples in res:
+        for ele in tuples:
+            pass
     question_create = question.create_table()
     question_show_t = question.show_table()
     question_show = question.show_data(arg1)

@@ -29,12 +29,12 @@ class QuestionTable:
     def add_data(self, question, paquet):
         self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet});'
         self.i += 1
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher la table...
     def show_table(self):
         self.query = 'SELECT * FROM question_table;'
-        self.execute(self.query)
+        return self.execute(self.query)
 
     # Afficher les cartes d'un paquet...
     def show_data(self, paquet):
