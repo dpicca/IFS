@@ -11,23 +11,16 @@ st.title("IFC ")
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("Mes cartes", help="Cliquez ici pour voir vos cartes",):
+    if st.button("Mes cartes"):
         switch_page("mes_cartes")
 
-    if st.button("Nouvelles cartes", help="Cliquez ici pour ajouter de nouvelles cartes"):
+    if st.button("Nouvelles cartes"):
         switch_page("nouvelles_cartes")
 
 with col2:
-    if st.button("Mes résultats", help="Cliquez ici pour voir vos résultats"):
+    if st.button("Mes résultats"):
         switch_page("resultats")
 
-    if st.button("Langage", help="Cliquez ici pour changer de langue"):
-        switch_page("langage")
+    if st.button("Se déconnecter"):
+        switch_page("user_login")
 
-buttonAPropos = st.button("À propos")
-if buttonAPropos:
-    switch_page("a_propos")
-
-buttonSeDeco = st.button("Se déconnecter")
-if buttonSeDeco:
-    switch_page("user_login")
