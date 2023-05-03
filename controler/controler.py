@@ -5,19 +5,26 @@ print(translation.text)
 
 from model import sqlite_flashcard
 
-#interaction entre frontend et backend
+class Controller:
+    #interaction entre frontend et backend
+    def add_question(self,question,paquet)
 
-def main():
-
-    question = sqlite_flashcard.QuestionTable()
-    question_add = question.add_data(question, paquet)
-    res = question_add.fetchall()
-    question_create = question.create_table()
-    res = question_create.fetchall()
-    question_show_t = question.show_table()
-    res = question_show_t.fetchall()
-    question_show = question.show_data(paquet)
-    res = question_show.fetchall()
+        question = sqlite_flashcard.QuestionTable()
+        question_add = question.add_data(question, paquet)
+        return question_add.fetchall()
+    def create_table(self):
+        question = sqlite_flashcard.QuestionTable()
+        question_create = question.create_table()
+        return question_create.fetchall()
+    def show_table(self):
+        question = sqlite_flashcard.QuestionTable()
+        question_show_t = question.show_table()
+        return question_show_t.fetchall()
+    def show_data(self, paquet):
+        question = sqlite_flashcard.QuestionTable()
+        question_show = question.show_data(paquet)
+        returnquestion_show.fetchall()
+    def
     question_update = question.update_data(question, paquet)
     res = question_update.fetchall()
     question_delete = question.delete_data(question)
