@@ -113,7 +113,7 @@ class AnswerTable:
     # Modifier des cartes d'un paquet...
     def update_data(self, answer, paquet):
         self.query = f'UPDATE answer_table SET answer = {answer} WHERE paquet = {paquet};'
-        retrun self.execute(self.query)
+        return self.execute(self.query)
 
     # Supprimer des cartes d'un paquet...
     def delete_data(self, answer):
@@ -266,4 +266,3 @@ class AnswerUserTable:
     # Fermer la base de donnees...
     def close_sqlite(self):
         return self.flashcards_db.close()
-
