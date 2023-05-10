@@ -268,3 +268,70 @@ class AnswerUserTable:
     # Fermer la base de donnees...
     def close_sqlite(self):
         return self.flashcards_db.close()
+
+
+# Creation de la table des reponses-utilisateurs.
+class QuestionUserTable:
+
+    # Initialisation de la classe...
+    def __init__(self):
+        # Creation et connection a la base de donnees.
+        self.flashcards_db = sqlite3.connect('ifc.db')
+        # Permettre les requetes.
+        self.cur = self.flashcards_db.cursor()
+        self.query = ''
+        self.i = 1
+
+    # Creer la table answer_user_table...
+    def create_table(self):
+        self.query = 'CREATE TABLE question_user_table (' \
+                        'idquestion_user INT PRIMARY KEY NOT NULL, ' \
+                        'idquestion_fk INT,' \
+                        'iduser_fk INT,' \
+                        'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion),' \
+                        'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
+        return self.execute(self.query)
+
+    # Ajouter des resultats...
+    def add_data(self):
+        self.query = f'INSERT INTO question_user_table VALUES ({self.i});'
+        self.i += 1
+        return self.execute(self.query)
+
+    # Afficher la table...
+    def show_table(self):
+        self.query = 'SELECT * FROM question_user_table;'
+        return self.execute(self.query)
+
+    # Afficher le resultat d'un utilisateur a une question...
+    def show_data(self, i):
+        self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {i};'
+        return self.execute(self.query)
+
+    # A MODIFIER
+    # Modifier le resultat d'un utilisateur a une question...
+    def update_data(self, result, i):
+        self.query = f'UPDATE question_user_table SET result = {result} WHERE idanswer_user = {i};'
+        return self.execute(self.query)
+
+    # Supprimer un resultat...
+    def delete_data(self, i):
+        self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {i};'
+        return self.execute(self.query)
+
+    # Supprimer la table...
+    def delete_table(self):
+        self.query = 'DROP TABLE question_user_table;'
+        return self.execute(self.query)
+
+    # Executer les requetes...
+    def execute(self, query):
+
+        self.cur.execute(query)
+
+        # Sauvegarder le changement.
+        self.flashcards_db.commit()
+
+    # Fermer la base de donnees...
+    def close_sqlite(self):
+        return self.flashcards_db.close()
