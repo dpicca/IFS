@@ -8,11 +8,19 @@ st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
 st.title("Mes cartes")
 
-title = st.text_input('Titre :')
-language = st.text_input('Langue :')
+option = st.selectbox(
+    'Sélectionnez un thème de cartes :',
+    ('Thème 1', 'Thème 2', 'Thème 3'))
 
-st.markdown('Veuillez séléctionner un paquet de cartes :')
+st.write('Vous avez sélectionné :', option)
+
+with st.container():
+   st.write("This is inside the container")
+st.write("This is outside the container")
+
+
 
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:
     switch_page("MenuIFC")
+

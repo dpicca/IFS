@@ -14,6 +14,8 @@ st.markdown('Veuillez choisir le moyen de créer vos cartes :')
 manually = st.checkbox('Manuellement')
 automatically = st.checkbox('Automatiquement')
 
+buttonCreate = st.button("Créer")
+
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:
     switch_page("MenuIFC")
