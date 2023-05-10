@@ -23,7 +23,7 @@ class QuestionTable:
         self.query = 'CREATE TABLE question_table (' \
                           'idquestion INT PRIMARY KEY NOT NULL,' \
                           'question VARCHAR(40),' \
-                          'paquet VARCHAR(20),' \
+                          'paquet VARCHAR(50),' \
                           'idanswer_fk INT,  ' \
                           'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
         return self.execute(self.query)
@@ -84,16 +84,12 @@ class AnswerTable:
         self.query = ''
         self.i = 1
 
-    # Pour que console [ifc] fonctionne ?
-    #PRAGMA foreign_keys = ON;
-    #PRAGMA foreign_keys;
-
     # Creer un paquet de cartes...
     def create_table(self):
         self.query = 'CREATE TABLE answer_table (' \
                      'idanswer INTEGER PRIMARY KEY NOT NULL,' \
                      'answer VARCHAR(40),' \
-                     'paquet VARCHAR(20),' \
+                     'paquet VARCHAR(50),' \
                      'idquestion_fk  INTEGER NOT NULL ,' \
                      'FOREIGN KEY (idquestion_fk)' \
                      'REFERENCES question_table(idquestion));'
@@ -156,9 +152,10 @@ class UserTable:
         self.i = 1
 
     # Creer un nouvel utilisateur...
+    # AUTOINCREMENT pour id ?
     def create_table(self):
         self.query = 'CREATE TABLE user_table (' \
-                      'iduser INT PRIMARY KEY NOT NULL AUTOINCREMENT,' \
+                      'iduser INT PRIMARY KEY NOT NULL,' \
                       'name VARCHAR(40));'
         return self.execute(self.query)
 
