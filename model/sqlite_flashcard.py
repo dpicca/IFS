@@ -270,7 +270,7 @@ class AnswerUserTable:
         return self.flashcards_db.close()
 
 
-# Creation de la table des reponses-utilisateurs.
+# Creation de la table des questions-utilisateurs.
 class QuestionUserTable:
 
     # Initialisation de la classe...
@@ -282,7 +282,7 @@ class QuestionUserTable:
         self.query = ''
         self.i = 1
 
-    # Creer la table answer_user_table...
+    # Creer la table question_user_table...
     def create_table(self):
         self.query = 'CREATE TABLE question_user_table (' \
                         'idquestion_user INT PRIMARY KEY NOT NULL, ' \
@@ -292,7 +292,7 @@ class QuestionUserTable:
                         'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute(self.query)
 
-    # Ajouter des resultats...
+    # Ajouter des liens...
     def add_data(self):
         self.query = f'INSERT INTO question_user_table VALUES ({self.i});'
         self.i += 1
@@ -303,7 +303,7 @@ class QuestionUserTable:
         self.query = 'SELECT * FROM question_user_table;'
         return self.execute(self.query)
 
-    # Afficher le resultat d'un utilisateur a une question...
+    # Afficher les informations relatives a un element de la table...
     def show_data(self, i):
         self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {i};'
         return self.execute(self.query)
@@ -314,7 +314,7 @@ class QuestionUserTable:
         self.query = f'UPDATE question_user_table SET result = {result} WHERE idanswer_user = {i};'
         return self.execute(self.query)
 
-    # Supprimer un resultat...
+    # Supprimer un lien...
     def delete_data(self, i):
         self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {i};'
         return self.execute(self.query)
