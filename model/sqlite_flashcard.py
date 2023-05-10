@@ -84,14 +84,19 @@ class AnswerTable:
         self.query = ''
         self.i = 1
 
+    # Pour que console [ifc] fonctionne ?
+    #PRAGMA foreign_keys = ON;
+    #PRAGMA foreign_keys;
+
     # Creer un paquet de cartes...
     def create_table(self):
         self.query = 'CREATE TABLE answer_table (' \
-                        'idanswer INT PRIMARY KEY NOT NULL,' \
-                        'answer VARCHAR(40),' \
-                        'paquet VARCHAR(20),' \
-                        'idquestion_fk = INT,' \
-                        'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion));'
+                     'idanswer INTEGER PRIMARY KEY NOT NULL,' \
+                     'answer VARCHAR(40),' \
+                     'paquet VARCHAR(20),' \
+                     'idquestion_fk  INTEGER NOT NULL ,' \
+                     'FOREIGN KEY (idquestion_fk)' \
+                     'REFERENCES question_table(idquestion));'
         return self.execute(self.query)
 
     # Ajouter des donnes/cartes dans un paquet...
