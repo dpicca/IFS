@@ -1,16 +1,16 @@
-# Importer les packages...
+# Import packages.
 import sqlite3
 
 
-# Creation de la table des questions.
+# Create and initialize the questions table.
 class QuestionTable:
 
-    # Initialisation de la classe...
+    # Initialize the class...
     def __init__(self):
-        # Creation et connection a la base de donnees.
+        # Create and connect to the database...
         try:
             self.flashcards_db = sqlite3.connect('ifc.db')
-            # Permettre les requetes.
+            # Allow queries.
             self.cur = self.flashcards_db.cursor()
             print('The database is open')
             self.query = ''
@@ -18,7 +18,7 @@ class QuestionTable:
         except Exception as e:
             print(e)
 
-    # Creer un paquet de cartes...
+    # Create the questions table...
     def create_table(self):
         self.query = 'CREATE TABLE question_table (' \
                           'idquestion INT PRIMARY KEY NOT NULL,' \
@@ -28,46 +28,46 @@ class QuestionTable:
                           'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
         return self.execute(self.query)
 
-    # Ajouter des donnes/cartes dans un paquet...
+    # Add a question's card to the questions table...
     def add_data(self, question, paquet):
         self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet}, {self.i});'
         self.i += 1
         return self.execute(self.query)
 
-    # Afficher la table...
+    # View questions table...
     def show_table(self):
         self.query = 'SELECT * FROM question_table;'
         return self.execute(self.query)
 
-    # Afficher les cartes d'un paquet...
+    # View the question's cards in a selected pack...
     def show_data(self, paquet):
         self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
         return self.execute(self.query)
 
-    # Modifier des cartes d'un paquet...
-    def update_data(self, question, paquet):
-        self.query = f'UPDATE question_table SET question = {question} WHERE paquet = {paquet};'
+    # Change the value of a card...
+    def update_data(self, question, idquestion):
+        self.query = f'UPDATE question_table SET question = {question} WHERE idquestion = {idquestion};'
         return self.execute(self.query)
 
-    # Supprimer des cartes d'un paquet...
-    def delete_data(self, question):
-        self.query = f'DELETE FROM question_table WHERE question = {question};'
+    # Remove a card from the questions table...
+    def delete_data(self, idquestion):
+        self.query = f'DELETE FROM question_table WHERE idquestion = {idquestion};'
         return self.execute(self.query)
 
-    # Supprimer la table...
+    # Delete the questions table...
     def delete_table(self):
         self.query = 'DROP TABLE question_table;'
         return self.execute(self.query)
 
-    # Executer les requetes...
+    # Run queries...
     def execute(self, query):
 
         self.cur.execute(query)
 
-        # Sauvegarder le changement.
+        # Save the change.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees...
+    # Close the database...
     def close_sqlite(self):
         return self.flashcards_db.close()
 
@@ -347,3 +347,5 @@ class QuestionUserTable:
     # Fermer la base de donnees...
     def close_sqlite(self):
         return self.flashcards_db.close()
+
+# SELECT answer FROM answer_table INNER JOIN answer_user_table aut on answer_table.idanswer = aut.idanswer_fk
