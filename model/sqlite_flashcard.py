@@ -77,12 +77,15 @@ class AnswerTable:
 
     # Initialisation de la classe...
     def __init__(self):
-        # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('ifc.db')
-        # Permettre les requetes.
-        self.cur = self.flashcards_db.cursor()
-        self.query = ''
-        self.i = 1
+        try:
+            # Creation et connection a la base de donnees.
+            self.flashcards_db = sqlite3.connect('ifc.db')
+            # Permettre les requetes.
+            self.cur = self.flashcards_db.cursor()
+            self.query = ''
+            self.i = 1
+        except Exception as e:
+            print(e)
 
     # Creer un paquet de cartes...
     def create_table(self):
@@ -144,12 +147,15 @@ class UserTable:
 
     # Initialisation de la classe...
     def __init__(self):
-        # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('ifc.db')
-        # Permettre les requetes.
-        self.cur = self.flashcards_db.cursor()
-        self.query = ''
-        self.i = 1
+        try:
+            # Creation et connection a la base de donnees.
+            self.flashcards_db = sqlite3.connect('ifc.db')
+            # Permettre les requetes.
+            self.cur = self.flashcards_db.cursor()
+            self.query = ''
+            self.i = 1
+        except Exception as e:
+            print(e)
 
     # Creer un nouvel utilisateur...
     # AUTOINCREMENT pour id ?
@@ -208,12 +214,15 @@ class AnswerUserTable:
 
     # Initialisation de la classe...
     def __init__(self):
-        # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('ifc.db')
-        # Permettre les requetes.
-        self.cur = self.flashcards_db.cursor()
-        self.query = ''
-        self.i = 1
+        try:
+            # Creation et connection a la base de donnees.
+            self.flashcards_db = sqlite3.connect('ifc.db')
+            # Permettre les requetes.
+            self.cur = self.flashcards_db.cursor()
+            self.query = ''
+            self.i = 1
+        except Exception as e:
+            print(e)
 
     # Creer la table answer_user_table...
     def create_table(self):
@@ -275,12 +284,15 @@ class QuestionUserTable:
 
     # Initialisation de la classe...
     def __init__(self):
-        # Creation et connection a la base de donnees.
-        self.flashcards_db = sqlite3.connect('ifc.db')
-        # Permettre les requetes.
-        self.cur = self.flashcards_db.cursor()
-        self.query = ''
-        self.i = 1
+        try:
+            # Creation et connection a la base de donnees.
+            self.flashcards_db = sqlite3.connect('ifc.db')
+            # Permettre les requetes.
+            self.cur = self.flashcards_db.cursor()
+            self.query = ''
+            self.i = 1
+        except Exception as e:
+            print(e)
 
     # Creer la table question_user_table...
     def create_table(self):
