@@ -30,7 +30,7 @@ class QuestionTable:
 
     # Ajouter des donnes/cartes dans un paquet...
     def add_data(self, question, paquet):
-        self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet});'
+        self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet}, {self.i});'
         self.i += 1
         return self.execute(self.query)
 
@@ -100,7 +100,7 @@ class AnswerTable:
 
     # Ajouter des donnes/cartes dans un paquet...
     def add_data(self, answer, paquet):
-        self.query = f'INSERT INTO answer_table VALUES ({self.i}, {answer}, {paquet});'
+        self.query = f'INSERT INTO answer_table VALUES ({self.i}, {answer}, {paquet}, {self.i});'
         self.i += 1
         return self.execute(self.query)
 
@@ -236,8 +236,8 @@ class AnswerUserTable:
         return self.execute(self.query)
 
     # Ajouter des resultats...
-    def add_data(self, result):
-        self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {result});'
+    def add_data(self, idanswer_fk, iduser_fk, result):
+        self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {result});'
         self.i += 1
         return self.execute(self.query)
 
@@ -305,8 +305,8 @@ class QuestionUserTable:
         return self.execute(self.query)
 
     # Ajouter des liens...
-    def add_data(self):
-        self.query = f'INSERT INTO question_user_table VALUES ({self.i});'
+    def add_data(self, idquestion_fk, iduser_fk):
+        self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
         self.i += 1
         return self.execute(self.query)
 
