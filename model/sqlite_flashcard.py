@@ -144,81 +144,82 @@ class AnswerTable:
         return self.flashcards_db.close()
 
 
-# Creation de la table des utilisateurs.
+# Create and initialize the users table...
 class UserTable:
 
-    # Initialisation de la classe...
+    # Initialize the class...
     def __init__(self):
         try:
-            # Creation et connection a la base de donnees.
+            # Create and connect to the database...
             self.flashcards_db = sqlite3.connect('ifc.db')
-            # Permettre les requetes.
+            # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
-            self.i = 1
+            self.i = int()
         except Exception as e:
             print(e)
 
-    # Creer un nouvel utilisateur...
+    # Create the users table...
     def create_table(self):
+        self.i = 1
         self.query = 'CREATE TABLE user_table (' \
-                      'iduser INT PRIMARY KEY NOT NULL,' \
-                      'name VARCHAR(40));'
+                     'iduser INT PRIMARY KEY NOT NULL,' \
+                     'name VARCHAR(40));'
         return self.execute(self.query)
 
-    # Ajouter un nom pour un utilisateur...
+    # Add a user to the users table...
     def add_data(self, name):
         self.query = f'INSERT INTO user_table VALUES ({self.i}, {name});'
         self.i += 1
         return self.execute(self.query)
 
-    # Afficher la table...
+    # View users table...
     def show_table(self):
         self.query = 'SELECT * FROM user_table;'
         return self.execute(self.query)
 
-    # Afficher le nom d'un utilisateur...
+    # View a user's name...
     def show_data(self, i):
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         return self.execute(self.query)
 
-    # Modifier le nom d'un utilisateur...
-    def update_data(self, name, i):
-        self.query = f'UPDATE user_table SET name = {name} WHERE iduser = {i};'
+    # Change a user's name...
+    def update_data(self, name, iduser):
+        self.query = f'UPDATE user_table SET name = {name} WHERE iduser = {iduser};'
         return self.execute(self.query)
 
-    # Supprimer le nom d'un utilisateur...
-    def delete_data(self, name):
-        self.query = f'DELETE FROM user_table WHERE name = {name};'
+    # Remove a user from the users table...
+    def delete_data(self, iduser):
+        self.query = f'DELETE FROM user_table WHERE iduser = {iduser};'
         return self.execute(self.query)
 
-    # Supprimer la table...
+    # Delete the users table...
     def delete_table(self):
         self.query = 'DROP TABLE user_table;'
         return self.execute(self.query)
 
-    # Executer les requetes...
+    # Run the query...
     def execute(self, query):
 
         self.cur.execute(query)
 
-        # Sauvegarder le changement.
+        # Save the change.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees...
+    # Close the database...
     def close_sqlite(self):
         return self.flashcards_db.close()
 
 
-# Creation de la table des reponses-utilisateurs.
+# Create and initialize the answers-users table...
 class AnswerUserTable:
 
-    # Initialisation de la classe...
+    # Initialize the class...
     def __init__(self):
         try:
-            # Creation et connection a la base de donnees.
+            # Create and connect to the database...
             self.flashcards_db = sqlite3.connect('ifc.db')
-            # Permettre les requetes.
+            # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
             self.i = 1
