@@ -282,22 +282,22 @@ class AnswerUserTable:
         return self.flashcards_db.close()
 
 
-# Creation de la table des questions-utilisateurs.
+# Create and initialize the questions-users table...
 class QuestionUserTable:
 
-    # Initialisation de la classe...
+    # Initialize the class...
     def __init__(self):
         try:
-            # Creation et connection a la base de donnees.
+            # Create and connect to the database...
             self.flashcards_db = sqlite3.connect('ifc.db')
-            # Permettre les requetes.
+            # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
             self.i = int()
         except Exception as e:
             print(e)
 
-    # Creer la table question_user_table...
+    # Create the questions-users table...
     def create_table(self):
         self.i = 1
         self.query = 'CREATE TABLE question_user_table (' \
@@ -308,49 +308,52 @@ class QuestionUserTable:
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute(self.query)
 
-    # Ajouter des liens...
+    # Add a question's card to a user...
     def add_data(self, idquestion_fk, iduser_fk):
         self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
         self.i += 1
         return self.execute(self.query)
 
-    # Afficher la table...
+    # View questions-users table...
     def show_table(self):
         self.query = 'SELECT * FROM question_user_table;'
         return self.execute(self.query)
 
+# ----------
+# A MODIFIER
     # Afficher les informations relatives a un element de la table...
     def show_data(self, i):
         self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {i};'
         return self.execute(self.query)
 
-    # A MODIFIER
     # Modifier le resultat d'un utilisateur a une question...
     def update_data(self, result, i):
         self.query = f'UPDATE question_user_table SET result = {result} WHERE idanswer_user = {i};'
         return self.execute(self.query)
+# ----------
 
-    # Supprimer un lien...
-    def delete_data(self, i):
-        self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {i};'
+    # Remove a link from the questions-users table...
+    def delete_data(self, idquestion_user):
+        self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {idquestion_user};'
         return self.execute(self.query)
 
-    # Supprimer la table...
+    # Delete the questions-users table...
     def delete_table(self):
         self.query = 'DROP TABLE question_user_table;'
         return self.execute(self.query)
 
-    # Executer les requetes...
+    # Run the query...
     def execute(self, query):
 
         self.cur.execute(query)
 
-        # Sauvegarder le changement.
+        # Save the change.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees...
+    # Close the database...
     def close_sqlite(self):
         return self.flashcards_db.close()
 
 # SELECT answer FROM answer_table INNER JOIN answer_user_table aut on answer_table.idanswer = aut.idanswer_fk
 # AUTOINCREMENT pour les id ?
+# Autres SELECT en plus ?
