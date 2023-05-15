@@ -2,7 +2,7 @@
 import sqlite3
 
 
-# Create and initialize the questions table.
+# Create and initialize the questions table...
 class QuestionTable:
 
     # Initialize the class...
@@ -14,18 +14,19 @@ class QuestionTable:
             self.cur = self.flashcards_db.cursor()
             print('The database is open')
             self.query = ''
-            self.i = 1
+            self.i = int()
         except Exception as e:
             print(e)
 
     # Create the questions table...
     def create_table(self):
+        self.i = 1
         self.query = 'CREATE TABLE question_table (' \
-                          'idquestion INT PRIMARY KEY NOT NULL,' \
-                          'question VARCHAR(40),' \
-                          'paquet VARCHAR(50),' \
-                          'idanswer_fk INT,  ' \
-                          'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
+                     'idquestion INT PRIMARY KEY NOT NULL,' \
+                     'question VARCHAR(40),' \
+                     'paquet VARCHAR(50),' \
+                     'idanswer_fk INT,  ' \
+                     'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
         return self.execute(self.query)
 
     # Add a question's card to the questions table...
@@ -44,7 +45,7 @@ class QuestionTable:
         self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
         return self.execute(self.query)
 
-    # Change the value of a card...
+    # Change the value of a question's card...
     def update_data(self, question, idquestion):
         self.query = f'UPDATE question_table SET question = {question} WHERE idquestion = {idquestion};'
         return self.execute(self.query)
@@ -59,7 +60,7 @@ class QuestionTable:
         self.query = 'DROP TABLE question_table;'
         return self.execute(self.query)
 
-    # Run queries...
+    # Run the query...
     def execute(self, query):
 
         self.cur.execute(query)
@@ -72,23 +73,24 @@ class QuestionTable:
         return self.flashcards_db.close()
 
 
-# Creation de la table des reponses.
+# Create and initialize the answers table...
 class AnswerTable:
 
-    # Initialisation de la classe...
+    # Initialize the class...
     def __init__(self):
         try:
-            # Creation et connection a la base de donnees.
+            # Create and connect to the database...
             self.flashcards_db = sqlite3.connect('ifc.db')
-            # Permettre les requetes.
+            # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
-            self.i = 1
+            self.i = int()
         except Exception as e:
             print(e)
 
-    # Creer un paquet de cartes...
+    # Create the answers table...
     def create_table(self):
+        self.i = 1
         self.query = 'CREATE TABLE answer_table (' \
                      'idanswer INTEGER PRIMARY KEY NOT NULL,' \
                      'answer VARCHAR(40),' \
@@ -98,46 +100,46 @@ class AnswerTable:
                      'REFERENCES question_table(idquestion));'
         return self.execute(self.query)
 
-    # Ajouter des donnes/cartes dans un paquet...
+    # Add an answer's card to the answers table...
     def add_data(self, answer, paquet):
         self.query = f'INSERT INTO answer_table VALUES ({self.i}, {answer}, {paquet}, {self.i});'
         self.i += 1
         return self.execute(self.query)
 
-    # Afficher la table...
+    # View answers table...
     def show_table(self):
         self.query = 'SELECT * FROM answer_table;'
         return self.execute(self.query)
 
-    # Afficher les cartes d'un paquet...
+    # View the answer's cards in a selected pack...
     def show_data(self, paquet):
         self.query = f'SELECT * FROM answer_table WHERE paquet = {paquet};'
         return self.execute(self.query)
 
-    # Modifier des cartes d'un paquet...
-    def update_data(self, answer, paquet):
-        self.query = f'UPDATE answer_table SET answer = {answer} WHERE paquet = {paquet};'
+    # Change the value of an answer's card...
+    def update_data(self, answer, idanswer):
+        self.query = f'UPDATE answer_table SET answer = {answer} WHERE idanswer = {idanswer};'
         return self.execute(self.query)
 
-    # Supprimer des cartes d'un paquet...
-    def delete_data(self, answer):
-        self.query = f'DELETE FROM answer_table WHERE answer = {answer};'
+    # Remove a card from the answers table...
+    def delete_data(self, idanswer):
+        self.query = f'DELETE FROM answer_table WHERE idanswer = {idanswer};'
         return self.execute(self.query)
 
-    # Supprimer la table...
+    # Delete the answers table...
     def delete_table(self):
         self.query = 'DROP TABLE answer_table;'
         return self.execute(self.query)
 
-    # Executer les requetes...
+    # Run the query...
     def execute(self, query):
 
         self.cur.execute(query)
 
-        # Sauvegarder le changement.
+        # Save the change.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees...
+    # Close the database...
     def close_sqlite(self):
         return self.flashcards_db.close()
 
@@ -158,7 +160,6 @@ class UserTable:
             print(e)
 
     # Creer un nouvel utilisateur...
-    # AUTOINCREMENT pour id ?
     def create_table(self):
         self.query = 'CREATE TABLE user_table (' \
                       'iduser INT PRIMARY KEY NOT NULL,' \
@@ -297,11 +298,11 @@ class QuestionUserTable:
     # Creer la table question_user_table...
     def create_table(self):
         self.query = 'CREATE TABLE question_user_table (' \
-                        'idquestion_user INT PRIMARY KEY NOT NULL, ' \
-                        'idquestion_fk INT,' \
-                        'iduser_fk INT,' \
-                        'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion),' \
-                        'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
+                     'idquestion_user INT PRIMARY KEY NOT NULL, ' \
+                     'idquestion_fk INT,' \
+                     'iduser_fk INT,' \
+                     'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion),' \
+                     'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute(self.query)
 
     # Ajouter des liens...
@@ -349,3 +350,4 @@ class QuestionUserTable:
         return self.flashcards_db.close()
 
 # SELECT answer FROM answer_table INNER JOIN answer_user_table aut on answer_table.idanswer = aut.idanswer_fk
+# AUTOINCREMENT pour les id ?
