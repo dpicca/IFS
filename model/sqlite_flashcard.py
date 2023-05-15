@@ -222,61 +222,62 @@ class AnswerUserTable:
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
-            self.i = 1
+            self.i = int()
         except Exception as e:
             print(e)
 
-    # Creer la table answer_user_table...
+    # Create the answers-users table...
     def create_table(self):
+        self.i = 1
         self.query = 'CREATE TABLE answer_user_table (' \
-                        'idanswer_user INT PRIMARY KEY NOT NULL, ' \
-                        'idanswer_fk INT,' \
-                        'iduser_fk INT,' \
-                        'result INT,'\
-                        'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
-                        'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
+                     'idanswer_user INT PRIMARY KEY NOT NULL, ' \
+                     'idanswer_fk INT,' \
+                     'iduser_fk INT,' \
+                     'result INT,'\
+                     'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
+                     'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute(self.query)
 
-    # Ajouter des resultats...
+    # Add a result to the answers-users table...
     def add_data(self, idanswer_fk, iduser_fk, result):
         self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {result});'
         self.i += 1
         return self.execute(self.query)
 
-    # Afficher la table...
+    # View answers-users table...
     def show_table(self):
         self.query = 'SELECT * FROM answer_user_table;'
         return self.execute(self.query)
 
-    # Afficher le resultat d'un utilisateur a une question...
-    def show_data(self, i):
-        self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {i};'
+    # View a user's result to a selected answer...
+    def show_data(self, idanswer_user):
+        self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.execute(self.query)
 
-    # Modifier le resultat d'un utilisateur a une question...
-    def update_data(self, result, i):
-        self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {i};'
+    # Change a user's result to an answer...
+    def update_data(self, result, idanswer_user):
+        self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {idanswer_user};'
         return self.execute(self.query)
 
-    # Supprimer un resultat...
-    def delete_data(self, i):
-        self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {i};'
+    # Remove a result from the answers-users table...
+    def delete_data(self, idanswer_user):
+        self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.execute(self.query)
 
-    # Supprimer la table...
+    # Delete the answers-users table...
     def delete_table(self):
         self.query = 'DROP TABLE answer_user_table;'
         return self.execute(self.query)
 
-    # Executer les requetes...
+    # Run the query...
     def execute(self, query):
 
         self.cur.execute(query)
 
-        # Sauvegarder le changement.
+        # Save the change.
         self.flashcards_db.commit()
 
-    # Fermer la base de donnees...
+    # Close the database...
     def close_sqlite(self):
         return self.flashcards_db.close()
 
@@ -292,12 +293,13 @@ class QuestionUserTable:
             # Permettre les requetes.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
-            self.i = 1
+            self.i = int()
         except Exception as e:
             print(e)
 
     # Creer la table question_user_table...
     def create_table(self):
+        self.i = 1
         self.query = 'CREATE TABLE question_user_table (' \
                      'idquestion_user INT PRIMARY KEY NOT NULL, ' \
                      'idquestion_fk INT,' \
