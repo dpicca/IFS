@@ -16,6 +16,8 @@ st.write('Vous avez sélectionné :', paquet)
 
 with st.expander("Recto de la carte"):
     st.write("Verso de la carte")
+    buttonJuste = st.button("Vrai")
+    buttonFaux = st.button("Faux")
 
 
 buttonRetourMenu = st.button("Retour au menu")
