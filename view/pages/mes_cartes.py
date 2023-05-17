@@ -8,16 +8,14 @@ st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
 st.title("Mes cartes")
 
-option = st.selectbox(
+paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
-    ('Thème 1', 'Thème 2', 'Thème 3'))
+    ("récupérer les thèmes de l'user", 'Métier'))
 
-st.write('Vous avez sélectionné :', option)
+st.write('Vous avez sélectionné :', paquet)
 
-with st.container():
-   st.write("This is inside the container")
-st.write("This is outside the container")
-
+with st.expander("Recto de la carte"):
+    st.write("Verso de la carte")
 
 
 buttonRetourMenu = st.button("Retour au menu")
