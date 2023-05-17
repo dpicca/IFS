@@ -15,7 +15,7 @@ with col1:
         switch_page("mes_cartes")
 
     if st.button("Nouvelles cartes"):
-        switch_page("nouvelles_cartes")
+        switch_page("nouveau_paquet")
 
 with col2:
     if st.button("Mes résultats"):
