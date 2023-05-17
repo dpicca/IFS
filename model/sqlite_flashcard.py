@@ -1,7 +1,7 @@
 # Import packages.
 import sqlite3
 
-
+#Commentaire
 # Create and initialize the questions table...
 class QuestionTable:
 

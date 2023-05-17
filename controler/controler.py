@@ -1,4 +1,4 @@
-
+#commentaire
 # Interaction entre frontend et backend:
 from model import sqlite_flashcard
 
