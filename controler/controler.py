@@ -10,6 +10,7 @@ from model import sqlite_flashcard
 class Controller:
 
     # class QuestionTable:
+    """
     def add_question(self, question, paquet):
         question = sqlite_flashcard.QuestionTable()
         question_add = question.add_data(question, paquet)
@@ -18,19 +19,32 @@ class Controller:
     def create_table(self):
         question = sqlite_flashcard.QuestionTable()
         question_create = question.create_table()
-        return question_create.fetchall()
+        return question_create.fetchall() """
 
     def show_table(self):
+        """
+
+        Returns:
+
+        """
         question = sqlite_flashcard.QuestionTable()
         question_show_t = question.show_table()
         return question_show_t.fetchall()
 
     def show_data(self, paquet):
+        """
+
+        Args:
+            paquet:
+
+        Returns:
+
+        """
         question = sqlite_flashcard.QuestionTable()
         question_show = question.show_data(paquet)
         return question_show.fetchall()
 
-    def update_data(self, question, paquet):
+    """ def update_data(self, question, paquet):
         question = sqlite_flashcard.QuestionTable()
         question_update = question.update_data(question, paquet)
         return question_update.fetchall()
@@ -59,8 +73,9 @@ class Controller:
     def answer_create_table(self):
         answer = sqlite_flashcard.AnswerTable()
         answer_create = answer.create_table()
-        return answer_create.fetchall()
+        return answer_create.fetchall() """
 
+    # class AnswerTable:
     def answer_show_table(self):
         answer = sqlite_flashcard.AnswerTable()
         answer_show_t = answer.show_table()
@@ -71,7 +86,7 @@ class Controller:
         answer_show = answer.show_data(paquet)
         return answer_show.fetchall()
 
-    def answer_update_data(self, paquet):
+    """def answer_update_data(self, paquet):
         answer = sqlite_flashcard.AnswerTable()
         answer_update = answer.update_data(answer, paquet)
         return answer_update.fetchall()
@@ -100,8 +115,9 @@ class Controller:
     def user_create_table(self):
         user = sqlite_flashcard.UserTable()
         user_create = user.create_table()
-        return user_create.fetchall()
+        return user_create.fetchall()"""
 
+    # class UserTable:
     def user_show_table(self, name):
         user = sqlite_flashcard.UserTable()
         user_show_t = user.show_table()
@@ -112,7 +128,7 @@ class Controller:
         user_show = user.show_data(i)
         return user_show.fetchall()
 
-    def user_update_data(self, name, i):
+    """def user_update_data(self, name, i):
         user = sqlite_flashcard.UserTable()
         user_update = user.update_data(name, i)
         return user_update.fetchall()
@@ -141,19 +157,25 @@ class Controller:
     def answeruser_create_table(self):
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_create = answeruser.create_table()
-        return answeruser_create.fetchall()
+        return answeruser_create.fetchall() """
 
+    # class AnsweruserTable:
     def answeruser_show_table(self):
+        """
+
+        Returns:
+
+        """
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_show_t = answeruser.show_table()
         return answeruser_show_t.fetchall()
 
-    def answeruser_show_data(self, i):
+    def answeruser_show_data(self, idanswer_user):
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_show = answeruser.show_data(i)
         return answeruser_show.fetchall()
 
-    def answeruser_update_data(self, result, i):
+    """def answeruser_update_data(self, result, i):
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_update = answeruser.update_data(result, i)
         return answeruser_update.fetchall()
@@ -171,7 +193,18 @@ class Controller:
     def answeruser_close_sqlite(self):
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_close = answeruser.close_sqlite()
-        return answeruser_close.fetchall()
+        return answeruser_close.fetchall() """
+
+    #class QuestionUserTable
+    def questionuser_show_data(self, i):
+        questionuser = sqlite_flashcard.QuestionUserTable()
+        questionuser_show_data = questionuser.show_data()
+        return questionuser_show_data.fetchall()
+
+    def questionuser_show_table(self):
+        questionuser = sqlite_flashcard.QuestionUserTable()
+        questionuser_show_t = questionuser.show_table()
+        return questionuser_show_t.fetchall()
 
 if __name__ == "__main__":
         main()
