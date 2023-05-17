@@ -1,7 +1,7 @@
 # Import packages.
 import sqlite3
 
-#Commentaire
+
 # Create and initialize the questions table...
 class QuestionTable:
 
@@ -9,7 +9,7 @@ class QuestionTable:
     def __init__(self):
         # Create and connect to the database...
         try:
-            self.flashcards_db = sqlite3.connect('model/ifc.db')
+            self.flashcards_db = sqlite3.connect('ifc.db')
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             print('The database is open')
@@ -33,30 +33,22 @@ class QuestionTable:
     def add_data(self, question, paquet):
         self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet}, {self.i});'
         self.i += 1
-        return self.execute_query(self.query)
+        return self.execute(self.query)
 
     # View questions table...
     def show_table(self):
         self.query = 'SELECT * FROM question_table;'
-        return self.execute_query(self.query)
+        return self.execute(self.query)
 
     # View the question's cards in a selected pack...
     def show_data(self, paquet):
-        """
-
-        :param paquet:
-        :return:
-
-        Exemple:
-
-        """
-        self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
-        return self.cur.execute(self.query).fetchall()
+        self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
+        return self.execute(self.query)
 
     # Change the value of a question's card...
     def update_data(self, question, idquestion):
-        self.query = f'UPDATE question_table SET question = "{question}" WHERE idquestion = "{idquestion}";'
-        return self.cur.execute(self.query).fetchall()
+        self.query = f'UPDATE question_table SET question = {question} WHERE idquestion = {idquestion};'
+        return self.execute(self.query)
 
     # Remove a card from the questions table...
     def delete_data(self, idquestion):
@@ -69,7 +61,7 @@ class QuestionTable:
         return self.execute(self.query)
 
     # Run the query...
-    def execute_query(self, query):
+    def execute(self, query):
 
         self.cur.execute(query)
 
@@ -117,12 +109,12 @@ class AnswerTable:
     # View answers table...
     def show_table(self):
         self.query = 'SELECT * FROM answer_table;'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # View the answer's cards in a selected pack...
     def show_data(self, paquet):
         self.query = f'SELECT * FROM answer_table WHERE paquet = {paquet};'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # Change the value of an answer's card...
     def update_data(self, answer, idanswer):
@@ -372,5 +364,6 @@ class QuestionUserTable:
         return self.flashcards_db.close()
 
 # SELECT answer FROM answer_table INNER JOIN answer_user_table aut on answer_table.idanswer = aut.idanswer_fk
-# AUTOINCREMENT pour les id ?
 # Autres SELECT en plus ?
+
+# SELECT iduser_fk, question FROM question_user_table INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion
