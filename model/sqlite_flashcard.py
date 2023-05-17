@@ -336,6 +336,15 @@ class QuestionUserTable:
 
     # Modifier le resultat d'un utilisateur a une question...
     def update_data(self, result, i):
+        """
+
+        Args:
+            result:
+            i:
+
+        Returns:
+
+        """
         self.query = f'UPDATE question_user_table SET result = {result} WHERE idanswer_user = {i};'
         return self.execute(self.query)
 # ----------
