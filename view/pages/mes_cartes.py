@@ -8,16 +8,20 @@ st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
 st.title("Mes cartes")
 
+# Sélectionner un thème de cartes
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
-    ("récupérer les thèmes de l'user", 'Métier'))
+    ("Sélectionnez un thème", 'Métier', 'Animaux')
+)
 
-st.write('Vous avez sélectionné :', paquet)
+if paquet != "Sélectionnez un thème":
+    st.write('Vous avez sélectionné :', paquet)
 
-with st.expander("Recto de la carte"):
-    st.write("Verso de la carte")
-    buttonJuste = st.button("Vrai")
-    buttonFaux = st.button("Faux")
+    # Afficher l'expander uniquement si quelque chose est sélectionné
+    with st.expander("Recto de la carte"):
+        st.write("Verso de la carte")
+        buttonJuste = st.button("Vrai")
+        buttonFaux = st.button("Faux")
 
 
 buttonRetourMenu = st.button("Retour au menu")
