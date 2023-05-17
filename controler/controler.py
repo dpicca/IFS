@@ -1,8 +1,3 @@
-#Pour la traduction
-from googletrans import Translator
-translator = Translator()
-translation = translator.translate("Der Himmel ist blau und ich mag Bananen", dest='en')
-print(translation.text)
 
 # Interaction entre frontend et backend:
 from model import sqlite_flashcard
@@ -25,15 +20,15 @@ class Controller:
         question_show_t = question.show_table()
         return question_show_t.fetchall()
 
-    def show_data(self, paquet):
+    def show_data_controler(self, paquet):
         question = sqlite_flashcard.QuestionTable()
         question_show = question.show_data(paquet)
-        return question_show.fetchall()
+        return question_show
 
     def update_data(self, question, paquet):
         question = sqlite_flashcard.QuestionTable()
         question_update = question.update_data(question, paquet)
-        return question_update.fetchall()
+        return question_update
 
     def delete_data(self, question):
         question = sqlite_flashcard.QuestionTable()
@@ -177,5 +172,5 @@ if __name__ == "__main__":
         main()
 
     #for tuples in res:
-    #    for ele in tuples:
+    #    for else in tuples:
     #       pass
