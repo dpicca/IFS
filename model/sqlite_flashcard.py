@@ -21,7 +21,7 @@ class QuestionTable:
     # Create the questions table...
     def create_table(self):
         """
-
+        Create the questions table
         Returns:
 
         """
