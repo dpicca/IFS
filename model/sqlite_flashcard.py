@@ -72,6 +72,27 @@ class QuestionTable:
         self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
+    # View a user's saved packages...
+    def show_pack(self, iduser_fk):
+        """
+
+        :param iduser_fk:
+        :return:
+        """
+        self.query = f'SELECT paquet FROM question_user_table INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion WHERE iduser_fk = {iduser_fk};'
+        return self.cur.execute(self.query)
+
+    # View a user's questions for a selected pack...
+    def show_questions(self, iduser_fk, paquet):
+        """
+
+        :param iduser_fk:
+        :param paquet:
+        :return:
+        """
+        self.query = f'SELECT iduser_fk, question FROM question_user_table INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion WHERE iduser_fk = {iduser_fk} AND paquet = "{paquet}";'
+        return self.cur.execute(self.query)
+
     # Change the value of a question's card...
     def update_data(self, question, idquestion):
         """
@@ -199,6 +220,16 @@ class AnswerTable:
 
         """
         self.query = f'SELECT * FROM answer_table WHERE paquet = "{paquet}";'
+        return self.cur.execute(self.query)
+
+    # View the answer's cards of a selected question...
+    def show_answer(self, idquestion):
+        """
+
+        :param idquestion:
+        :return:
+        """
+        self.query = f'SELECT answer FROM answer_table INNER JOIN question_table aut on answer_table.idanswer = aut.idquestion WHERE idquestion = {idquestion};'
         return self.cur.execute(self.query)
 
     # Change the value of an answer's card...
@@ -388,24 +419,21 @@ class AnswerUserTable:
                      'idanswer_user INT PRIMARY KEY NOT NULL, ' \
                      'idanswer_fk INT,' \
                      'iduser_fk INT,' \
-                     'result INT,'\
+                     'score INT,'\
                      'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute_query(self.query)
 
     # Add a result to the answers-users table...
-    def add_data(self, idanswer_fk, iduser_fk, result):
+    def add_data(self, idanswer_fk, iduser_fk, score):
         """
-        Add a result to the answers-users table...
-        Args:
-            idanswer_fk:
-            iduser_fk:
-            result:
-
-        Returns:
-
+        Add a result to the answers-users table
+        :param idanswer_fk:
+        :param iduser_fk:
+        :param score:
+        :return:
         """
-        self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {result});'
+        self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
         self.i += 1
         return self.execute_query(self.query)
 
@@ -432,18 +460,26 @@ class AnswerUserTable:
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.cur.execute(self.query)
 
+    # View a user's results to a selected answer...
+    def show_result(self, name, idanswer_fk):
+        """
+
+        :param name:
+        :param idanswer_fk:
+        :return:
+        """
+        self.query = f'SELECT score FROM answer_user_table INNER JOIN user_table aut on answer_user_table.iduser_fk = aut.iduser WHERE name = "{name}" AND idanswer_fk = {idanswer_fk};'
+        return self.cur.execute(self.query)
+
     # Change a user's result to an answer...
-    def update_data(self, result, idanswer_user):
+    def update_data(self, score, idanswer_user):
         """
-        Change a user's result to an answer...
-        Args:
-            result:
-            idanswer_user:
 
-        Returns:
-
+        :param score:
+        :param idanswer_user:
+        :return:
         """
-        self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {idanswer_user};'
+        self.query = f'UPDATE answer_user_table SET score = {score} WHERE idanswer_user = {idanswer_user};'
         return self.execute_query(self.query)
 
     # Remove a result from the answers-users table...
