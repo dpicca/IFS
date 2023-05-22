@@ -32,7 +32,7 @@ class QuestionTable:
                      'paquet VARCHAR(50),' \
                      'idanswer_fk INT,  ' \
                      'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Add a question's card to the questions table...
     def add_data(self, question, paquet):
@@ -47,7 +47,7 @@ class QuestionTable:
         """
         self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
         self.i += 1
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # View questions table...
     def show_table(self):
@@ -57,7 +57,7 @@ class QuestionTable:
 
         """
         self.query = 'SELECT * FROM question_table;'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # View the question's cards in a selected pack...
     def show_data(self, paquet):
@@ -70,7 +70,7 @@ class QuestionTable:
 
         """
         self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # Change the value of a question's card...
     def update_data(self, question, idquestion):
@@ -84,7 +84,7 @@ class QuestionTable:
 
         """
         self.query = f'UPDATE question_table SET question = "{question}" WHERE idquestion = {idquestion};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Remove a card from the questions table...
     def delete_data(self, idquestion):
@@ -97,7 +97,7 @@ class QuestionTable:
 
         """
         self.query = f'DELETE FROM question_table WHERE idquestion = {idquestion};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Delete the questions table...
     def delete_table(self):
@@ -107,10 +107,10 @@ class QuestionTable:
 
         """
         self.query = 'DROP TABLE question_table;'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Run the query...
-    def execute(self, query):
+    def execute_query(self, query):
         """
         Run the query...
         Args:
@@ -161,7 +161,7 @@ class AnswerTable:
                      'idquestion_fk  INTEGER NOT NULL ,' \
                      'FOREIGN KEY (idquestion_fk)' \
                      'REFERENCES question_table(idquestion));'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Add an answer's card to the answers table...
     def add_data(self, answer, paquet):
@@ -176,7 +176,7 @@ class AnswerTable:
         """
         self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
         self.i += 1
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # View answers table...
     def show_table(self):
@@ -186,7 +186,7 @@ class AnswerTable:
 
         """
         self.query = 'SELECT * FROM answer_table;'
-        return self.execute_query(self.query)
+        return self.cur.execute(self.query)
 
     # View the answer's cards in a selected pack...
     def show_data(self, paquet):
@@ -213,7 +213,7 @@ class AnswerTable:
 
         """
         self.query = f'UPDATE answer_table SET answer = "{answer}" WHERE idanswer = {idanswer};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Remove a card from the answers table...
     def delete_data(self, idanswer):
@@ -226,15 +226,15 @@ class AnswerTable:
 
         """
         self.query = f'DELETE FROM answer_table WHERE idanswer = {idanswer};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Delete the answers table...
     def delete_table(self):
         self.query = 'DROP TABLE answer_table;'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Run the query...
-    def execute(self, query):
+    def execute_query(self, query):
 
         self.cur.execute(query)
 
@@ -272,7 +272,7 @@ class UserTable:
         self.query = 'CREATE TABLE user_table (' \
                      'iduser INT PRIMARY KEY NOT NULL,' \
                      'name VARCHAR(40));'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Add a user to the users table...
     def add_data(self, name):
@@ -286,7 +286,7 @@ class UserTable:
         """
         self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
         self.i += 1
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # View users table...
     def show_table(self):
@@ -296,7 +296,7 @@ class UserTable:
 
         """
         self.query = 'SELECT * FROM user_table;'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # View a user's name...
     def show_data(self, i):
@@ -309,7 +309,7 @@ class UserTable:
 
         """
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # Change a user's name...
     def update_data(self, name, iduser):
@@ -323,7 +323,7 @@ class UserTable:
 
         """
         self.query = f'UPDATE user_table SET name = "{name}" WHERE iduser = {iduser};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Remove a user from the users table...
     def delete_data(self, iduser):
@@ -336,7 +336,7 @@ class UserTable:
 
         """
         self.query = f'DELETE FROM user_table WHERE iduser = {iduser};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Delete the users table...
     def delete_table(self):
@@ -346,10 +346,10 @@ class UserTable:
 
         """
         self.query = 'DROP TABLE user_table;'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Run the query...
-    def execute(self, query):
+    def execute_query(self, query):
 
         self.cur.execute(query)
 
@@ -391,7 +391,7 @@ class AnswerUserTable:
                      'result INT,'\
                      'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer),' \
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Add a result to the answers-users table...
     def add_data(self, idanswer_fk, iduser_fk, result):
@@ -407,7 +407,7 @@ class AnswerUserTable:
         """
         self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {result});'
         self.i += 1
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # View answers-users table...
     def show_table(self):
@@ -417,7 +417,7 @@ class AnswerUserTable:
 
         """
         self.query = 'SELECT * FROM answer_user_table;'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # View a user's result to a selected answer...
     def show_data(self, idanswer_user):
@@ -430,7 +430,7 @@ class AnswerUserTable:
 
         """
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # Change a user's result to an answer...
     def update_data(self, result, idanswer_user):
@@ -444,7 +444,7 @@ class AnswerUserTable:
 
         """
         self.query = f'UPDATE answer_user_table SET result = {result} WHERE idanswer_user = {idanswer_user};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Remove a result from the answers-users table...
     def delete_data(self, idanswer_user):
@@ -457,7 +457,7 @@ class AnswerUserTable:
 
         """
         self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Delete the answers-users table...
     def delete_table(self):
@@ -467,10 +467,10 @@ class AnswerUserTable:
 
         """
         self.query = 'DROP TABLE answer_user_table;'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Run the query...
-    def execute(self, query):
+    def execute_query(self, query):
 
         self.cur.execute(query)
 
@@ -511,7 +511,7 @@ class QuestionUserTable:
                      'iduser_fk INT,' \
                      'FOREIGN KEY (idquestion_fk) REFERENCES question_table(idquestion),' \
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Add a question's card to a user...
     def add_data(self, idquestion_fk, iduser_fk):
@@ -526,7 +526,7 @@ class QuestionUserTable:
         """
         self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
         self.i += 1
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # View questions-users table...
     def show_table(self):
@@ -536,7 +536,7 @@ class QuestionUserTable:
 
         """
         self.query = 'SELECT * FROM question_user_table;'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
 # ----------
 # A MODIFIER
@@ -551,7 +551,7 @@ class QuestionUserTable:
 
         """
         self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {i};'
-        return self.execute(self.query)
+        return self.cur.execute(self.query)
 
     # Modifier le resultat d'un utilisateur a une question...
     def update_data(self, result, i):
@@ -565,7 +565,7 @@ class QuestionUserTable:
 
         """
         self.query = f'UPDATE question_user_table SET result = {result} WHERE idanswer_user = {i};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 # ----------
 
     # Remove a link from the questions-users table...
@@ -579,7 +579,7 @@ class QuestionUserTable:
 
         """
         self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {idquestion_user};'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Delete the questions-users table...
     def delete_table(self):
@@ -589,10 +589,10 @@ class QuestionUserTable:
 
         """
         self.query = 'DROP TABLE question_user_table;'
-        return self.execute(self.query)
+        return self.execute_query(self.query)
 
     # Run the query...
-    def execute(self, query):
+    def execute_query(self, query):
         """
 
         Args:
