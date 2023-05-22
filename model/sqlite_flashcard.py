@@ -45,8 +45,14 @@ class QuestionTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
-        self.i += 1
+        if self.i == int():
+            self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
+            self.i += 1
+        else:
+            self.i = 1
+            self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
+            self.i += 1
+
         return self.execute_query(self.query)
 
     # View questions table...
@@ -195,8 +201,14 @@ class AnswerTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
-        self.i += 1
+        if self.i == int():
+            self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
+            self.i += 1
+        else:
+            self.i = 1
+            self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
+            self.i += 1
+
         return self.execute_query(self.query)
 
     # View answers table...
@@ -315,8 +327,14 @@ class UserTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
-        self.i += 1
+        if self.i == int():
+            self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
+            self.i += 1
+        else:
+            self.i = 1
+            self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
+            self.i += 1
+
         return self.execute_query(self.query)
 
     # View users table...
@@ -433,8 +451,14 @@ class AnswerUserTable:
         :param score:
         :return:
         """
-        self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
-        self.i += 1
+        if self.i == int():
+            self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
+            self.i += 1
+        else:
+            self.i = 1
+            self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
+            self.i += 1
+
         return self.execute_query(self.query)
 
     # View answers-users table...
@@ -560,8 +584,14 @@ class QuestionUserTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
-        self.i += 1
+        if self.i == int():
+            self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
+            self.i += 1
+        else:
+            self.i = 1
+            self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
+            self.i += 1
+
         return self.execute_query(self.query)
 
     # View questions-users table...
@@ -646,8 +676,3 @@ class QuestionUserTable:
     # Close the database...
     def close_sqlite(self):
         return self.flashcards_db.close()
-
-# SELECT answer FROM answer_table INNER JOIN answer_user_table aut on answer_table.idanswer = aut.idanswer_fk
-# Autres SELECT en plus ?
-
-# SELECT iduser_fk, question FROM question_user_table INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion
