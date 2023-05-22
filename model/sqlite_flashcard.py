@@ -45,7 +45,7 @@ class QuestionTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO question_table VALUES ({self.i}, {question}, {paquet}, {self.i});'
+        self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
         self.i += 1
         return self.execute(self.query)
 
@@ -69,7 +69,7 @@ class QuestionTable:
         Returns:
 
         """
-        self.query = f'SELECT * FROM question_table WHERE paquet = {paquet};'
+        self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
         return self.execute(self.query)
 
     # Change the value of a question's card...
@@ -83,7 +83,7 @@ class QuestionTable:
         Returns:
 
         """
-        self.query = f'UPDATE question_table SET question = {question} WHERE idquestion = {idquestion};'
+        self.query = f'UPDATE question_table SET question = "{question}" WHERE idquestion = {idquestion};'
         return self.execute(self.query)
 
     # Remove a card from the questions table...
@@ -174,7 +174,7 @@ class AnswerTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO answer_table VALUES ({self.i}, {answer}, {paquet}, {self.i});'
+        self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
         self.i += 1
         return self.execute(self.query)
 
@@ -198,7 +198,7 @@ class AnswerTable:
         Returns:
 
         """
-        self.query = f'SELECT * FROM answer_table WHERE paquet = {paquet};'
+        self.query = f'SELECT * FROM answer_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
     # Change the value of an answer's card...
@@ -212,7 +212,7 @@ class AnswerTable:
         Returns:
 
         """
-        self.query = f'UPDATE answer_table SET answer = {answer} WHERE idanswer = {idanswer};'
+        self.query = f'UPDATE answer_table SET answer = "{answer}" WHERE idanswer = {idanswer};'
         return self.execute(self.query)
 
     # Remove a card from the answers table...
@@ -284,7 +284,7 @@ class UserTable:
         Returns:
 
         """
-        self.query = f'INSERT INTO user_table VALUES ({self.i}, {name});'
+        self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
         self.i += 1
         return self.execute(self.query)
 
@@ -322,7 +322,7 @@ class UserTable:
         Returns:
 
         """
-        self.query = f'UPDATE user_table SET name = {name} WHERE iduser = {iduser};'
+        self.query = f'UPDATE user_table SET name = "{name}" WHERE iduser = {iduser};'
         return self.execute(self.query)
 
     # Remove a user from the users table...
