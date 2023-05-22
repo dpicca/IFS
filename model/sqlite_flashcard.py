@@ -76,6 +76,15 @@ class QuestionTable:
         return self.cur.execute(self.query)
 
     # View a user's saved packages...
+    def show_all_packs(self):
+        """
+
+        :return:
+        """
+        self.query = 'SELECT paquet FROM question_table;'
+        return self.cur.execute(self.query)
+
+    # View a user's saved packages...
     def show_pack(self, iduser_fk):
         """
 
