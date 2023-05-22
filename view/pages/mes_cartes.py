@@ -3,6 +3,10 @@ import pandas as pd
 import pydeck as pdk
 from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
+from controler import controler
+
+
+controler = controler.Controller()
 
 st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
@@ -11,7 +15,7 @@ st.title("Mes cartes")
 # Sélectionner un thème de cartes
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
-    ("Sélectionnez un thème", 'Métier', 'Animaux')
+    (controler.show_all_packs_c())
 )
 
 if paquet != "Sélectionnez un thème":

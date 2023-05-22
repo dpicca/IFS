@@ -1,11 +1,9 @@
-#Pour la traduction
-from googletrans import Translator
-translator = Translator()
-translation = translator.translate("Der Himmel ist blau und ich mag Bananen", dest='en')
-print(translation.text)
+
 
 # Interaction entre frontend et backend:
 from model import sqlite_flashcard
+
+
 
 class Controller:
 
@@ -21,7 +19,13 @@ class Controller:
         question_create = question.create_table()
         return question_create.fetchall() """
 
-    def show_table(self):
+    def show_all_packs_c(self):
+        """retouner tous les paquets"""
+        question = sqlite_flashcard.QuestionTable()
+        packs_show = question.show_all_packs()
+        return packs_show.fetchall()
+
+    def show_table_c(self):
         """
 
         Returns:
@@ -31,7 +35,7 @@ class Controller:
         question_show_t = question.show_table()
         return question_show_t.fetchall()
 
-    def show_data(self, paquet):
+    def show_data_c(self, paquet):
         """
 
         Args:
