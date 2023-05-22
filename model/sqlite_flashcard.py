@@ -75,7 +75,7 @@ class QuestionTable:
         self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
-    # View a user's saved packages...
+    # View all the packages...
     def show_all_packs(self):
         """
 
