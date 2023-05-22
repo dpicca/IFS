@@ -37,13 +37,10 @@ class QuestionTable:
     # Add a question's card to the questions table...
     def add_data(self, question, paquet):
         """
-        Add a question's card to the questions table...
-        Args:
-            question:
-            paquet:
-
-        Returns:
-
+        Add a question's card to the questions table
+        :param question:
+        :param paquet:
+        :return:
         """
         if self.i == int():
             self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
@@ -85,7 +82,9 @@ class QuestionTable:
         :param iduser_fk:
         :return:
         """
-        self.query = f'SELECT paquet FROM question_user_table INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion WHERE iduser_fk = {iduser_fk};'
+        self.query = f'SELECT paquet FROM question_user_table ' \
+                     f'INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion ' \
+                     f'WHERE iduser_fk = {iduser_fk};'
         return self.cur.execute(self.query)
 
     # View a user's questions for a selected pack...
@@ -96,7 +95,9 @@ class QuestionTable:
         :param paquet:
         :return:
         """
-        self.query = f'SELECT iduser_fk, question FROM question_user_table INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion WHERE iduser_fk = {iduser_fk} AND paquet = "{paquet}";'
+        self.query = f'SELECT iduser_fk, question FROM question_user_table ' \
+                     f'INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion ' \
+                     f'WHERE iduser_fk = {iduser_fk} AND paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
     # Change the value of a question's card...
@@ -241,7 +242,9 @@ class AnswerTable:
         :param idquestion:
         :return:
         """
-        self.query = f'SELECT answer FROM answer_table INNER JOIN question_table aut on answer_table.idanswer = aut.idquestion WHERE idquestion = {idquestion};'
+        self.query = f'SELECT answer FROM answer_table ' \
+                     f'INNER JOIN question_table aut on answer_table.idanswer = aut.idquestion ' \
+                     f'WHERE idquestion = {idquestion};'
         return self.cur.execute(self.query)
 
     # Change the value of an answer's card...
@@ -492,7 +495,9 @@ class AnswerUserTable:
         :param idanswer_fk:
         :return:
         """
-        self.query = f'SELECT score FROM answer_user_table INNER JOIN user_table aut on answer_user_table.iduser_fk = aut.iduser WHERE name = "{name}" AND idanswer_fk = {idanswer_fk};'
+        self.query = f'SELECT score FROM answer_user_table ' \
+                     f'INNER JOIN user_table aut on answer_user_table.iduser_fk = aut.iduser ' \
+                     f'WHERE name = "{name}" AND idanswer_fk = {idanswer_fk};'
         return self.cur.execute(self.query)
 
     # Change a user's result to an answer...
@@ -619,19 +624,6 @@ class QuestionUserTable:
         self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {i};'
         return self.cur.execute(self.query)
 
-    # Modifier le resultat d'un utilisateur a une question...
-    def update_data(self, result, i):
-        """
-        Modifier le resultat d'un utilisateur a une question...
-        Args:
-            result:
-            i:
-
-        Returns:
-
-        """
-        self.query = f'UPDATE question_user_table SET result = {result} WHERE idanswer_user = {i};'
-        return self.execute_query(self.query)
 # ----------
 
     # Remove a link from the questions-users table...
