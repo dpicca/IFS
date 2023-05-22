@@ -363,6 +363,16 @@ class UserTable:
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         return self.cur.execute(self.query)
 
+    # View a user's id...
+    def show_iduser(self, name):
+        """
+        View a user's id
+        :param name:
+        :return:
+        """
+        self.query = f'SELECT iduser FROM user_table WHERE name = "{name}";'
+        return self.cur.execute(self.query)
+
     # Change a user's name...
     def update_data(self, name, iduser):
         """
