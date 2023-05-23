@@ -81,7 +81,7 @@ class QuestionTable:
 
         :return:
         """
-        self.query = "SELECT paquet FROM question_table;"
+        self.query = 'SELECT paquet FROM question_table;'
         return self.cur.execute(self.query)
 
     # View a user's saved packages...
