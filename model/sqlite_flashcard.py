@@ -22,7 +22,7 @@ class QuestionTable:
     def create_table(self):
         """
         Create the questions table
-        Returns:
+        Returns: None
 
         """
         self.i = 1
@@ -38,9 +38,9 @@ class QuestionTable:
     def add_data(self, question, paquet):
         """
         Add a question's card to the questions table
-        :param question:
-        :param paquet:
-        :return:
+        :param question: string
+        :param paquet: string (the pack where this question belongs to)
+        :return: None
         """
         if self.i == int():
             self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
@@ -56,7 +56,7 @@ class QuestionTable:
     def show_table(self):
         """
         View questions table...
-        Returns:
+        Returns: all the rows from questions table
 
         """
         self.query = 'SELECT * FROM question_table;'
@@ -66,10 +66,10 @@ class QuestionTable:
     def show_data(self, paquet):
         """
 
-        Args:
+        Args:get all the questions from data base for the given pack
             paquet:
 
-        Returns:
+        Returns: list of questions or empty list
 
         """
         self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
@@ -78,8 +78,8 @@ class QuestionTable:
     # View all the packages...
     def show_all_packs(self):
         """
-
-        :return:
+        Give all the packs from questions table
+        :return: list of packs or empty list
         """
         self.query = 'SELECT paquet FROM question_table;'
         return self.cur.execute(self.query)
@@ -87,9 +87,9 @@ class QuestionTable:
     # View a user's saved packages...
     def show_pack(self, iduser_fk):
         """
-
-        :param iduser_fk:
-        :return:
+        For a given user returns all the packs
+        :param iduser_fk: int
+        :return: list of pack or empty list
         """
         self.query = f'SELECT paquet FROM question_user_table ' \
                      f'INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion ' \
@@ -99,10 +99,10 @@ class QuestionTable:
     # View a user's questions for a selected pack...
     def show_questions(self, iduser_fk, paquet):
         """
-
-        :param iduser_fk:
-        :param paquet:
-        :return:
+        Give the users questions for a given pack
+        :param iduser_fk: int
+        :param paquet: string
+        :return:list of pack or empty list
         """
         self.query = f'SELECT iduser_fk, question FROM question_user_table ' \
                      f'INNER JOIN question_table aut on question_user_table.idquestion_fk = aut.idquestion ' \
@@ -112,12 +112,12 @@ class QuestionTable:
     # Change the value of a question's card...
     def update_data(self, question, idquestion):
         """
-        Change the value of a question's card...
+        Use this fonction when we need to update an existing question
         Args:
-            question:
-            idquestion:
+            question: string
+            idquestion: int
 
-        Returns:
+        Returns: updated version of the question
 
         """
         self.query = f'UPDATE question_table SET question = "{question}" WHERE idquestion = {idquestion};'
@@ -128,9 +128,9 @@ class QuestionTable:
         """
         Remove a card from the questions table...
         Args:
-            idquestion:
+            idquestion:int
 
-        Returns:
+        Returns: None
 
         """
         self.query = f'DELETE FROM question_table WHERE idquestion = {idquestion};'
@@ -139,8 +139,8 @@ class QuestionTable:
     # Delete the questions table...
     def delete_table(self):
         """
-        Delete the questions table...
-        Returns:
+        Delete all the questions table
+        Returns: None
 
         """
         self.query = 'DROP TABLE question_table;'
@@ -149,11 +149,11 @@ class QuestionTable:
     # Run the query...
     def execute_query(self, query):
         """
-        Run the query...
+        Takes the query and applies it to the database
         Args:
-            query:
+            query:string(SQL Statement)
 
-        Returns:
+        Returns: None
 
         """
 
@@ -164,6 +164,11 @@ class QuestionTable:
 
     # Close the database...
     def close_sqlite(self):
+        """
+        Close the database
+        Returns:
+
+        """
         return self.flashcards_db.close()
 
 
@@ -187,7 +192,7 @@ class AnswerTable:
         """
         Create the answers table...
 
-        Returns:
+        Returns: list of pack
 
         """
         self.i = 1
@@ -203,12 +208,11 @@ class AnswerTable:
     # Add an answer's card to the answers table...
     def add_data(self, answer, paquet):
         """
-        Add an answer's card to the answers table...
+        Add an answers card to the answers table
         Args:
-            answer:
-            paquet:
-
-        Returns:
+            answer: string
+            paquet: string
+        Returns: None
 
         """
         if self.i == int():
@@ -225,7 +229,7 @@ class AnswerTable:
     def show_table(self):
         """
         View answers table...
-        Returns:
+        Returns: list of answers
 
         """
         self.query = 'SELECT * FROM answer_table;'
@@ -234,11 +238,11 @@ class AnswerTable:
     # View the answer's cards in a selected pack...
     def show_data(self, paquet):
         """
-        View the answer's cards in a selected pack...
+        View the answer's cards in a selected pack
         Args:
-            paquet:
+            paquet:string
 
-        Returns:
+        Returns:list of answers in a given pack
 
         """
         self.query = f'SELECT * FROM answer_table WHERE paquet = "{paquet}";'
@@ -247,9 +251,9 @@ class AnswerTable:
     # View the answer's cards of a selected question...
     def show_answer(self, idquestion):
         """
-
-        :param idquestion:
-        :return:
+        Takes of the id of a question and returns the coresponding answer from the answers table
+        :param idquestion: int
+        :return: answers
         """
         self.query = f'SELECT answer FROM answer_table ' \
                      f'INNER JOIN question_table aut on answer_table.idanswer = aut.idquestion ' \
@@ -259,12 +263,11 @@ class AnswerTable:
     # Change the value of an answer's card...
     def update_data(self, answer, idanswer):
         """
-        Change the value of an answer's card...
+        Change the value of an answer's card
         Args:
-            answer:
-            idanswer:
-
-        Returns:
+            answer: string
+            idanswer:int
+        Returns: updated answer
 
         """
         self.query = f'UPDATE answer_table SET answer = "{answer}" WHERE idanswer = {idanswer};'
@@ -273,11 +276,11 @@ class AnswerTable:
     # Remove a card from the answers table...
     def delete_data(self, idanswer):
         """
-        Remove a card from the answers table...
+        This fonction remove a card from the answers table
         Args:
-            idanswer:
+            idanswer:int
 
-        Returns:
+        Returns:None
 
         """
         self.query = f'DELETE FROM answer_table WHERE idanswer = {idanswer};'
@@ -285,11 +288,23 @@ class AnswerTable:
 
     # Delete the answers table...
     def delete_table(self):
+        """
+        Delete all the answers table
+        Returns:None
+
+        """
         self.query = 'DROP TABLE answer_table;'
         return self.execute_query(self.query)
 
     # Run the query...
     def execute_query(self, query):
+        """
+        Takes the query and applies it to the database
+        Args:
+            query: string
+        Returns:None
+
+        """
 
         self.cur.execute(query)
 
@@ -316,11 +331,10 @@ class UserTable:
         except Exception as e:
             print(e)
 
-    # Create the users table...
     def create_table(self):
         """
-
-        Returns:
+        Create the users table
+        Returns:None
 
         """
         self.i = 1
@@ -329,12 +343,11 @@ class UserTable:
                      'name VARCHAR(40));'
         return self.execute_query(self.query)
 
-    # Add a user to the users table...
     def add_data(self, name):
         """
-        Add a user to the users table...
+        Add a user to the users table
         Args:
-            name:
+            name:string
 
         Returns:
 
@@ -352,58 +365,53 @@ class UserTable:
     # View users table...
     def show_table(self):
         """
-        View users table...
+        View users table
         Returns:
 
         """
         self.query = 'SELECT * FROM user_table;'
         return self.cur.execute(self.query)
 
-    # View a user's name...
     def show_data(self, i):
         """
-        View a user's name...
+        View a user's informations from the database
         Args:
-            i:
+            i:int
 
-        Returns:
+        Returns:a user
 
         """
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         return self.cur.execute(self.query)
 
-    # View a user's id...
     def show_iduser(self, name):
         """
         View a user's id
-        :param name:
-        :return:
+        :param name:string
+        :return:integer
         """
         self.query = f'SELECT iduser FROM user_table WHERE name = "{name}";'
         return self.cur.execute(self.query)
 
-    # Change a user's name...
     def update_data(self, name, iduser):
         """
-        Change a user's name...
+        Change a user's name
         Args:
-            name:
-            iduser:
-
-        Returns:
+            name:string
+            iduser:int
+        Returns:updated data
 
         """
         self.query = f'UPDATE user_table SET name = "{name}" WHERE iduser = {iduser};'
         return self.execute_query(self.query)
 
-    # Remove a user from the users table...
     def delete_data(self, iduser):
         """
-        Remove a user from the users table...
+        Remove a user from the users table
         Args:
-            iduser:
+            iduser:int
 
-        Returns:
+        Returns:None
 
         """
         self.query = f'DELETE FROM user_table WHERE iduser = {iduser};'
@@ -412,8 +420,8 @@ class UserTable:
     # Delete the users table...
     def delete_table(self):
         """
-        Delete the users table...
-        Returns:
+        Delete all the users
+        Returns:None
 
         """
         self.query = 'DROP TABLE user_table;'
@@ -421,6 +429,14 @@ class UserTable:
 
     # Run the query...
     def execute_query(self, query):
+        """
+        Takes the query and applies it to the database
+        Args:
+            query:string
+
+        Returns:returns whatever database returns
+
+        """
 
         self.cur.execute(query)
 
@@ -450,8 +466,8 @@ class AnswerUserTable:
     # Create the answers-users table...
     def create_table(self):
         """
-        Create the answers-users table...
-        Returns:
+        Create the answers-users table
+        Returns:None
 
         """
         self.i = 1
@@ -464,14 +480,13 @@ class AnswerUserTable:
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute_query(self.query)
 
-    # Add a result to the answers-users table...
     def add_data(self, idanswer_fk, iduser_fk, score):
         """
         Add a result to the answers-users table
-        :param idanswer_fk:
-        :param iduser_fk:
-        :param score:
-        :return:
+        :param idanswer_fk:int
+        :param iduser_fk:int
+        :param score:int
+        :return:None
         """
         if self.i == int():
             self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
@@ -486,7 +501,7 @@ class AnswerUserTable:
     # View answers-users table...
     def show_table(self):
         """
-        View answers-users table...
+        View answers-users table
         Returns:
 
         """

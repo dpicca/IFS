@@ -2,15 +2,13 @@ import streamlit as st
 import time
 import numpy as np
 from streamlit_extras.switch_page_button import switch_page
-"""
-
-"""
 
 st.set_page_config(page_title="Menu IFC", page_icon="📄")
 
 st.title("IFC ")
 
-# Créer une grille de 2x2 boutons
+# Create a grid of 2X2
+# Show the menu bottoms in the grid
 col1, col2 = st.columns(2)
 
 with col1:

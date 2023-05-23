@@ -12,7 +12,7 @@ st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
 st.title("Mes cartes")
 
-# Sélectionner un thème de cartes
+# Select a theme from a dropdown
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
     (controler.show_all_packs_c())
@@ -21,7 +21,7 @@ paquet = st.selectbox(
 if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
 
-    # Afficher l'expander uniquement si quelque chose est sélectionné
+    # Show the expender only if something is chosen
     with st.expander("Recto de la carte"):
         st.write("Verso de la carte")
         buttonJuste = st.button("Vrai")
