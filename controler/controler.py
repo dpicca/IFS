@@ -2,7 +2,7 @@
 
 # Interaction entre frontend et backend:
 from model import sqlite_flashcard
-
+import view.pages.mes_cartes as MesCartes
 
 
 class Controller:
@@ -22,8 +22,8 @@ class Controller:
     def show_all_packs_c(self):
         """retouner tous les paquets"""
         question = sqlite_flashcard.QuestionTable()
-        packs_show = question.show_all_packs()
-        return packs_show.fetchall()
+        paquets_list = question.show_all_packs()
+        return MesCartes.show_all_packs_v(paquets_list)
 
     def show_table_c(self):
         """
@@ -210,8 +210,6 @@ class Controller:
         questionuser_show_t = questionuser.show_table()
         return questionuser_show_t.fetchall()
 
-if __name__ == "__main__":
-        main()
 
     #for tuples in res:
     #    for ele in tuples:

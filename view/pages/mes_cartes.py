@@ -3,10 +3,11 @@ import pandas as pd
 import pydeck as pdk
 from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
-from controler import controler
+import model.sqlite_flashcard as Models
 
-
-controler = controler.Controller()
+def show_all_packs_v(list):
+    for item in list:
+        paquet.append(item)
 
 st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
@@ -15,7 +16,7 @@ st.title("Mes cartes")
 # Select a theme from a dropdown
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
-    (controler.show_all_packs_c())
+    ()
 )
 
 if paquet != "Sélectionnez un thème":
@@ -31,4 +32,3 @@ if paquet != "Sélectionnez un thème":
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:
     switch_page("MenuIFC")
-
