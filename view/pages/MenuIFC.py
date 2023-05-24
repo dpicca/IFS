@@ -2,6 +2,7 @@ import streamlit as st
 import time
 import numpy as np
 from streamlit_extras.switch_page_button import switch_page
+from PIL import Image
 
 st.set_page_config(page_title="Menu IFC", page_icon="📄")
 
