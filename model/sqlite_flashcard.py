@@ -72,7 +72,7 @@ class QuestionTable:
         Returns: list of questions or empty list
 
         """
-        self.query = f'SELECT question FROM question_table WHERE paquet = "{paquet}";'
+        self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
     # View all the packages...
