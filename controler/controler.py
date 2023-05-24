@@ -34,7 +34,7 @@ class Controller:
         question_show_t = question.show_table()
         return question_show_t.fetchall()
 
-    def show_data_c(self, paquet):
+    def show_question_c(self, paquet):
         """
 
         Args:
@@ -44,8 +44,10 @@ class Controller:
 
         """
         question = sqlite_flashcard.QuestionTable()
-        question_show = question.show_data(paquet)
-        return question_show.fetchall()
+        question_show = question.show_question(paquet)
+        return question_show
+
+
 
     """ def update_data(self, question, paquet):
         question = sqlite_flashcard.QuestionTable()
@@ -84,10 +86,10 @@ class Controller:
         answer_show_t = answer.show_table()
         return answer_show_t.fetchall()
 
-    def answer_show_data(self, paquet):
+    def show_answer_c(self, paquet):
         answer = sqlite_flashcard.AnswerTable()
-        answer_show = answer.show_data(paquet)
-        return answer_show.fetchall()
+        answer_show = answer.show_answer(paquet)
+        return answer_show
 
     """def answer_update_data(self, paquet):
         answer = sqlite_flashcard.AnswerTable()

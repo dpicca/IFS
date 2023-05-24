@@ -63,7 +63,7 @@ class QuestionTable:
         return self.cur.execute(self.query)
 
     # View the question's cards in a selected pack...
-    def show_data(self, paquet):
+    def show_question(self, paquet):
         """
 
         Args:get all the questions from data base for the given pack
@@ -72,7 +72,7 @@ class QuestionTable:
         Returns: list of questions or empty list
 
         """
-        self.query = f'SELECT * FROM question_table WHERE paquet = "{paquet}";'
+        self.query = f'SELECT question FROM question_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
     # View all the packages...
@@ -98,7 +98,7 @@ class QuestionTable:
         return self.cur.execute(self.query)
 
     # View a user's questions for a selected pack...
-    def show_questions(self, iduser_fk, paquet):
+    def user_show_questions(self, iduser_fk, paquet):
         """
         Give the users questions for a given pack
         :param iduser_fk: int
@@ -180,7 +180,7 @@ class AnswerTable:
     def __init__(self):
         try:
             # Create and connect to the database...
-            self.flashcards_db = sqlite3.connect('ifc.db')
+            self.flashcards_db = sqlite3.connect('./model/ifc.db')
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
@@ -237,7 +237,7 @@ class AnswerTable:
         return self.cur.execute(self.query)
 
     # View the answer's cards in a selected pack...
-    def show_data(self, paquet):
+    def show_answer(self, paquet):
         """
         View the answer's cards in a selected pack
         Args:
@@ -246,7 +246,7 @@ class AnswerTable:
         Returns:list of answers in a given pack
 
         """
-        self.query = f'SELECT * FROM answer_table WHERE paquet = "{paquet}";'
+        self.query = f'SELECT answer FROM answer_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
     # View the answer's cards of a selected question...
@@ -324,7 +324,7 @@ class UserTable:
     def __init__(self):
         try:
             # Create and connect to the database...
-            self.flashcards_db = sqlite3.connect('ifc.db')
+            self.flashcards_db = sqlite3.connect('./model/ifc.db')
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
@@ -456,7 +456,7 @@ class AnswerUserTable:
     def __init__(self):
         try:
             # Create and connect to the database...
-            self.flashcards_db = sqlite3.connect('ifc.db')
+            self.flashcards_db = sqlite3.connect('./model/ifc.db')
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''
@@ -589,7 +589,7 @@ class QuestionUserTable:
     def __init__(self):
         try:
             # Create and connect to the database...
-            self.flashcards_db = sqlite3.connect('ifc.db')
+            self.flashcards_db = sqlite3.connect('./model/ifc.db')
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             self.query = ''

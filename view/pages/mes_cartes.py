@@ -16,14 +16,17 @@ paquet = st.selectbox(
     (cont.show_all_packs_c())
 )
 
+# Show the expender only if something is chosen
 if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
-
-    # Show the expender only if something is chosen
-    with st.expander("Recto de la carte"):
-        st.write("Verso de la carte")
-        buttonJuste = st.button("Vrai")
-        buttonFaux = st.button("Faux")
+    for item in cont.show_question_c("métiers_anglais"):
+        question = str(item)
+        # for answers_item in cont.show_answer_c("métiers_anglais"):
+        #     answer = str(answers_item)
+        with st.expander(question):
+            st.write("answer")
+            #buttonJuste = st.button("Vrai")
+            #buttonFaux = st.button("Faux")
 
 
 buttonRetourMenu = st.button("Retour au menu")
