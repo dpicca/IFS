@@ -1,22 +1,19 @@
 import streamlit as st
-import pandas as pd
-import pydeck as pdk
-from urllib.error import URLError
+# import pandas as pd
+# import pydeck as pdk
+# from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
-import model.sqlite_flashcard as Models
-
-def show_all_packs_v(list):
-    for item in list:
-        paquet.append(item)
+import controler.controler as ctrl
 
 st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
 st.title("Mes cartes")
-
+cont=ctrl.Controller()
 # Select a theme from a dropdown
+
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
-    ()
+    (cont.show_all_packs_c())
 )
 
 if paquet != "Sélectionnez un thème":

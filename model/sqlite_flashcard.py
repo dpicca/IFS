@@ -9,7 +9,7 @@ class QuestionTable:
     def __init__(self):
         # Create and connect to the database...
         try:
-            self.flashcards_db = sqlite3.connect('ifc.db')
+            self.flashcards_db = sqlite3.connect('./model/ifc.db')
             # Allow queries.
             self.cur = self.flashcards_db.cursor()
             print('The database is open')
@@ -81,7 +81,8 @@ class QuestionTable:
         Give all the packs from questions table
         :return: list of packs or empty list
         """
-        self.query = 'SELECT paquet FROM question_table;'
+        self.query = 'SELECT paquet FROM question_table'
+        print(self.query)
         return self.cur.execute(self.query)
 
     # View a user's saved packages...
