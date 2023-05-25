@@ -30,13 +30,18 @@ st.markdown(
 
 st.title("Mes cartes")
 cont=ctrl.Controller()
-# Select a theme from a dropdown
 
+def right_answer(bouton):
+    if bouton == "boutonJuste":
+        st.write("C'est juste ! 🥳")
+
+# Select a theme from a dropdown
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
     (cont.show_all_packs_c())
 )
 
+# Si un paquet est sélectionné ouvrir la table et afficher les cartes
 if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
     questions = cont.show_question_c("métiers_anglais")
@@ -46,8 +51,11 @@ if paquet != "Sélectionnez un thème":
         answer_str = str(answer)
         with st.expander(question_str):
             st.write(answer_str)
-            st.button("Juste", key=f"Juste_{i}")
-            st.button("Faux", key=f"Faux_{i}")
+            if st.button("Juste", key=f"Juste_{i}"):
+                st.warning("C'est juste !", icon= "🥳")
+            if st.button("Faux", key=f"Faux_{i}"):
+                st.warning("C'est faux…", icon="🫣")
+
 
 
 buttonRetourMenu = st.button("Retour au menu")

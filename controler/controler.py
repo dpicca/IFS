@@ -17,7 +17,7 @@ class Controller:
         question = sqlite_flashcard.QuestionTable()
         question_create = question.create_table()
         return question_create.fetchall() """
-
+    # Utilisé dans mes_cartes et resultats
     def show_all_packs_c(self):
         """retouner tous les paquets"""
         question = sqlite_flashcard.QuestionTable()
@@ -33,7 +33,7 @@ class Controller:
         question = sqlite_flashcard.QuestionTable()
         question_show_t = question.show_table()
         return question_show_t.fetchall()
-
+    # Utilisé dans mes_cartes
     def show_question_c(self, paquet):
         """
 
@@ -69,7 +69,7 @@ class Controller:
         question_close = question.close_sqlite()
         return question_close.fetchall()
 
-    # class AnswerTable:
+     class AnswerTable:
     def add_answer(self, answer, paquet):
         answer = sqlite_flashcard.AnswerTable()
         answer_add = answer.add_data(answer, paquet)
@@ -80,12 +80,18 @@ class Controller:
         answer_create = answer.create_table()
         return answer_create.fetchall() """
 
+    def add_answer_c(self, iduser_fk, score):
+        answer = sqlite_flashcard.AnswerTable()
+        answer_add = answer.add_data(iduser_fk, score)
+        return answer_add
+
     # class AnswerTable:
     def answer_show_table(self):
         answer = sqlite_flashcard.AnswerTable()
         answer_show_t = answer.show_table()
         return answer_show_t.fetchall()
 
+    # Utilisé dans mes_cartes
     def show_answer_c(self, paquet):
         """retourne les réponses"""
 

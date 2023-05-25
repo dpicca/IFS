@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
+import controler.controler as ctrl
 
 st.set_page_config(page_title="Résultats", page_icon="📊")
 
@@ -29,9 +30,12 @@ st.markdown(
 
 st.title("Mes résultats")
 
+cont=ctrl.Controller()
+
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
-    ("Sélectionnez un thème", 'Métier', 'Animaux'))
+    (cont.show_all_packs_c())
+)
 
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:

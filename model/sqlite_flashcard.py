@@ -489,7 +489,7 @@ class AnswerUserTable:
         :param score:int
         :return:None
         """
-        if self.i == int():
+        if self.i == 0:
             self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
             self.i += 1
         else:
