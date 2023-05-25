@@ -8,6 +8,27 @@ st.set_page_config(page_title="Menu IFC", page_icon="📄")
 
 st.title("IFC ")
 
+# Colors definitions
+primary_color = "#191970"
+button_color = "#66CDAA"
+
+# Apply the sytles
+st.markdown(
+    f"""
+    <style>
+    .stButton > button {{
+        background-color: {button_color};
+        color: blue;
+    }}
+    .stButton button:focus,
+    .stButton button:active {{
+        background-color: {primary_color} !important;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Create a grid of 2X2
 # Show the menu bottoms in the grid
 col1, col2 = st.columns(2)
