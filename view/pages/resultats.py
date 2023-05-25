@@ -8,7 +8,7 @@ st.set_page_config(page_title="Résultats", page_icon="📊")
 
 # Define custom colors
 primary_color = "#191970"
-button_color = "#66CDAA"
+button_color = "#FFB6C1"
 
 # Apply styles
 st.markdown(
@@ -16,7 +16,7 @@ st.markdown(
     <style>
     .stButton > button {{
         background-color: {button_color};
-        color: blue;
+        color: white;
     }}
     .stButton button:focus,
     .stButton button:active {{
@@ -26,6 +26,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 st.title("Mes résultats")
 
 paquet = st.selectbox(
