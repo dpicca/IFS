@@ -522,13 +522,13 @@ class AnswerUserTable:
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.cur.execute(self.query)
 
-    # View a user's results to a selected answer...
+
     def show_result(self, name, idanswer_fk):
         """
-
-        :param name:
-        :param idanswer_fk:
-        :return:
+        View a user's results to a selected answer
+        :param name:string
+        :param idanswer_fk:int
+        :return: users results
         """
         self.query = f'SELECT score FROM answer_user_table ' \
                      f'INNER JOIN user_table aut on answer_user_table.iduser_fk = aut.iduser ' \
@@ -674,20 +674,19 @@ class QuestionUserTable:
         self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {idquestion_user};'
         return self.execute_query(self.query)
 
-    # Delete the questions-users table...
     def delete_table(self):
         """
-        Delete the questions-users table...
+        Delete the questions-users table
         Returns:
 
         """
         self.query = 'DROP TABLE question_user_table;'
         return self.execute_query(self.query)
 
-    # Run the query...
+
     def execute_query(self, query):
         """
-
+        Run the query
         Args:
             query:
 
