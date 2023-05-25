@@ -41,17 +41,13 @@ if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
     questions = cont.show_question_c("métiers_anglais")
     answers = cont.show_answer_c("métiers_anglais")
-    count1 = 0
-    count2 = 1
-    for question, answer in zip(questions, answers):
+    for i, (question, answer) in enumerate(zip(questions, answers)):
         question_str = str(question)
         answer_str = str(answer)
         with st.expander(question_str):
             st.write(answer_str)
-            # st.button("Juste", key=count1)
-            # count1 += 1
-            # st.button("Faux", key= count2)
-            # count2 += 1
+            st.button("Juste", key=f"Juste_{i}")
+            st.button("Faux", key=f"Faux_{i}")
 
 
 buttonRetourMenu = st.button("Retour au menu")
