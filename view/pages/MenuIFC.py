@@ -8,11 +8,11 @@ st.set_page_config(page_title="Menu IFC", page_icon="📄")
 
 st.title("IFC ")
 
-# Colors definitions
+# Define custom colors
 primary_color = "#191970"
 button_color = "#66CDAA"
 
-# Apply the sytles
+# Apply styles
 st.markdown(
     f"""
     <style>

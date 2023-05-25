@@ -7,11 +7,11 @@ import controler.controler as ctrl
 
 st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
-# Colors definitions
+# Define custom colors
 primary_color = "#191970"
 button_color = "#66CDAA"
 
-# Apply the styles
+# Apply styles
 st.markdown(
     f"""
     <style>

@@ -6,11 +6,11 @@ from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(page_title="Nouveau paquet", page_icon="🃏")
 
-# Colors definitions
+# Define custom colors
 primary_color = "#191970"
 button_color = "#66CDAA"
 
-# Apply the styles
+# Apply styles
 st.markdown(
     f"""
     <style>
