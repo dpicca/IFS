@@ -49,6 +49,18 @@ if paquet != "Sélectionnez un thème":
             #buttonJuste = st.button("Vrai")
             #buttonFaux = st.button("Faux")
 
+# Test answer
+if paquet != "Sélectionnez un thème":
+    st.write('Vous avez sélectionné :', paquet)
+    for item in cont.show_answer_c("métiers_anglais"):
+        answer = str(item)
+        # for answers_item in cont.show_answer_c("métiers_anglais"):
+        #     answer = str(answers_item)
+        with st.expander(answer):
+            st.write("answer")
+            #buttonJuste = st.button("Vrai")
+            #buttonFaux = st.button("Faux")
+
 
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:

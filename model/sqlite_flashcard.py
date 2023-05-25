@@ -250,7 +250,7 @@ class AnswerTable:
         return self.cur.execute(self.query)
 
     # View the answer's cards of a selected question...
-    def show_answer(self, idquestion):
+    def show_answer_by_question(self, idquestion):
         """
         Takes of the id of a question and returns the coresponding answer from the answers table
         :param idquestion: int

@@ -87,6 +87,8 @@ class Controller:
         return answer_show_t.fetchall()
 
     def show_answer_c(self, paquet):
+        """retourne les réponses"""
+
         answer = sqlite_flashcard.AnswerTable()
         answer_show = answer.show_answer(paquet)
         return answer_show
