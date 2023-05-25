@@ -179,7 +179,7 @@ class Controller:
 
     def answeruser_show_data(self, idanswer_user):
         answeruser = sqlite_flashcard.AnswerUserTable()
-        answeruser_show = answeruser.show_data(i)
+        answeruser_show = answeruser.show_data(idanswer_user)
         return answeruser_show.fetchall()
 
     """def answeruser_update_data(self, result, i):

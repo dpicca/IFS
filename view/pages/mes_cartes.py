@@ -37,7 +37,45 @@ paquet = st.selectbox(
     (cont.show_all_packs_c())
 )
 
-# Show the expender only if something is chosen
+question_list = [question for question in list(cont.show_question_c("métiers_anglais"))]
+
+# Fonction qui génère une dictionnaire ECRASE LES REPONSES
+# def retrieve_cards(dict):
+#     question_tuples = cont.show_question_c("métiers_anglais")
+#     print(question_tuples)
+#     for item in cont.show_question_c("métiers_anglais"):
+#         question = str(item)
+#         dict[question] = "answer"
+#     for item in cont.show_answer_c("métiers_anglais"):
+#         answer = str(item)
+#         dict[question_list[len(question_list)-1]] = answer
+#     return dict
+
+# Test avec un dictionnaire QUI MARCHE
+# if paquet != "Sélectionnez un thème":
+#     st.write('Vous avez sélectionné :', paquet)
+#     cards_paquet = dict()
+#     retrieve_cards(cards_paquet)
+#     for question, answer in cards_paquet.items():
+#         with st.expander(question):
+#             st.write(answer)
+            # buttonJuste = st.button("Vrai")
+            # buttonFaux = st.button("Faux")
+
+# Test question + answer en double
+if paquet != "Sélectionnez un thème":
+    st.write('Vous avez sélectionné :', paquet)
+    for item in cont.show_question_c("métiers_anglais"):
+        question = str(item)
+        for item in cont.show_answer_c("métiers_anglais"):
+            answer = str(item)
+            with st.expander(question):
+                st.write(answer)
+            #buttonJuste = st.button("Vrai")
+            #buttonFaux = st.button("Faux")
+
+# Show the expander only if something is chosen
+# Test question OK
 if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
     for item in cont.show_question_c("métiers_anglais"):
@@ -49,7 +87,7 @@ if paquet != "Sélectionnez un thème":
             #buttonJuste = st.button("Vrai")
             #buttonFaux = st.button("Faux")
 
-# Test answer
+# Test answer OK
 if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
     for item in cont.show_answer_c("métiers_anglais"):
@@ -65,3 +103,4 @@ if paquet != "Sélectionnez un thème":
 buttonRetourMenu = st.button("Retour au menu")
 if buttonRetourMenu:
     switch_page("MenuIFC")
+
