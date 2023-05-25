@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
+import controler.controler as ctrl
 
 st.set_page_config(page_title="Nouveau paquet", page_icon="🃏")
 
@@ -29,9 +30,17 @@ st.markdown(
 
 st.title("Nouveau paquet")
 
+cont = ctrl.Controller()
+def submit_form(question, answer, paquet):
+    submit_question = cont.add_question_c(question, paquet)
+    submit_answer = cont.add_answer_c(answer, paquet)
+    return submit_question, submit_answer
+
 # New pack
 new_paquet = st.text_input("Choisir le nom du paquet :")
 buttonCreate = st.button("Créer")
+
+
 
 if buttonCreate and new_paquet:
     # Step 2: Creating new cards
@@ -44,7 +53,7 @@ if buttonCreate and new_paquet:
         with st.form("new_card_form"):
             new_word = st.text_input("Nouveau mot :", key="new_word")
             new_translation = st.text_input("Traduction :", key="new_translation")
-            submitted = st.form_submit_button("Ajouter")
+            submitted = st.form_submit_button("Ajouter", on_click=submit_form(new_word, new_translation, new_paquet))
 
             if submitted:
                 if new_word and new_translation:
