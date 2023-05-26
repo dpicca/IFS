@@ -23,7 +23,6 @@ class QuestionTable:
         """
         Create the questions table
         Returns: None
-
         """
         self.i = 1
         self.query = 'CREATE TABLE question_table (' \
@@ -57,7 +56,6 @@ class QuestionTable:
         """
         View questions table...
         Returns: all the rows from questions table
-
         """
         self.query = 'SELECT * FROM question_table;'
         return self.cur.execute(self.query)
@@ -65,12 +63,9 @@ class QuestionTable:
     # View the question's cards in a selected pack...
     def show_question(self, paquet):
         """
-
         Args:get all the questions from data base for the given pack
-            paquet:
-
+            paquet:string
         Returns: list of questions or empty list
-
         """
         self.query = f'SELECT question FROM question_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
@@ -117,9 +112,7 @@ class QuestionTable:
         Args:
             question: string
             idquestion: int
-
         Returns: updated version of the question
-
         """
         self.query = f'UPDATE question_table SET question = "{question}" WHERE idquestion = {idquestion};'
         return self.execute_query(self.query)
@@ -130,9 +123,7 @@ class QuestionTable:
         Remove a card from the questions table...
         Args:
             idquestion:int
-
         Returns: None
-
         """
         self.query = f'DELETE FROM question_table WHERE idquestion = {idquestion};'
         return self.execute_query(self.query)
@@ -142,7 +133,6 @@ class QuestionTable:
         """
         Delete all the questions table
         Returns: None
-
         """
         self.query = 'DROP TABLE question_table;'
         return self.execute_query(self.query)
@@ -153,9 +143,7 @@ class QuestionTable:
         Takes the query and applies it to the database
         Args:
             query:string(SQL Statement)
-
         Returns: None
-
         """
 
         self.cur.execute(query)
@@ -168,7 +156,6 @@ class QuestionTable:
         """
         Close the database
         Returns:
-
         """
         return self.flashcards_db.close()
 
@@ -194,7 +181,6 @@ class AnswerTable:
         Create the answers table...
 
         Returns: list of pack
-
         """
         self.i = 1
         self.query = 'CREATE TABLE answer_table (' \
@@ -231,7 +217,6 @@ class AnswerTable:
         """
         View answers table...
         Returns: list of answers
-
         """
         self.query = 'SELECT * FROM answer_table;'
         return self.cur.execute(self.query)
@@ -242,9 +227,7 @@ class AnswerTable:
         View the answer's cards in a selected pack
         Args:
             paquet:string
-
         Returns:list of answers in a given pack
-
         """
         self.query = f'SELECT answer FROM answer_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
@@ -269,7 +252,6 @@ class AnswerTable:
             answer: string
             idanswer:int
         Returns: updated answer
-
         """
         self.query = f'UPDATE answer_table SET answer = "{answer}" WHERE idanswer = {idanswer};'
         return self.execute_query(self.query)
@@ -280,9 +262,7 @@ class AnswerTable:
         This fonction remove a card from the answers table
         Args:
             idanswer:int
-
         Returns:None
-
         """
         self.query = f'DELETE FROM answer_table WHERE idanswer = {idanswer};'
         return self.execute_query(self.query)
@@ -292,7 +272,6 @@ class AnswerTable:
         """
         Delete all the answers table
         Returns:None
-
         """
         self.query = 'DROP TABLE answer_table;'
         return self.execute_query(self.query)
@@ -304,7 +283,6 @@ class AnswerTable:
         Args:
             query: string
         Returns:None
-
         """
 
         self.cur.execute(query)
@@ -336,7 +314,6 @@ class UserTable:
         """
         Create the users table
         Returns:None
-
         """
         self.i = 1
         self.query = 'CREATE TABLE user_table (' \
@@ -349,9 +326,7 @@ class UserTable:
         Add a user to the users table
         Args:
             name:string
-
         Returns:
-
         """
         if self.i == int():
             self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
@@ -368,7 +343,6 @@ class UserTable:
         """
         View users table
         Returns:
-
         """
         self.query = 'SELECT * FROM user_table;'
         return self.cur.execute(self.query)
@@ -378,9 +352,7 @@ class UserTable:
         View a user's informations from the database
         Args:
             i:int
-
         Returns:a user
-
         """
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         return self.cur.execute(self.query)
@@ -401,7 +373,6 @@ class UserTable:
             name:string
             iduser:int
         Returns:updated data
-
         """
         self.query = f'UPDATE user_table SET name = "{name}" WHERE iduser = {iduser};'
         return self.execute_query(self.query)
@@ -411,9 +382,7 @@ class UserTable:
         Remove a user from the users table
         Args:
             iduser:int
-
         Returns:None
-
         """
         self.query = f'DELETE FROM user_table WHERE iduser = {iduser};'
         return self.execute_query(self.query)
@@ -423,7 +392,6 @@ class UserTable:
         """
         Delete all the users
         Returns:None
-
         """
         self.query = 'DROP TABLE user_table;'
         return self.execute_query(self.query)
@@ -434,9 +402,7 @@ class UserTable:
         Takes the query and applies it to the database
         Args:
             query:string
-
         Returns:returns whatever database returns
-
         """
 
         self.cur.execute(query)
@@ -469,7 +435,6 @@ class AnswerUserTable:
         """
         Create the answers-users table
         Returns:None
-
         """
         self.i = 1
         self.query = 'CREATE TABLE answer_user_table (' \
@@ -504,7 +469,6 @@ class AnswerUserTable:
         """
         View answers-users table
         Returns:
-
         """
         self.query = 'SELECT * FROM answer_user_table;'
         return self.cur.execute(self.query)
@@ -515,9 +479,7 @@ class AnswerUserTable:
         View a user's result to a selected answer...
         Args:
             idanswer_user:
-
         Returns:
-
         """
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.cur.execute(self.query)
@@ -552,9 +514,7 @@ class AnswerUserTable:
         Remove a result from the answers-users table...
         Args:
             idanswer_user:
-
         Returns:
-
         """
         self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.execute_query(self.query)
@@ -564,7 +524,6 @@ class AnswerUserTable:
         """
         Delete the answers-users table...
         Returns:
-
         """
         self.query = 'DROP TABLE answer_user_table;'
         return self.execute_query(self.query)

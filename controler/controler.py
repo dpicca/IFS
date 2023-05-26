@@ -83,15 +83,6 @@ class Controller:
 
 
     def answeruser_add_data_c(self, idanswer_fk, iduser_fk, score):
-        """
-
-                Args:
-                    idanswer_fk, iduser_fk, score
-
-                Returns:
-                    add the score of the user to the table
-
-                """
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_add = answeruser.add_data(idanswer_fk, iduser_fk, score)
         return answeruser_add
