@@ -26,6 +26,8 @@ st.markdown(
 )
 
 st.title("Mes cartes")
+
+# Import the Controller() class
 cont=ctrl.Controller()
 
 # Select a theme from a dropdown
@@ -34,7 +36,7 @@ paquet = st.selectbox(
     (cont.show_all_packs_c())
 )
 
-# Si un paquet est sélectionné ouvrir la table et afficher les cartes
+# If a pack is selected show the cards
 if paquet != "Sélectionnez un thème":
     st.write('Vous avez sélectionné :', paquet)
     questions = cont.show_question_c("métiers_anglais")

@@ -27,7 +27,10 @@ st.markdown(
 
 st.title("Nouveau paquet")
 
+# Import class Controller()
 cont = ctrl.Controller()
+
+# Function to submit form
 def submit_form(question, answer, paquet):
     submit_question = cont.add_question_c(question, paquet)
     submit_answer = cont.add_answer_c(answer, paquet)
@@ -38,7 +41,7 @@ new_paquet = st.text_input("Choisir le nom du paquet :")
 buttonCreate = st.button("Créer")
 
 
-
+# Open the form for the new cards
 if buttonCreate and new_paquet:
     # Step 2: Creating new cards
     st.write("Création de nouvelles cartes :")

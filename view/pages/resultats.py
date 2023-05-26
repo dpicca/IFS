@@ -29,8 +29,10 @@ st.markdown(
 
 st.title("Mes résultats")
 
+# Import the Controller() class
 cont = ctrl.Controller()
 
+# Select a pack
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
     (cont.show_all_packs_c())

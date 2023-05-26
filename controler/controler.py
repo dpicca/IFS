@@ -1,6 +1,6 @@
 
 
-# Interaction entre frontend et backend:
+# Import the database methods file
 from model import sqlite_flashcard
 
 
@@ -8,27 +8,42 @@ class Controller:
 
     # class QuestionTable:
 
-    # Utilisé dans nouveau_paquet (ne fonctionne pas)
     def add_question_c(self, question, paquet):
+        """
+
+                Args:
+                    question, paquet
+
+                Returns:
+                    add the question to the paquet
+
+                """
         questionClass = sqlite_flashcard.QuestionTable()
         question_add = questionClass.add_data(question, paquet)
         return question_add
 
-    # Utilisé dans mes_cartes et résultats (fonctionne)
     def show_all_packs_c(self):
-        """retouner tous les paquets"""
+        """
+
+        Args:
+            None
+
+        Returns:
+            all the packs
+
+        """
         question = sqlite_flashcard.QuestionTable()
         paquets_list = question.show_all_packs()
         return paquets_list
 
-    # Utilisé dans mes_cartes (fonctionne)
     def show_question_c(self, paquet):
         """
 
         Args:
-            paquet:
+            paquet
 
         Returns:
+            the questions from the paquet
 
         """
         question = sqlite_flashcard.QuestionTable()
@@ -37,22 +52,46 @@ class Controller:
 
     # class AnswerTable:
 
-    # Utilisé dans nouveau_paquet (ne fonctionne pas)
     def add_answer_c(self, answer, paquet):
+        """
+
+                Args:
+                    answer, paquet
+
+                Returns:
+                    add the answer to the paquet
+
+                """
         answerClass = sqlite_flashcard.AnswerTable()
         answer_add = answerClass.add_data(answer, paquet)
         return answer_add.fetchall()
 
-    # Utilisé dans mes_cartes (fonctionne)
     def show_answer_c(self, paquet):
-        """retourne les réponses"""
+        """
+
+        Args:
+            paquet
+
+        Returns:
+            the answers from the paquet
+
+        """
 
         answer = sqlite_flashcard.AnswerTable()
         answer_show = answer.show_answer(paquet)
         return answer_show
 
-    # Utilisé dans mes_cartes (ne fonctionne pas)
+
     def answeruser_add_data_c(self, idanswer_fk, iduser_fk, score):
+        """
+
+                Args:
+                    idanswer_fk, iduser_fk, score
+
+                Returns:
+                    add the score of the user to the table
+
+                """
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_add = answeruser.add_data(idanswer_fk, iduser_fk, score)
         return answeruser_add
