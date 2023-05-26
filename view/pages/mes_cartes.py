@@ -1,7 +1,4 @@
 import streamlit as st
-# import pandas as pd
-# import pydeck as pdk
-# from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
 import controler.controler as ctrl
 
@@ -31,10 +28,6 @@ st.markdown(
 st.title("Mes cartes")
 cont=ctrl.Controller()
 
-def right_answer(bouton):
-    if bouton == "boutonJuste":
-        st.write("C'est juste ! 🥳")
-
 # Select a theme from a dropdown
 paquet = st.selectbox(
     'Sélectionnez un thème de cartes :',
@@ -53,8 +46,10 @@ if paquet != "Sélectionnez un thème":
             st.write(answer_str)
             if st.button("Juste", key=f"Juste_{i}"):
                 st.warning("C'est juste !", icon= "🥳")
+                #cont.answeruser_add_data_c(12, 13, 1)
             if st.button("Faux", key=f"Faux_{i}"):
                 st.warning("C'est faux…", icon="🫣")
+                #cont.answeruser_add_data_c(12, 13, 0)
 
 
 

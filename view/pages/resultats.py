@@ -1,7 +1,4 @@
 import streamlit as st
-import pandas as pd
-import altair as alt
-from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
 import controler.controler as ctrl
 

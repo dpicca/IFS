@@ -1,7 +1,4 @@
 import streamlit as st
-import pandas as pd
-import altair as alt
-from urllib.error import URLError
 from streamlit_extras.switch_page_button import switch_page
 import controler.controler as ctrl
 
@@ -45,15 +42,15 @@ buttonCreate = st.button("Créer")
 if buttonCreate and new_paquet:
     # Step 2: Creating new cards
     st.write("Création de nouvelles cartes :")
-    new_words = []
-    new_translations = []
+    new_words = list()
+    new_translations = list()
     add_new_card = True
 
     while add_new_card:
         with st.form("new_card_form"):
             new_word = st.text_input("Nouveau mot :", key="new_word")
             new_translation = st.text_input("Traduction :", key="new_translation")
-            submitted = st.form_submit_button("Ajouter", on_click=submit_form(new_word, new_translation, new_paquet))
+            submitted = st.form_submit_button("Ajouter")
 
             if submitted:
                 if new_word and new_translation:
@@ -70,6 +67,7 @@ if buttonCreate and new_paquet:
     if st.button("Valider"):
         # Process the new words and translations here (e.g., save them to a database or data structure)
         for word, translation in zip(new_words, new_translations):
+            submit_form(word, translation, new_paquet)
             st.write(f"Mot : {word}, Traduction : {translation}")
         st.success("Cartes créées avec succès !")
         # new_paquet.empty() CA NE MARCHE PAS !!!!!

@@ -8,34 +8,20 @@ class Controller:
 
     # class QuestionTable:
 
+    # Utilisé dans nouveau_paquet (ne fonctionne pas)
     def add_question_c(self, question, paquet):
-        question = sqlite_flashcard.QuestionTable()
-        question_add = question.add_data(question, paquet)
+        questionClass = sqlite_flashcard.QuestionTable()
+        question_add = questionClass.add_data(question, paquet)
         return question_add
 
-    # def create_table(self):
-    #     question = sqlite_flashcard.QuestionTable()
-    #     question_create = question.create_table()
-    #     return question_create.fetchall()
-
-    # Utilisé dans mes_cartes et resultats
+    # Utilisé dans mes_cartes et résultats (fonctionne)
     def show_all_packs_c(self):
         """retouner tous les paquets"""
         question = sqlite_flashcard.QuestionTable()
         paquets_list = question.show_all_packs()
         return paquets_list
 
-    # def show_table_c(self):
-    #
-    #
-    #     Returns:
-    #
-    #
-    #     question = sqlite_flashcard.QuestionTable()
-    #     question_show_t = question.show_table()
-    #     return question_show_t.fetchall()
-
-    # Utilisé dans mes_cartes
+    # Utilisé dans mes_cartes (fonctionne)
     def show_question_c(self, paquet):
         """
 
@@ -48,6 +34,56 @@ class Controller:
         question = sqlite_flashcard.QuestionTable()
         question_show = question.show_question(paquet)
         return question_show
+
+    # class AnswerTable:
+
+    # Utilisé dans nouveau_paquet (ne fonctionne pas)
+    def add_answer_c(self, answer, paquet):
+        answerClass = sqlite_flashcard.AnswerTable()
+        answer_add = answerClass.add_data(answer, paquet)
+        return answer_add.fetchall()
+
+    # Utilisé dans mes_cartes (fonctionne)
+    def show_answer_c(self, paquet):
+        """retourne les réponses"""
+
+        answer = sqlite_flashcard.AnswerTable()
+        answer_show = answer.show_answer(paquet)
+        return answer_show
+
+    # Utilisé dans mes_cartes (ne fonctionne pas)
+    def answeruser_add_data_c(self, idanswer_fk, iduser_fk, score):
+        answeruser = sqlite_flashcard.AnswerUserTable()
+        answeruser_add = answeruser.add_data(idanswer_fk, iduser_fk, score)
+        return answeruser_add
+
+    # class AnswerUserTable:
+
+
+
+    # def answeruser_update_data(self, result, i):
+    #     answeruser = sqlite_flashcard.AnswerUserTable()
+    #     answeruser_update = answeruser.update_data(result, i)
+    #     return answeruser_update.fetchall()
+
+    # def create_table(self):
+    #     question = sqlite_flashcard.QuestionTable()
+    #     question_create = question.create_table()
+    #     return question_create.fetchall()
+
+
+
+    # def show_table_c(self):
+    #
+    #
+    #     Returns:
+    #
+    #
+    #     question = sqlite_flashcard.QuestionTable()
+    #     question_show_t = question.show_table()
+    #     return question_show_t.fetchall()
+
+
 
 
 
@@ -71,11 +107,7 @@ class Controller:
     #     question_close = question.close_sqlite()
     #     return question_close.fetchall()
 
-    #class AnswerTable:
-    def add_answer_c(self, answer, paquet):
-        answer = sqlite_flashcard.AnswerTable()
-        answer_add = answer.add_data(answer, paquet)
-        return answer_add
+
 
     # def answer_create_table(self):
     #     answer = sqlite_flashcard.AnswerTable()
@@ -93,19 +125,8 @@ class Controller:
     #     answer_show_t = answer.show_table()
     #     return answer_show_t.fetchall()
 
-    # Utilisé dans mes_cartes
-    def show_answer_c(self, paquet):
-        """retourne les réponses"""
-
-        answer = sqlite_flashcard.AnswerTable()
-        answer_show = answer.show_answer(paquet)
-        return answer_show
 
 
-    def add_answer_c(self, answer, paquet):
-        answerClass = sqlite_flashcard.AnswerTable()
-        answer_add = answerClass.add_data(answer, paquet)
-        return answer_add.fetchall()
 
     # def answer_update_data(self, paquet):
     #     answer = sqlite_flashcard.AnswerTable()
@@ -128,15 +149,15 @@ class Controller:
     #     return answer_close.fetchall()
 
     # class UserTable:
-    def add_user(self, name):
-        user = sqlite_flashcard.UserTable()
-        user_add = user.add_data(name)
-        return user_add.fetchall()
-
-    def user_create_table(self):
-        user = sqlite_flashcard.UserTable()
-        user_create = user.create_table()
-        return user_create.fetchall()
+    # def add_user(self, name):
+    #     user = sqlite_flashcard.UserTable()
+    #     user_add = user.add_data(name)
+    #     return user_add.fetchall()
+    #
+    # def user_create_table(self):
+    #     user = sqlite_flashcard.UserTable()
+    #     user_create = user.create_table()
+    #     return user_create.fetchall()
 
     # class UserTable:
     # def user_show_table(self, name):
