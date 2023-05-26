@@ -11,24 +11,21 @@ Intelligent FlashCards est un logiciel simple de flashcards conçu pour facilite
 ## Prérequis
 
 - Python 3.x
-- SQLite
+- SQLite3
+- Sqlite_flachcard
 - Yaml
-- Streamlit, Streamlit Extra
-- 
+- Streamlit
+- Streamlit Extra
+- Matplotlib.pyplot
+
 ## Utilisation
 
 1. L'application s'ouvrira avec une fenêtre de connexion. Si vous avez déjà un compte, saisissez vos identifiants pour vous connecter ou vous inscrire si vous êtes un nouvel utilisateur. Une fois connecté, vous serez redirigé vers la page d'accueil. 
-2. Dans le menu principal, vous avez les options de Mes Cartes, Nouveau Paquet, Mes Résultats, Se déconnecter.  
-3. À partir de là, vous pouvez accéder aux différentes fonctionnalités d'Intelligent FlashCards, telles que la création et la gestion des cartes, le suivi de vos résultats, etc. 
-- Vous pouvez sélectionner l'option "Mes Cartes" pour consulter les paquets de flashcards. Choisissez un paquet de votre choix pour commencer à votre jeu de flashcards.
-- Pour créer un paquet personnalisé, cliquez sur l'option "Nouveau Paquet" dans la fenêtre principale. Donnez un nom à votre paquet et sélectionnez un thème dans la liste. Vous pouvez ensuite ajouter des mots et leur traduction pour chaque flashcard.
-Une fois que vous avez ajouté des paquets à votre collection personnelle, vous pouvez sélectionner un paquet et 
-
-------cliquer sur "Lancer la session de révision" pour commencer une session de révision.
-
-7. Pendant la session de révision, une flashcard apparaîtra à l'écran avec la question. Saisissez votre réponse dans la zone de texte prévue à cet effet et appuyez sur "Enter" pour soumettre votre réponse. Vous recevrez immédiatement un feedback indiquant si votre réponse est correcte ou non.
-8. Après avoir répondu à toutes les flashcards, un récapitulatif s'affichera avec votre score.
-9. Vous pouvez consulter votre progression globale en cliquant sur l'option "Mon profil" dans la fenêtre principale. Vous y trouverez des statistiques sur vos performances dans les différents paquets.
+2. Dans le menu principal, vous avez les options de   
+3. À partir de là, vous pouvez accéder aux différentes fonctionnalités d'Intelligent FlashCards, telles que la création et la gestion des cartes dans les options : Mes Cartes /-Nouveau Paquet, le suivi de vos résultats dans -Mes Résultats, et la déconnection par - Se déconnecter. 
+- L'option "Mes Cartes" permet de consulter les paquets de flashcards. Choisissez un thème dans la liste pour commencer à votre jeu de flashcards ainsi une flashcard apparaîtra en dessus et vous pouvez répondre juste ou faux et continuer avec d'autres cartes.
+- Pour créer un paquet personnalisé, cliquez sur l'option "Nouveau Paquet" dans la fenêtre principale. Donnez un nom à votre paquet et vous pouvez ensuite ajouter des nouveaux mots et leur traduction pour chaque carte. Vous pouvez créer plusieurs mots de cette manière.
+4. Vous pouvez consulter votre progression globale en cliquant sur l'option "Mes résultats" dans la fenêtre principale. Vous y trouverez des statistiques sur vos performances dans les différents paquets.
 
 ## Execution du logiciel et les fichiers
 
@@ -47,14 +44,23 @@ Le code de Main est la partie qui permet aux utilisateurs de :
 - créer, modifier et supprimer des cartes d'apprentissage. 
 - consulter leurs résultats d'apprentissage.
 ### Sqlite_flashcard : 
-Ce le code qui .....
-
-
-
-
-
-
-
+Ce code de la gestion de base de données SQLite. Il crée et initialise plusieurs tables pour stocker des questions, des réponses, des utilisateurs et des résultats.
+Voici une description des classes et de leurs principales méthodes :
+1. `QuestionTable` : Cette classe gère la table des questions. Les principales méthodes sont :
+   - `create_table()` : crée la table des questions.
+   - `add_data(question, paquet)` : ajoute une carte de question à la table des questions.
+   - `show_table()` : affiche toutes les lignes de la table des questions.
+   - `show_question(paquet)` : affiche les cartes de question d'un paquet sélectionné.
+   - `show_all_packs()` : affiche tous les paquets de questions.
+   - `show_pack(iduser_fk)` : affiche les paquets enregistrés d'un utilisateur donné.
+   - `user_show_questions(iduser_fk, paquet)` : affiche les questions d'un utilisateur pour un paquet sélectionné.
+   - `update_data(question, idquestion)` : modifie la valeur d'une carte de question.
+   - `delete_data(idquestion)` : supprime une carte de question de la table.
+   - `delete_table()` : supprime la table des questions.
+   - `close_sqlite()` : ferme la connexion à la base de données.
+2. `AnswerTable` : Cette classe gère la table des réponses. 
+3. `UserTable` : Cette classe gère la table des utilisateurs. 
+4. `AnswerUserTable` : Cette classe gère la table des résultats des utilisateurs. 
 
 ### Controler : 
 Le fichier controller.py contient la classe Controller, qui permet l'interaction entre le frontend et le backend de l'application.
@@ -99,3 +105,7 @@ Cette partie du code utilise le framework Streamlit pour créer une interface ut
 
 Intelligent FlashCards est un projet développé par le groupe LOLS en 2023. Nous avons créé ce logiciel dans le but d'aider les utilisateurs à apprendre de nouvelles langues de manière amusante et efficace. Nous espérons que cette application vous aidera à atteindre vos objectifs d'apprentissage linguistique !
 
+Olivia
+Leonie
+Margot 
+Sinem KILIC
