@@ -5,7 +5,7 @@ import controler.controler as ctrl
 st.set_page_config(page_title="Nouveau paquet", page_icon="🃏")
 
 # Define custom colors
-primary_color = "#191970"
+primary_color = "#FFFFF"
 button_color = "#FFB6C1"
 
 # Apply styles

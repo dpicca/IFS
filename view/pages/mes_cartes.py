@@ -5,7 +5,7 @@ import controler.controler as ctrl
 st.set_page_config(page_title="Mes cartes", page_icon="🃏")
 
 # Define custom colors
-primary_color = "#191970"
+primary_color = "#FFFFF"
 button_color = "#FFB6C1"
 
 # Apply styles
@@ -48,7 +48,7 @@ if paquet != "Sélectionnez un thème":
                 st.warning("C'est juste !", icon= "🥳")
                 #cont.answeruser_add_data_c(12, 13, 1)
             if st.button("Faux", key=f"Faux_{i}"):
-                st.warning("C'est faux…", icon="🫣")
+                st.warning("C'est faux…", icon="❌")
                 #cont.answeruser_add_data_c(12, 13, 0)
 
 
