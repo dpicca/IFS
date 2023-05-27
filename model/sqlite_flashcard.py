@@ -389,7 +389,7 @@ class UserTable:
         Run the query : takes the query and applies it to the database
         Args:
             query:string
-        Returns:returns whatever database returns
+        Returns: None
         """
 
         self.cur.execute(query)
@@ -400,7 +400,7 @@ class UserTable:
     def close_sqlite(self):
         """
         Close the database
-        :return: the closing operation
+        Returns: the closing operation
         """
         return self.flashcards_db.close()
 
@@ -468,7 +468,7 @@ class AnswerUserTable:
         View a user's result to a selected answer
         Args:
             idanswer_user:int
-        Returns:
+        Returns: show operation
         """
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.cur.execute(self.query)
@@ -595,22 +595,14 @@ class QuestionUserTable:
         self.query = 'SELECT * FROM question_user_table;'
         return self.cur.execute(self.query)
 
-# ----------
-# A MODIFIER
-    # Afficher les informations relatives a un element de la table...
-    def show_data(self, i):
+    def show_data(self, idquestion_user):
         """
-
-        Args:
-            i:
-
-        Returns:
-
+        Show informations for one of the question_user_table's element
+        :param idquestion_user: int
+        :return: show operation
         """
-        self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {i};'
+        self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {idquestion_user};'
         return self.cur.execute(self.query)
-
-# ----------
 
     def delete_data(self, idquestion_user):
         """
