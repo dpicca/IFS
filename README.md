@@ -105,7 +105,7 @@ Cette partie du code utilise le framework Streamlit pour créer une interface ut
 
 Intelligent FlashCards est un projet développé par le groupe LOLS en 2023. Nous avons créé ce logiciel dans le but d'aider les utilisateurs à apprendre de nouvelles langues de manière amusante et efficace. Nous espérons que cette application vous aidera à atteindre vos objectifs d'apprentissage linguistique !
 
-Olivia
-Leonie
-Margot 
+Olivia VERBRUGGE
+Leonie NUSSBAUM
+Laure MARGOT
 Sinem KILIC
