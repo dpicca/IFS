@@ -193,7 +193,7 @@ class AnswerTable:
         Returns: the add operation
 
         """
-        if self.i > int():
+        if self.i > 1:
             self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
             self.i += 1
         else:
@@ -317,7 +317,7 @@ class UserTable:
             name:string
         Returns:the add operation
         """
-        if self.i > int():
+        if self.i > 1:
             self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
             self.i += 1
         else:
@@ -445,7 +445,7 @@ class AnswerUserTable:
         :param score:int
         :return:the add operation
         """
-        if self.i > 0:
+        if self.i > 1:
             self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
             self.i += 1
         else:
@@ -576,7 +576,7 @@ class QuestionUserTable:
         Returns:the add operation
 
         """
-        if self.i > int():
+        if self.i > 1:
             self.query = f'INSERT INTO question_user_table VALUES ({self.i}, {idquestion_fk}, {iduser_fk});'
             self.i += 1
         else:
