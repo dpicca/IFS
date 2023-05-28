@@ -21,9 +21,9 @@ Intelligent FlashCards est un logiciel simple de flashcards conçu pour facilite
 ## Utilisation
 
 1. L'application s'ouvrira avec une fenêtre de connexion. Si vous avez déjà un compte, saisissez vos identifiants pour vous connecter ou vous inscrire si vous êtes un nouvel utilisateur. Une fois connecté, vous serez redirigé vers la page d'accueil. 
-2. Dans le menu principal, vous avez différentes options 
-3. À partir de là, vous pouvez accéder aux différentes fonctionnalités d'Intelligent FlashCards, telles que la création et la gestion des cartes dans les options : Mes Cartes /-Nouveau Paquet, le suivi de vos résultats dans -Mes Résultats, et la déconnection par - Se déconnecter. 
-- L'option "Mes Cartes" permet de consulter les paquets de flashcards. Choisissez un thème dans la liste pour commencer à votre jeu de flashcards ainsi une flashcard apparaîtra, à vous de traduire le mot mentalement avent de visualiser la réponse en cliquant dessus et vous pourrez préciser si votre réonse était juste ou fausse et continuer avec d'autres cartes.
+2. Dans le menu principal, vous avez différentes options. 
+3. À partir de là, vous pouvez accéder aux différentes fonctionnalités d'Intelligent FlashCards, telles que la création et la gestion des cartes dans les options : Mes Cartes /-Nouveau Paquet, le suivi de vos résultats dans -Mes Résultats, et la déconnexion par - Se déconnecter. 
+- L'option "Mes Cartes" permet de consulter les paquets de flashcards. Choisissez un thème dans la liste pour commencer votre jeu de flashcards ainsi une flashcard apparaîtra, à vous de traduire le mot mentalement avant de visualiser la réponse en cliquant dessus et vous pourrez préciser si votre réponse était juste ou fausse et continuer avec d'autres cartes.
 - Pour créer un paquet personnalisé, cliquez sur l'option "Nouveau Paquet" dans la fenêtre principale. Donnez un nom à votre paquet et vous pouvez ensuite ajouter des nouveaux mots et leur traduction pour chaque carte. Vous pouvez créer plusieurs mots de cette manière.
 4. Vous pouvez consulter votre progression globale en cliquant sur l'option "Mes résultats" dans la fenêtre principale. Vous y trouverez des statistiques sur vos performances dans les différents paquets.
 
@@ -44,7 +44,7 @@ Le code de Main est la partie qui permet aux utilisateurs de :
 - créer, modifier et supprimer des cartes d'apprentissage. 
 - consulter leurs résultats d'apprentissage.
 ### Sqlite_flashcard : 
-Ce code de la gestion de base de données SQLite. Il crée et initialise plusieurs tables pour stocker des questions, des réponses, des utilisateurs et des résultats.
+Ce code de la gestion de base de données SQLite crée et initialise plusieurs tables pour stocker des questions, des réponses, des utilisateurs et des résultats.
 Voici une description des classes et de leurs principales méthodes :
 1. `QuestionTable` : Cette classe gère la table des questions. Les principales méthodes sont :
    - `create_table()` : crée la table des questions.
@@ -76,7 +76,7 @@ Ensuite, vous pouvez créer une instance de la classe Controller pour accéder a
 * Mes résultats : Suivez votre progression et consultez vos performances grâce à la fonctionnalité "Mes résultats". Elle affiche des informations sur vos performances avec différentes flashcards et aide à identifier les domaines qui nécessitent davantage d'attention. 
 * Se déconnecter : Pour vous déconnecter, cliquez sur le bouton "Se déconnecter".
 ### Nouveau_paquet :
-1. Entrez le nom du nouveau paquet dans le champ de . 
+1. Entrez le nom du nouveau paquet dans le champ. 
 2. Cliquez sur le bouton "Créer" pour créer le nouveau paquet. 
 3. Une fois le paquet créé, vous pouvez ajouter de nouvelles cartes en remplissant les champs de texte "Nouveau mot" et "Traduction" et en cliquant sur le bouton "Ajouter". 
 4. Répétez l'étape précédente pour ajouter autant de cartes que nécessaire. 
