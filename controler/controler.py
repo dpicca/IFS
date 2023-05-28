@@ -1,5 +1,6 @@
 
 
+
 # Import the database methods file
 from model import sqlite_flashcard
 
@@ -86,4 +87,4 @@ class Controller:
         answeruser = sqlite_flashcard.AnswerUserTable()
         answeruser_add = answeruser.add_data(idanswer_fk, iduser_fk, score)
         return answeruser_add
-    
+
