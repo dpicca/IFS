@@ -61,6 +61,7 @@ Voici une description des classes et de leurs principales méthodes :
 2. `AnswerTable` : Cette classe gère la table des réponses. 
 3. `UserTable` : Cette classe gère la table des utilisateurs. 
 4. `AnswerUserTable` : Cette classe gère la table des résultats des utilisateurs. 
+5. `QuestionUserTable` : Cette classe définit gère une table de base de données pour associer des questions à des utilisateurs.
 
 ### Controler : 
 Le fichier controller.py contient la classe Controller, qui permet l'interaction entre le frontend et le backend de l'application.
