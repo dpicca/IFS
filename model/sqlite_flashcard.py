@@ -1,3 +1,13 @@
+"""
+This file is an implementation of a SQLite database with five tables: 
+question_table, answer_table, user_table, answer_user_table and question_user_table. 
+Each table is represented by a corresponding class: 
+- QuestionTable, AnswerTable and UserTable :These classes provide the necessary functionalities to interact 
+with the database and perform operations such as insertion, updating, deletion, and retrieval of data.
+- AnswerUserTable and QuestionUserTable : These classes represent tables in an SQLite database for managing 
+the relationship between answers and users, and questions and users, respectively.
+"""""
+
 # Import packages.
 import sqlite3
 

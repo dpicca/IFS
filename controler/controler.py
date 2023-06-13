@@ -1,5 +1,10 @@
-
-
+"""
+This file defines a `Controller` class that serves as a controller for interacting with a flashcard database.
+The functions of this class utilize the methods from the `QuestionTable`, `AnswerTable`, and
+`AnswerUserTable` classes in the `sqlite_flashcard` module to perform operations on the flashcard database.
+The controller acts as an intermediary layer between the user interface and the database,
+encapsulating the logic for managing flashcards and providing methods for accessing the data.
+"""
 
 # Import the database methods file
 from model import sqlite_flashcard
