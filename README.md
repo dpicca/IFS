@@ -83,15 +83,50 @@ Voici une description des classes et de leurs principales méthodes :
    - `__init__`: Initialise une connexion à la base de données SQLite et crée un curseur pour exécuter les requêtes SQL.
    - `create_table`: Crée la table `answer_table` dans la base de données.
    - `add_data`: Ajoute une carte de réponse à la table.
-   - `show_table`: Affiche le contenu complet de la table `answer_table`.
+   - `show_table`: Affiche le contenu complet de la table des réponses.
    - `show_answer`: Affiche les cartes de réponse d'un paquet spécifique.
    - `show_answer_by_question`: Récupère la réponse correspondant à une question donnée à partir de la table des réponses.
    - `update_data`: Met à jour les données d'une réponse existante.
    - `delete_data`: Supprime une réponse de la table.
+   - `delete_table()` : Supprime toute la table des réponses. 
+   - `execute_query(query)` : Exécute une requête SQL en l'appliquant à la base de données. 
+   - `close_sqlite()` : Ferme la connexion à la base de données SQLite.
 3. `UserTable` : Cette classe fournit des fonctionnalités similaires pour interagir avec la table des utilisateurs.
+   - `__init__()` : Initialise une connexion à la base de données SQLite et crée un curseur pour exécuter des requêtes SQL.
+   - `create_table()` : Crée la table "user_table" dans la base de données.
+   - `add_data(name)` : Ajoute un utilisateur à la table des utilisateurs.
+   - `show_table()` : Affiche le contenu complet de la table des utilisateurs.
+   - `show_data(i)` : Affiche les informations d'un utilisateur spécifique dans la base de données.
+   - `show_iduser(name)` : Récupère l'ID d'un utilisateur spécifique.
+   - `update_data(name, iduser)` : Modifie le nom d'un utilisateur.
+   - `delete_data(iduser)` : Supprime un utilisateur de la table des utilisateurs.
+   - `delete_table()` : Supprime toute la table des utilisateurs.
+   - `execute_query(query)` : Exécute une requête SQL en l'appliquant à la base de données.
+   - `close_sqlite()` : Ferme la connexion à la base de données SQLite.
 4. `AnswerUserTable` : Cette classe est utilisée pour gérer la relation entre les réponses et les utilisateurs.
+   - `__init__()` : Initialise une connexion à la base de données SQLite et crée un curseur pour exécuter des requêtes SQL.
+   - `create_table()` : Crée la table "answer_user_table" dans la base de données.
+   - `add_data(idanswer_fk, iduser_fk, score)` : Ajoute un résultat à la table des réponses-utilisateurs.
+   - `show_table()` : Affiche le contenu complet de la table des réponses-utilisateurs.
+   - `show_data(idanswer_user)` : Affiche les informations d'une ligne spécifique de la table des réponses-utilisateurs.
+   - `show_result(name, idanswer_fk)` : Affiche le résultat d'un utilisateur spécifique pour une réponse sélectionnée.
+   - `update_data(score, idanswer_user)` : Modifie le résultat d'un utilisateur pour une réponse donnée.
+   - `delete_data(idanswer_user)` : Supprime un résultat de la table des réponses-utilisateurs.
+   - `delete_table()` : Supprime toute la table des réponses-utilisateurs.
+   - `execute_query(query)` : Exécute une requête SQL en l'appliquant à la base de données.
+- `close_sqlite()` : Ferme la connexion à la base de données SQLite.
 5. `QuestionUserTable` : Cette classe est utilisée une table de base de données pour associer des questions à des utilisateurs.
+   - `__init__()`: Initialise une connexion à la base de données SQLite et crée un curseur pour exécuter des requêtes SQL.
+   - `create_table()`: Crée la table "question_user_table" dans la base de données.
+   - `add_data(idquestion_fk, iduser_fk)`: Ajoute une carte de question à un utilisateur.
+   - `show_table()`: Affiche le contenu complet de la table "question_user_table".
+   - `show_data(idquestion_user)`: Affiche les informations d'un élément spécifique dans la table "question_user_table".
+   - `delete_data(idquestion_user)`: Supprime un lien de la table "question_user_table".
+   - `delete_table()`: Supprime la table "question_user_table" de la base de données.
+   - `execute_query(query)`: Exécute une requête SQL en l'appliquant à la base de données.
+   - `close_sqlite()`: Ferme la connexion à la base de données SQLite.
 
+Ces méthodes permettent de créer, ajouter, afficher et supprimer des données dans la table "question_user_table" de la base de données SQLite.
 Chaque classe contient des méthodes pour créer la table correspondante, ajouter des données, afficher les données, mettre à jour les données, supprimer les données, etc.
 
 ### Controler : 

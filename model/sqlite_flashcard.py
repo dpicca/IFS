@@ -19,10 +19,8 @@ class QuestionTable:
     """
     def __init__(self):
         """
+        Initializes the QuestionTable class.
         Initializes a connection to the SQLite database and creates a cursor to execute SQL queries.
-
-        Returns:
-             None
         """
         # Create and connect to the database...
         try:
@@ -52,7 +50,7 @@ class QuestionTable:
                      'FOREIGN KEY (idanswer_fk) REFERENCES answer_table(idanswer));'
         return self.execute_query(self.query)
 
-    def add_data(self, question: str, paquet: str):
+    def add_data(self, question, paquet):
         """
         Adds a question card to the question table.
 
@@ -63,7 +61,7 @@ class QuestionTable:
             type paquet: str
 
         Returns:
-            None
+            True if the data is successfully added, False otherwise.
         """
         if self.i > 1:
             self.query = f'INSERT INTO question_table VALUES ({self.i}, "{question}", "{paquet}", {self.i});'
@@ -86,7 +84,7 @@ class QuestionTable:
         self.query = 'SELECT * FROM question_table;'
         return self.cur.execute(self.query)
 
-    def show_question(self, paquet: str):
+    def show_question(self, paquet):
         """
         Displays the question cards of a specific packet.
 
@@ -113,7 +111,7 @@ class QuestionTable:
         print(self.query)
         return self.cur.execute(self.query)
 
-    def show_pack(self, iduser_fk: int):
+    def show_pack(self, iduser_fk):
         """
         Displays all question packets saved for a given user.
 
@@ -130,7 +128,7 @@ class QuestionTable:
                      f'WHERE iduser_fk = {iduser_fk};'
         return self.cur.execute(self.query)
 
-    def user_show_questions(self, iduser_fk: int, paquet: str):
+    def user_show_questions(self, iduser_fk, paquet):
         """
         Displays the questions from a specific packet for a given user.
 
@@ -149,7 +147,7 @@ class QuestionTable:
                      f'WHERE iduser_fk = {iduser_fk} AND paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
-    def update_data(self, question: str, idquestion: int):
+    def update_data(self, question, idquestion):
         """
         Updates the data of an existing question.
 
@@ -165,7 +163,7 @@ class QuestionTable:
         self.query = f'UPDATE question_table SET question = "{question}" WHERE idquestion = {idquestion};'
         return self.execute_query(self.query)
 
-    def delete_data(self, idquestion: int):
+    def delete_data(self, idquestion):
         """
         Deletes a question from the table using its identifier.
 
@@ -174,7 +172,8 @@ class QuestionTable:
             type idquestion: int
 
         Returns:
-             None
+            The result of executing the SQL query.
+            rtype: sqlite3.Cursor
         """
         self.query = f'DELETE FROM question_table WHERE idquestion = {idquestion};'
         return self.execute_query(self.query)
@@ -189,7 +188,7 @@ class QuestionTable:
         self.query = 'DROP TABLE question_table;'
         return self.execute_query(self.query)
 
-    def execute_query(self, query: str):
+    def execute_query(self, query):
         """
         Run the query by applying it to the database.
 
@@ -224,9 +223,6 @@ class AnswerTable:
     def __init__(self):
         """
         Initializes a connection to the SQLite database and creates a cursor to execute SQL queries.
-
-        Returns:
-             None
         """
         try:
             # Create and connect to the database...
@@ -255,7 +251,7 @@ class AnswerTable:
                      'REFERENCES question_table(idquestion));'
         return self.execute_query(self.query)
 
-    def add_data(self, answer: str, paquet: str):
+    def add_data(self, answer, paquet):
         """
         Add an answer card to the answer table.
 
@@ -267,6 +263,9 @@ class AnswerTable:
 
         Returns:
              None
+
+        Notes:
+            This method executes the SQL query to insert a new answer card into the answer table.
         """
         if self.i > 1:
             self.query = f'INSERT INTO answer_table VALUES ({self.i}, "{answer}", "{paquet}", {self.i});'
@@ -289,7 +288,7 @@ class AnswerTable:
         self.query = 'SELECT * FROM answer_table;'
         return self.cur.execute(self.query)
 
-    def show_answer(self, paquet: str):
+    def show_answer(self, paquet):
         """
         Displays the answer cards of a specific packet.
 
@@ -304,7 +303,7 @@ class AnswerTable:
         self.query = f'SELECT answer FROM answer_table WHERE paquet = "{paquet}";'
         return self.cur.execute(self.query)
 
-    def show_answer_by_question(self, idquestion: int):
+    def show_answer_by_question(self, idquestion):
         """
         Retrieves the answer corresponding to a given question ID from the answer table.
 
@@ -321,7 +320,7 @@ class AnswerTable:
                      f'WHERE idquestion = {idquestion};'
         return self.cur.execute(self.query)
 
-    def update_data(self, answer: str, idanswer: int):
+    def update_data(self, answer, idanswer):
         """
         Updates the data of an existing answer.
 
@@ -333,11 +332,14 @@ class AnswerTable:
 
         Returns:
              None
+
+        Notes:
+            This method executes the SQL query to update the data of an existing answer.
         """
         self.query = f'UPDATE answer_table SET answer = "{answer}" WHERE idanswer = {idanswer};'
         return self.execute_query(self.query)
 
-    def delete_data(self, idanswer: int):
+    def delete_data(self, idanswer):
         """
         Removes a card from the answer table.
 
@@ -347,6 +349,9 @@ class AnswerTable:
 
         Returns:
              None
+
+         Notes:
+            This method executes the SQL query to delete a card from the answer table.
         """
         self.query = f'DELETE FROM answer_table WHERE idanswer = {idanswer};'
         return self.execute_query(self.query)
@@ -357,11 +362,14 @@ class AnswerTable:
 
         Returns:
              None
+
+        Notes:
+            This method executes the SQL query to delete the entire answer table.
         """
         self.query = 'DROP TABLE answer_table;'
         return self.execute_query(self.query)
 
-    def execute_query(self, query: str):
+    def execute_query(self, query):
         """
          Executes an SQL query by applying it to the database.
 
@@ -371,10 +379,12 @@ class AnswerTable:
 
          Returns:
              None
+
+        Notes:
+            This method executes the provided SQL query and commits the changes to the database.
         """
 
         self.cur.execute(query)
-
         # Save the change.
         self.flashcards_db.commit()
 
@@ -384,6 +394,9 @@ class AnswerTable:
 
         Returns:
              None
+
+        Notes:
+            This method closes the connection to the SQLite database and releases any associated resources.
         """
         return self.flashcards_db.close()
 
@@ -420,7 +433,7 @@ class UserTable:
                      'name VARCHAR(40));'
         return self.execute_query(self.query)
 
-    def add_data(self, name: str):
+    def add_data(self, name):
         """
         Adds a user to the users table.
 
@@ -430,6 +443,8 @@ class UserTable:
 
         Returns:
              None
+        Notes:
+            This method executes the SQL query to insert a new user into the user table.
         """
         if self.i > 1:
             self.query = f'INSERT INTO user_table VALUES ({self.i}, "{name}");'
@@ -452,7 +467,7 @@ class UserTable:
         self.query = 'SELECT * FROM user_table;'
         return self.cur.execute(self.query)
 
-    def show_data(self, i: int):
+    def show_data(self, i):
         """
         Displays the information of a specific user from the database.
 
@@ -467,7 +482,7 @@ class UserTable:
         self.query = f'SELECT * FROM user_table WHERE iduser = {i};'
         return self.cur.execute(self.query)
 
-    def show_iduser(self, name: str):
+    def show_iduser(self, name):
         """
         Retrieves the ID of a specific user.
 
@@ -482,7 +497,7 @@ class UserTable:
         self.query = f'SELECT iduser FROM user_table WHERE name = "{name}";'
         return self.cur.execute(self.query)
 
-    def update_data(self, name: str, iduser: int):
+    def update_data(self, name, iduser):
         """
         Changes a user's name.
 
@@ -494,19 +509,26 @@ class UserTable:
 
         Returns:
              None
+
+        Notes:
+            This method executes the SQL query to update the name of a specific user.
         """
         self.query = f'UPDATE user_table SET name = "{name}" WHERE iduser = {iduser};'
         return self.execute_query(self.query)
 
-    def delete_data(self, iduser: int):
+    def delete_data(self, iduser):
         """
         Removes x a user from the user table
 
         Args:
             param iduser:The identifier of the user to remove.
             type iduser: int
+
         Returns:
              None
+
+        Notes:
+            This method executes the SQL query to delete a specific user from the user table.
         """
         self.query = f'DELETE FROM user_table WHERE iduser = {iduser};'
         return self.execute_query(self.query)
@@ -517,24 +539,29 @@ class UserTable:
 
         Returns:
              None
+
+        Notes:
+            This method executes the SQL query to delete the entire user table.
         """
         self.query = 'DROP TABLE user_table;'
         return self.execute_query(self.query)
 
-    # ...
-    def execute_query(self, query: str):
+    def execute_query(self, query):
         """
         Executes an SQL query by applying it to the database.
 
         Args:
             param query: The SQL statement to execute.
             type query: str
+
         Returns:
              None
+
+        Notes:
+            This method executes the provided SQL query and commits the changes to the database.
         """
 
         self.cur.execute(query)
-
         # Save the change.
         self.flashcards_db.commit()
 
@@ -544,6 +571,9 @@ class UserTable:
 
         Returns:
              None
+
+        Notes:
+            This method closes the connection to the SQLite database and releases any associated resources.
         """
         return self.flashcards_db.close()
 
@@ -556,9 +586,6 @@ class AnswerUserTable:
     def __init__(self):
         """
         Initializes a connection to the SQLite database and creates a cursor to execute SQL queries.
-
-        Returns:
-            None
         """
         try:
             # Create and connect to the database...
@@ -587,7 +614,7 @@ class AnswerUserTable:
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute_query(self.query)
 
-    def add_data(self, idanswer_fk: int, iduser_fk: int, score: int):
+    def add_data(self, idanswer_fk, iduser_fk, score):
         """
         Add a result to the answers-users table
 
@@ -601,6 +628,9 @@ class AnswerUserTable:
 
         Returns:
              None
+
+        Notes:
+            This method executes an SQL query to insert a new row with the provided data into the "answer_user_table".
         """
         if self.i > 1:
             self.query = f'INSERT INTO answer_user_table VALUES ({self.i}, {idanswer_fk}, {iduser_fk}, {score});'
@@ -614,38 +644,41 @@ class AnswerUserTable:
 
     def show_table(self):
         """
-        View answers-users table
+        Displays the complete contents of the answers-users table.
 
         Returns:
-             None
+            The result of the SQL query containing all rows of the table.
+            rtype: sqlite3.Cursor
         """
         self.query = 'SELECT * FROM answer_user_table;'
         return self.cur.execute(self.query)
 
-    def show_data(self, idanswer_user: int):
+    def show_data(self, idanswer_user):
         """
-        Displays the complete contents of the answers-users table.
+        Displays the information of a specific row in the answers-users table.
 
         Args:
-            param idanswer_user:
+            param idanswer_user: The identifier of the answer-user result.
             type idanswer_user: int
+
         Returns:
-            The result of the SQL query containing all rows of the table.
+            The result of the SQL query containing the row's information.
             rtype: sqlite3.Cursor
         """
         self.query = f'SELECT * FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.cur.execute(self.query)
 
 
-    def show_result(self, name: str, idanswer_fk: int):
+    def show_result(self, name, idanswer_fk):
         """
         Displays the result of a specific user to a selected answer.
 
         Args:
             param name: The name of the user.
             type name: str
-            param idanswer_fk:The ID of the answer.
+            param idanswer_fk: The ID of the answer.
             type idanswer: int
+
         Returns
             The result of the SQL query containing the user's results.
             rtype: sqlite3.Cursor
@@ -655,9 +688,9 @@ class AnswerUserTable:
                      f'WHERE name = "{name}" AND idanswer_fk = {idanswer_fk};'
         return self.cur.execute(self.query)
 
-    def update_data(self, score: int, idanswer_user: int):
+    def update_data(self, score, idanswer_user):
         """
-        Change a user's result to an answer
+        Change a user's result to an answer.
 
         Args:
             param score: The new score for the user's result.
@@ -671,7 +704,7 @@ class AnswerUserTable:
         self.query = f'UPDATE answer_user_table SET score = {score} WHERE idanswer_user = {idanswer_user};'
         return self.execute_query(self.query)
 
-    def delete_data(self, idanswer_user: int):
+    def delete_data(self, idanswer_user):
         """
         Remove a result from the answers-users table
 
@@ -681,6 +714,9 @@ class AnswerUserTable:
 
         Returns:
             None
+
+        Notes:
+            This method deletes the row from the "answer_user_table" that matches the provided ID by executing an SQL query.
         """
         self.query = f'DELETE FROM answer_user_table WHERE idanswer_user = {idanswer_user};'
         return self.execute_query(self.query)
@@ -691,12 +727,14 @@ class AnswerUserTable:
 
         Returns:
             None
+
+        Notes:
+            This method drops the "answer_user_table" from the database by executing an SQL query.
         """
         self.query = 'DROP TABLE answer_user_table;'
         return self.execute_query(self.query)
 
-    # ...
-    def execute_query(self, query: str):
+    def execute_query(self, query):
         """
          Executes an SQL query by applying it to the database.
 
@@ -706,10 +744,12 @@ class AnswerUserTable:
 
          Returns:
               None
+
+        Notes:
+            This method executes the provided SQL query by applying it to the connected database.
         """
 
         self.cur.execute(query)
-
         # Save the change.
         self.flashcards_db.commit()
 
@@ -719,6 +759,9 @@ class AnswerUserTable:
 
         Returns:
             None
+
+        Notes:
+            This method closes the connection to the connected SQLite database.
         """
         return self.flashcards_db.close()
 
@@ -732,9 +775,6 @@ class QuestionUserTable:
     def __init__(self):
         """
         Initializes a connection to the SQLite database and creates a cursor to execute SQL queries.
-
-        Returns:
-            None
         """
         try:
             # Create and connect to the database...
@@ -763,9 +803,9 @@ class QuestionUserTable:
                      'FOREIGN KEY (iduser_fk) REFERENCES user_table(iduser));'
         return self.execute_query(self.query)
 
-    def add_data(self, idquestion_fk: int, iduser_fk: int):
+    def add_data(self, idquestion_fk, iduser_fk):
         """
-        Add a question's card to a user
+        Add a question's card to a user.
 
         Args:
             param idquestion_fk: The ID of the question.
@@ -774,7 +814,7 @@ class QuestionUserTable:
             type iduser_fk: int
 
         Returns:
-            The add operation
+            The add operation.
 
         """
         if self.i > 1:
@@ -787,7 +827,6 @@ class QuestionUserTable:
 
         return self.execute_query(self.query)
 
-    # View questions-users table...
     def show_table(self):
         """
         Displays the complete contents of the questions-users table.
@@ -800,7 +839,7 @@ class QuestionUserTable:
         self.query = 'SELECT * FROM question_user_table;'
         return self.cur.execute(self.query)
 
-    def show_data(self, idquestion_user: int):
+    def show_data(self, idquestion_user):
         """
         Displays the information for a specific element in the question_user_table.
 
@@ -815,7 +854,7 @@ class QuestionUserTable:
         self.query = f'SELECT * FROM question_user_table WHERE idquestion_user = {idquestion_user};'
         return self.cur.execute(self.query)
 
-    def delete_data(self, idquestion_user: int):
+    def delete_data(self, idquestion_user):
         """
         Removes a link from the questions-users table.
 
@@ -825,6 +864,9 @@ class QuestionUserTable:
 
         Returns:
             None
+
+        Notes:
+            This method deletes a row from the "question_user_table" that matches the provided ID by executing an SQL query.
         """
         self.query = f'DELETE FROM question_user_table WHERE idquestion_user = {idquestion_user};'
         return self.execute_query(self.query)
@@ -835,12 +877,15 @@ class QuestionUserTable:
 
         Returns:
             None
+
+        Notes:
+            This method drops the "question_user_table" from the database by executing an SQL query.
         """
         self.query = 'DROP TABLE question_user_table;'
         return self.execute_query(self.query)
 
 
-    def execute_query(self, query: str):
+    def execute_query(self, query):
         """
         Executes an SQL query by applying it to the database.
 
@@ -851,10 +896,11 @@ class QuestionUserTable:
         Returns:
             None
 
+        Notes:
+            This method executes the provided SQL query by applying it to the connected database.
         """
 
         self.cur.execute(query)
-
         # Save the change.
         self.flashcards_db.commit()
 
@@ -864,5 +910,8 @@ class QuestionUserTable:
 
         Returns:
             None
+
+        Notes:
+            This method closes the connection to the connected SQLite database.
         """
         return self.flashcards_db.close()
