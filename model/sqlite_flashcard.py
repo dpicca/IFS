@@ -81,8 +81,8 @@ class QuestionTable:
             The result of the SQL query containing all rows of the table.
             rtype: sqlite3.Cursor
         """
-        self.query = 'SELECT * FROM question_table;'
-        return self.cur.execute(self.query)
+       self.query = 'SELECT * FROM question_table;'
+       return self.cur.execute(self.query)
 
     def show_question(self, paquet):
         """

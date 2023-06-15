@@ -44,6 +44,7 @@ if authentication_status:
     homepagebutton = st.button("Ma page d'accueil")
     if homepagebutton:
         switch_page("MenuIFC")
+    #User's homapage
     st.header('À propos') # About section
     st.markdown(
         "Intelligent FlashCards est un logiciel permettant d’apprendre de nouvelles langues facilement tout en observant sa progression.\n"

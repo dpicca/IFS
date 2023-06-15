@@ -126,7 +126,6 @@ Voici une description des classes et de leurs principales méthodes :
    - `execute_query(query)`: Exécute une requête SQL en l'appliquant à la base de données.
    - `close_sqlite()`: Ferme la connexion à la base de données SQLite.
 
-Ces méthodes permettent de créer, ajouter, afficher et supprimer des données dans la table "question_user_table" de la base de données SQLite.
 Chaque classe contient des méthodes pour créer la table correspondante, ajouter des données, afficher les données, mettre à jour les données, supprimer les données, etc.
 
 ### Controler : 
